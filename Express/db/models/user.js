@@ -41,15 +41,13 @@ module.exports = (sequelize, DataTypes) => {
   User.associate = function(models) {
     const {
       Job,
+      UserJob,
     } = models;
-    // UserJobs = sequelize.define('user_jobs', {
- 
-    // });
     User.belongsToMany(Job, {
-       through: 'UserJobs',
+       through: UserJob,
       });
     Job.belongsToMany(User, {
-      through: 'UserJobs',
+      through: UserJob,
     });
   };
   return User;

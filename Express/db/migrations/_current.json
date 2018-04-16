@@ -25,8 +25,8 @@
             },
             "indexes": []
         },
-        "Contacts": {
-            "tableName": "Contacts",
+        "contacts": {
+            "tableName": "contacts",
             "schema": {
                 "id": {
                     "allowNull": false,
@@ -262,6 +262,24 @@
         "UserJobs": {
             "tableName": "UserJobs",
             "schema": {
+                "comment": {
+                    "allowNull": false,
+                    "validate": {
+                        "len": [
+                            3,
+                            1024
+                        ]
+                    },
+                    "seqType": "Sequelize.STRING"
+                },
+                "cvUrl": {
+                    "allowNull": false,
+                    "seqType": "Sequelize.STRING"
+                },
+                "letterUrl": {
+                    "allowNull": true,
+                    "seqType": "Sequelize.STRING"
+                },
                 "createdAt": {
                     "allowNull": false,
                     "seqType": "Sequelize.DATE"

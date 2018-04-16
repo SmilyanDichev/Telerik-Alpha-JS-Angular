@@ -19,6 +19,10 @@ module.exports = (sequelize, DataTypes) => {
      type: DataTypes.BOOLEAN,
      allowNull: false,
     },
+    isDeleted: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+     },
   }, {});
   Job.associate = function(models) {
     const {

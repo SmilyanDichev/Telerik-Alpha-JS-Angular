@@ -6,7 +6,7 @@ var Sequelize = require('sequelize');
  * Actions summary:
  *
  * createTable "JobCategories", deps: []
- * createTable "Contacts", deps: []
+ * createTable "contacts", deps: []
  * createTable "LinkCategories", deps: []
  * createTable "Users", deps: []
  * createTable "Jobs", deps: [JobCategories]
@@ -18,7 +18,7 @@ var Sequelize = require('sequelize');
 var info = {
     "revision": 1,
     "name": "noname",
-    "created": "2018-04-15T12:09:13.829Z",
+    "created": "2018-04-16T14:14:20.960Z",
     "comment": ""
 };
 
@@ -53,7 +53,7 @@ var migrationCommands = [{
     {
         fn: "createTable",
         params: [
-            "Contacts",
+            "contacts",
             {
                 "id": {
                     "type": Sequelize.INTEGER,
@@ -283,6 +283,21 @@ var migrationCommands = [{
         params: [
             "UserJobs",
             {
+                "comment": {
+                    "type": Sequelize.STRING,
+                    "validate": {
+                        "len": [3, 1024]
+                    },
+                    "allowNull": false
+                },
+                "cvUrl": {
+                    "type": Sequelize.STRING,
+                    "allowNull": false
+                },
+                "letterUrl": {
+                    "type": Sequelize.STRING,
+                    "allowNull": true
+                },
                 "createdAt": {
                     "type": Sequelize.DATE,
                     "allowNull": false

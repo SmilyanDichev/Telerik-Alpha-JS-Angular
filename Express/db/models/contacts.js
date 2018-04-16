@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Contacts = sequelize.define('Contacts', {
+  const contact = sequelize.define('contact', {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -13,8 +13,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
     },
   }, {});
-  Contacts.associate = function(models) {
+  contact.associate = function(models) {
     // associations can be defined here
   };
-  return Contacts;
+  return contact;
 };
