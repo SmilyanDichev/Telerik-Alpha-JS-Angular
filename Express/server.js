@@ -11,6 +11,7 @@ const {
 } = require('./routes');
 
 const app = expressApp();
+
 routes.init(app, data);
 express.init(app);
 auth.init(app, data);

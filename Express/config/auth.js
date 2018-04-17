@@ -47,7 +47,6 @@ const init = (app, data) => {
             }
         }
     ));
-    
     app.use(cookieParser());
     app.use(passport.initialize());
 };
