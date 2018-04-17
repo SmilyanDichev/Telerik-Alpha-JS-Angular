@@ -3,9 +3,7 @@ const init = (app, data) => {
     const uuid = require('uuid/v4');
     const jwt = require('jwt-simple');
     const moment = require('moment');
-
     const config = require('../../config');
-
     const login = () => {
         return async (req, res) => {
             const userFound = await data.user.getUserByEmail(req.body.email);
@@ -37,7 +35,6 @@ const init = (app, data) => {
             }
         };
     };
-
     const register = () => {
         return async (req, res) => {
             const authUserData=(userReq) => {
@@ -61,6 +58,11 @@ const init = (app, data) => {
                 data.user.create(user);
             }
         };
+    };
+
+    return {
+        login,
+        register,
     };
 };
 
