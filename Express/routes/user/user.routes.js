@@ -3,7 +3,6 @@ const {
 } = require('express');
 const passport = require('passport');
 const userControler = require('./user.controller');
-console.log(userControler);
 
 const init = (app, data) => {
     const router = new Router();

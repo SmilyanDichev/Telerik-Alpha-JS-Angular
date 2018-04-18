@@ -7,7 +7,6 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 
 const init = (app) => {
-    console.log('init');
     if (typeof app.use !== 'function' ||
         typeof app.set !== 'function') {
         throw new Error('Invalid app');

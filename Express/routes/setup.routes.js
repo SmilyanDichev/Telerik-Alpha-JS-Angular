@@ -13,7 +13,6 @@ const init = (app, data) => {
             route.init(app, data);
         });
 };
-console.log(init);
 module.exports = {
     init,
 };
