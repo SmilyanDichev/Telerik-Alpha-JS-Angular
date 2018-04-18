@@ -2,6 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 
+
 const init = (app, data) => {
     fs.readdirSync(__dirname)
         .filter((filename) => filename !== path.basename(__filename))
@@ -12,7 +13,7 @@ const init = (app, data) => {
             route.init(app, data);
         });
 };
-
+console.log(init);
 module.exports = {
     init,
 };

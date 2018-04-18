@@ -1,9 +1,8 @@
 const init = (app, data) => {
     const bcrypt = require('bcrypt-nodejs');
-    const uuid = require('uuid/v4');
     const jwt = require('jwt-simple');
     const moment = require('moment');
-    const config = require('../../config');
+    const config = require('../../config/config');
     const login = () => {
         return async (req, res) => {
             const userFound = await data.user.getUserByEmail(req.body.email);
@@ -48,7 +47,6 @@ const init = (app, data) => {
                 const passwordHashed =
                 bcrypt.hash(req.body.password, saltRounds);
                 const user= {
-                    id: uuid(),
                     email: req.body.email,
                     password: passwordHashed,
                     firstName: req.body.firstName,
@@ -59,7 +57,6 @@ const init = (app, data) => {
             }
         };
     };
-
     return {
         login,
         register,

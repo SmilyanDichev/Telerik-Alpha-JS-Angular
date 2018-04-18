@@ -1,7 +1,7 @@
 const Data = require('./generic.data');
 const {
     Link,
-} = require('./db/models');
+} = require('../db/models');
 
 class LinkData extends Data {
     constructor() {

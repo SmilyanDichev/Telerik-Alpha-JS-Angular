@@ -1,5 +1,5 @@
 const init = (app, data) => {
-    const config = require('./index');
+    const config = require('./config');
     const passport = require('passport');
     const {
         Strategy,
