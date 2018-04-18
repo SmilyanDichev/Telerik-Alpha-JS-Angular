@@ -17,6 +17,9 @@ const init = (app, data) => {
                 msg: 'success',
             });
         })
+        .get('/', (req, res)=>{
+             res.send('user test route!');
+        })
         .post('/register', async (req, res) => {
             await controller.register(req.body);
         })
