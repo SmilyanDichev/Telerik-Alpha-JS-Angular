@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-admin-job',
-  templateUrl: './admin-job.component.html',
-  styleUrls: ['./admin-job.component.css']
+  selector: 'app-admin-jobs',
+  templateUrl: './admin-jobs.component.html',
+  styleUrls: ['./admin-jobs.component.css']
 })
 export class AdminJobsComponent implements OnInit {
 
