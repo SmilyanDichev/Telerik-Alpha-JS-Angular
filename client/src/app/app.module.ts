@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'; //TO DO reactive or regular forms
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap/';
+import {MatToolbarModule} from '@angular/material';
 // import { AuthModule } from '.'
 // import { CoreModule } from '.'
 // import { MatButtonModule, MatCardModule, MatSelectModule, MatForm,FieldModule, MatInputModule } from '@angular/material';
@@ -15,18 +16,24 @@ import { AppRoutingModule } from './home/app-routes.module';
 import { AppConfig } from './config/app-config';
 import { AppComponent } from './app.component';
 import { JwtModule } from '@auth0/angular-jwt';
+// import { NavbarComponent } from './shared/components/navbar/navbar.component';
+
+import { HomeComponent } from './home/components/public/home/home.component';
 
 
 export function  tokenGetter(){
   return localStorage.getItem('access_token');
 }
+
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
+    MatToolbarModule,
     ToastrModule.forRoot(),
     HttpClientModule,
     NgbModule.forRoot(),
