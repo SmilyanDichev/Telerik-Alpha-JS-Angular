@@ -1,6 +1,6 @@
-import { HttpOptions } from '../../shared/models/http.options/http.options'
+import { HttpOptions } from '../../shared/models/http-options/http-options'
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { AppConfig } from '../../config/app.config';
+import { AppConfig } from '../../config/app-config';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { User } from '../../shared/models/user/user';

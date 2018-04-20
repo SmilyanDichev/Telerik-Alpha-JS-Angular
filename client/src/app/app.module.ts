@@ -12,7 +12,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap/';
 import { ClickOutsideModule } from 'ng-click-outside';
 import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './home/app-routes.module';
-import { AppConfig } from './config/app.config';
+import { AppConfig } from './config/app-config';
 import { AppComponent } from './app.component';
 import { JwtModule } from '@auth0/angular-jwt';
 
