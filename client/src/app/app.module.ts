@@ -8,7 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap/';
 import { MatToolbarModule } from '@angular/material';
 // import { MatButtonModule, MatCardModule, MatSelectModule, MatForm,FieldModule, MatInputModule } from '@angular/material';
 // import { FlexLayoutModule } from '@angular/flex'
-
+import { MatSidenav } from '@angular/material';
 // import { AuthModule } from '.'
 // import { CoreModule } from '.'
 import { ClickOutsideModule } from 'ng-click-outside';
@@ -22,6 +22,7 @@ import { PublicModule } from './home/components/public/public.module';
 import { JobModule } from './home/components/public/job/job.module';
 import { AppConfig } from './config/app-config';
 import { AppComponent } from './app.component';
+
 
 
 

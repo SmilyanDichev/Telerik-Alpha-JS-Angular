@@ -27,6 +27,7 @@
     "@ng-bootstrap/ng-bootstrap": "^1.1.2",
     "angular-jwt": "^0.1.9",
     "auth0": "^2.9.1",
+    "bootstrap": "^4.1.0",
     "core-js": "^2.4.1",
     "ng-click-outside": "^3.3.0",
     "ngx-toastr": "^8.4.0",

@@ -20,6 +20,7 @@ export const ROUTES: Routes = [
     ]}, // children
     {path:'contacts' , component: ContactsComponent},
     {path:'admin', children: [
+        { path: '', redirectTo: 'home', pathMatch: 'full' },
         { path:'applications', component: AdminAplicationsComponent },
         { path:'jobs', component: AdminJobsComponent },
         { path:'users', component: AdminUsersComponent },
