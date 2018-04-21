@@ -57,9 +57,23 @@ const init = (app, data) => {
             }
         };
     };
+    const applyJob = (application) => {
+        try {
+            return await this.data.create({
+                comment: application.comment,
+                cvUrl: application.cvUrl,
+                letterUrl: application.letterUrl,
+                JobId: application.jobId,
+                UserId: application.userId,
+            });
+        } catch (exception) {
+            throw new Error('Request to create job application rejected!\n' + exception); 
+        }
+    };
     return {
         login,
         register,
+        applyJob,
     };
 };
 

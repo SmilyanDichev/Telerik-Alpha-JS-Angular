@@ -10,11 +10,13 @@ const init = (app, data) => {
     const {
         getPublicJobs,
         getJobById,
-        postJobApplication,
         getAllJobs,
         createNewJob,
         editJob
     } = jobController.init(app, data);
+    const {
+        applyJob,
+    } = require('../user/user.controller');
 
     app.use(bodyParser.urlencoded({
         extended: true,
@@ -22,40 +24,41 @@ const init = (app, data) => {
     // TO DO user history JWT  strategy and check only admin
 
     router
-        .get('/job', async (req, res) => {
+        .get('/activeJobs', async (req, res) => {
             try {
                 const publicJobs = await getPublicJobs();
                 res.status(200).json(publicJobs);
             } catch (exception) {
                 res.status(502).json({
-                    msg: 'Request to get public jobs rejected!',
+                    msg: 'Request to get public jobs in job routes rejected!',
                     err: exception,
                 });
             }
         })
-        .get('/job:id', async (req, res) => {
+        .get('/:id', async (req, res) => {
             const jobId = req.body.id;
             try {
                 const jobDetails = await getJobById(jobId);
                 res.status(200).json(jobDetails);
             } catch (exception) {
-                res.redirect('/job');
+                console.log('invalid job or request to get job details in job routes rejected!\n'+ exception);
+                res.redirect('/activeJobs');
             }
         })
-        .post('/job/apply', passport.authenticate('jwt', {
+        .post('/apply', passport.authenticate('jwt', {
             session: false,
         }), async (req, res) => {
             try {
-                await postJobApplication(req.body);
+                await applyJob(req.body);
                 res.redirect('/job');
             } catch (exception) {
                 res.status(502).json({
-                    msg: 'Job application rejected!',
+                    msg: 'Job application in job routes rejected!',
                     err: exception,
                 })
             }
         })
-        .get('/jobs', passport.authenticate('jwt', {
+        .get('/allJobs', passport.authenticate('jwt', {
             session: true,
         }), async (req, res) => {
             try {
@@ -63,33 +66,33 @@ const init = (app, data) => {
                 res.status(200).json(allJobs);
             } catch (exception) {
                 res.status(502).json({
-                    msg: 'Request to get all jobs rejected!',
+                    msg: 'Request to get all jobs in job routes rejected!',
                     err: exception,
                 });
             }
         })
-        .post('/jobs/create', passport.authenticate('jwt', {
+        .post('/create', passport.authenticate('jwt', {
             session: true,
         }), async (req, res) => {
             try {
                 await createNewJob(res.body);
-                res.redirect('/jobs')
+                res.redirect('/job')
             } catch (exception) {
                 res.status(502).json({
-                    msg: 'Request to create job rejected!',
+                    msg: 'Request to create job rejected in job routes!',
                     err: exception,
                 });
             }
         })
-        .post('/jobs/edit', passport.authenticate('jwt', {
+        .post('/edit', passport.authenticate('jwt', {
             session: true,
         }), async (req, res) => {
             try {
                 await editJob(res.body);
-                res.redirect('/jobs');
+                res.redirect('/allJobs');
             } catch (exception) {
                 res.status(502).json({
-                    msg: 'Edit request rejected!',
+                    msg: 'Request to edit job in job routes rejected!',
                     err: exception,
                 })
             }
