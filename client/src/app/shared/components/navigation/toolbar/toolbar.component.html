@@ -1,0 +1,21 @@
+<nav  class="container" >
+<mat-toolbar >
+  <div class="row d-none d-md-flex">
+    <div class="col-sm-3">
+      <a class="nav-link" [routerLink]="['/home']" (click)="navbarCollapsed = true">home</a>
+    </div>
+    <div class="col-sm-3">
+      <a class="nav-link" [routerLink]="['/admin/jobs']" (click)="navbarCollapsed = true">admin jobs</a>
+    </div>
+    <div class="col-sm-3">
+      <a class="nav-link" [routerLink]="['/contacts']" (click)="navbarCollapsed = true">contacts</a>
+    </div>
+  </div>
+  <div class="row  d-flex d-md-none">
+    <a class="nav-link" [routerLink]="['/admin']" (click)="navbarCollapsed = true">
+      <mat-icon>dehaze</mat-icon>
+    </a>
+  </div>
+</mat-toolbar>
+</nav>
+
