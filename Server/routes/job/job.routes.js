@@ -3,7 +3,7 @@ const {
 } = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');
-const jobController = require('./job.controller').default;
+const jobController = require('./job.controller');
 
 const init = (app, data) => {
     const router = new Router();

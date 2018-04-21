@@ -57,7 +57,7 @@ const init = (app, data) => {
             }
         };
     };
-    const applyJob = (application) => {
+    const applyJob = async (application) => {
         try {
             return await this.data.create({
                 comment: application.comment,

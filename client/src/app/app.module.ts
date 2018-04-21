@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-// import { AuthModule } from '.'
-=======
-
-import { HttpClientModule } from '@angular/common/http'
->>>>>>> 2705b11c7bb745ac57282c6193523667988ff905
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,7 +14,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { JwtModule } from '@auth0/angular-jwt';
 
 import { NavigationModule } from './shared/components/navigation/navigation.module';
-//components
+// components
 import { ToolbarComponent} from './shared/components/navigation/toolbar/toolbar.component';
 
 import { AppRoutingModule } from './home/app-routes.module';
