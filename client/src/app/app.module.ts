@@ -5,16 +5,18 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'; //TO DO reactive or regular forms
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap/';
-import { MatToolbarModule } from '@angular/material';
+import { MatIconModule } from '@angular/material';
 // import { MatButtonModule, MatCardModule, MatSelectModule, MatForm,FieldModule, MatInputModule } from '@angular/material';
-// import { FlexLayoutModule } from '@angular/flex'
-import { MatSidenav } from '@angular/material';
+// import { FlexLayoutModule } from '@angular/flex
 // import { AuthModule } from '.'
 // import { CoreModule } from '.'
 import { ClickOutsideModule } from 'ng-click-outside';
 import { ToastrModule } from 'ngx-toastr';
 import { JwtModule } from '@auth0/angular-jwt';
 
+import { NavigationModule } from './shared/components/navigation/navigation.module';
+//components
+import { ToolbarComponent} from './shared/components/navigation/toolbar/toolbar.component';
 
 import { AppRoutingModule } from './home/app-routes.module';
 import { AdminModule } from './home/components/admin/admin.module';
@@ -26,8 +28,6 @@ import { AppComponent } from './app.component';
 
 
 
-// import { NavbarComponent } from './shared/components/navbar/navbar.component';
-// import { HomeComponent } from './home/components/public/home/home.component';
 
 
 export function  tokenGetter(){
@@ -37,7 +37,6 @@ export function  tokenGetter(){
 @NgModule({
   declarations: [
     AppComponent,
-
   ],
   imports: [
     AppRoutingModule,
@@ -45,9 +44,10 @@ export function  tokenGetter(){
     JobModule,
     AdminModule,
     PublicModule,
-    MatToolbarModule,
+    MatIconModule,
     ToastrModule.forRoot(),
     HttpClientModule,
+    NavigationModule,
     NgbModule.forRoot(),
     JwtModule.forRoot({
       config: {

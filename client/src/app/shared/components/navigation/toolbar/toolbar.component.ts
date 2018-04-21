@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-toolbar',
@@ -9,7 +8,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 })
 export class ToolbarComponent implements OnInit {
 
-  constructor() { }
+  constructor() { 
+  }
 
   ngOnInit() {
   }

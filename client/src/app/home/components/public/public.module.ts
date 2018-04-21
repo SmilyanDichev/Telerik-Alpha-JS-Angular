@@ -9,9 +9,6 @@ import { HomeComponent } from './home/home.component';
 import { JobModule } from './job/job.module';
 @NgModule({
     declarations:[
-        // JobDetailsComponent,
-        // JobListComponent,
-        // JobModule,
         ContactsComponent,
         HomeComponent,
     ],
@@ -21,8 +18,6 @@ import { JobModule } from './job/job.module';
         JobModule,
     ],
     exports: [
-        // JobDetailsComponent,
-        // JobListComponent,
         JobModule,
         ContactsComponent,
         HomeComponent,
