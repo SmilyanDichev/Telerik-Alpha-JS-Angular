@@ -1,3 +1,15 @@
-item {
-    background-color: aqua;
+.item {
+    border-style: solid;
+    border-width: medium;
+    /* height: 200px; */
+    /* width: 50%; */
+    /* height: 200px; */
+    background-color: grey;
+};
+
+.container {
+    box-sizing: border-box;
+    height: 100%;
+    margin: 0;
 }
+
