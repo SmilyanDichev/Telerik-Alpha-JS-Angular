@@ -12,7 +12,7 @@ import { AdminContactsComponent } from './components/admin/admin-contacts/admin-
 
 //TO DO create components
 export const ROUTES: Routes = [
-    {path:'home', component: HomeComponent },
+    {path:'/home', component: HomeComponent },
     {path:'', redirectTo: 'home', pathMatch: 'full'},
     {path:'job', children: [
         {path: '', component: JobListComponent },

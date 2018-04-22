@@ -28,6 +28,20 @@ class JobData extends Data {
     getAllJobsByUserId() {
 
     }
+
+    editJobData(job) {
+        return this.Model.update({
+            title: job.title,
+            description: job.description,
+            isActive: job.isActive,
+            isDeleted: job.isDeleted,
+        },{
+            where: {
+                id: job.id
+            }
+        }
+        );
+    }
 }
 
 module.exports = JobData;
