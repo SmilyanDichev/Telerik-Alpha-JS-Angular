@@ -1,0 +1,26 @@
+<nav>
+  <mat-toolbar >
+    <div id="routes-user">
+    <a mat-button class="nav-link" [routerLink]="['/home']">Home</a>
+    <a mat-button class="nav-link" [routerLink]="['/jobs']">Jobs</a>
+    <a mat-button class="nav-link" [routerLink]="['/contacts']">Contacts</a>
+    </div>
+    <div id="routes-admin">
+        <a mat-button class="nav-link" [routerLink]="['/admin/users']">Users</a>
+        <a mat-button class="nav-link" [routerLink]="['/admin/jobs']">Jobs</a>
+        <a mat-button class="nav-link" [routerLink]="['/admin/contacts']">Contacts</a>
+        <a mat-button class="nav-link" [routerLink]="['/admin/links']">links</a>
+    </div>
+    <div  >
+      <!-- <button id="button-login" mat-button [routerLink]="['/signupin']" *ngIf="!(user | async)">Log In</button> -->
+      <button mat-button>
+        Log In <mat-icon>mood</mat-icon></button>
+      <button mat-button>
+        Sign Out <mat-icon>mood_bad</mat-icon></button>
+      <button mat-button>
+        Register <mat-icon>person</mat-icon></button>
+      <button mat-button>
+        <mat-icon>menu</mat-icon></button>
+    </div>
+  </mat-toolbar>
+</nav>
