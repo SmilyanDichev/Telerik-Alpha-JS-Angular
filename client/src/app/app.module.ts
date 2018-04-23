@@ -4,10 +4,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'; //TO DO reactive or regular forms
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap/';
 
-// import { AuthModule } from '.'
-// import { CoreModule } from '.'
-// import { ClickOutsideModule } from 'ng-click-outside';
-// import { MatIconModule } from '@angular/material/icon';
+
 import { ToastrModule } from 'ngx-toastr';
 import { JwtModule } from '@auth0/angular-jwt';
 import { NavigationModule } from './shared/modules/navigation/navigation.module';

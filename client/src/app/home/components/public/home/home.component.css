@@ -4,12 +4,7 @@
     /* height: 200px; */
     /* width: 50%; */
     /* height: 200px; */
-    background-color: grey;
+    background-color: rgb(219, 219, 219);
+    border: rgb(160, 136, 136)
 };
-
-.container {
-    box-sizing: border-box;
-    height: 100%;
-    margin: 0;
-}
 
