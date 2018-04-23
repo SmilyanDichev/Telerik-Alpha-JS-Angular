@@ -15,6 +15,10 @@ import { PublicModule } from './home/components/public/public.module';
 import { JobModule } from './home/components/public/job/job.module';
 import { AppConfig } from './config/app-config';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './shared/modules/popups/login/login.component';
+import { RegisterComponent } from './shared/modules/popups/register/register.component';
+import { ApplyJobComponent } from './shared/modules/popups/apply-job/apply-job.component';
+import { RegisterOrLoginComponent } from './shared/modules/popups/register-or-login/register-or-login.component';
 
 export function  tokenGetter(){
   return localStorage.getItem('access_token');
@@ -23,6 +27,10 @@ export function  tokenGetter(){
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
+    RegisterComponent,
+    ApplyJobComponent,
+    RegisterOrLoginComponent,
   ],
   imports: [
     AppRoutingModule,

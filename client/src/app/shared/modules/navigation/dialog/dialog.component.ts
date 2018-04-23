@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {} from '@angular/material';
+import { FormGroup, FormBuilder} from '@angular/forms';
+import { MatDialogRef } from '@angular/material';
 @Component({
   selector: 'app-dialog',
   templateUrl: './dialog.component.html',
@@ -7,18 +8,19 @@ import {} from '@angular/material';
 })
 export class DialogComponent implements OnInit {
 
-  constructor() { }
+  form:FormGroup;
 
+  constructor(  private formBuilder: FormBuilder,
+                private dialogRef: MatDialogRef <DialogComponent>
+              ) {}
+  
   ngOnInit() {
+    this.form = this.formBuilder.group({
+      email: '',
+      password: '',
+    })
   }
-  // fileNameDialogRef: MatDialogRef<any>;
-  // toggle(){
-  // this.fileNameDialogRef = this.thisDialogRef.open('wew');
-  // }
+  submit(form) {
+    this.dialogRef.close(form.value);
+  }
 }
-
-
-// <app-dialog #loginModal></app-dialog>
-// <app-dialog #registerModal></app-dialog>    
-// <app-dialog #logoutModal></app-dialog>  
-// <app-dialog #loginModal></app-dialog> 

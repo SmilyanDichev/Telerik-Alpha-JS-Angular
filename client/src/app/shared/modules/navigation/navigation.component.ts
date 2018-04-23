@@ -1,14 +1,6 @@
-import {
-Component,
-  OnInit
-} from '@angular/core';
-import {
-  MatDialog,
-  MatDialogRef
-} from '@angular/material';
-import {
-  DialogComponent
-} from './dialog/dialog.component';
+import { Component,OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material';
+import { DialogComponent } from './dialog/dialog.component';
 
 @Component({
   selector: 'app-navigation',
@@ -26,6 +18,12 @@ export class NavigationComponent implements OnInit {
   loginModal() {
 
     this.dialogComponentRef=this.dialog.open(DialogComponent);
+
+    this.dialogComponentRef
+    .afterClosed()
+    .subscribe(name=>console.log(name));
+    ;
+    
 
   }
 
