@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { RouterModule } from '@angular/router';
 import { NavigationComponent } from './navigation.component';
+import { DialogComponent } from './dialog/dialog.component';
 
 
 @NgModule({
@@ -23,11 +24,16 @@ import { NavigationComponent } from './navigation.component';
   SidebarComponent,
   ToolbarComponent,
   NavigationComponent,
+  DialogComponent,
 ],
   exports:[
   NavigationComponent,
   // SidebarComponent,
   // ToolbarComponent,
+],
+entryComponents:
+[
+  DialogComponent,
 ]
 })
 export class NavigationModule { }

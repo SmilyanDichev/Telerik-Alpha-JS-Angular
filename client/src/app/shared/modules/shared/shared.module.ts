@@ -33,6 +33,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FlexLayoutModule,
     MatToolbarModule,
     BrowserAnimationsModule,
+    MatDialogModule,
   ]
 })
 export class SharedModule { }
