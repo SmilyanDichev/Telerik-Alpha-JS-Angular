@@ -1,3 +1,24 @@
-<p>
-  register works!
-</p>
+<form [formGroup]="rForm" (ngSubmit)="submit(rForm)">
+  <h1 mat-dialog-title> Register </h1>
+  <mat-dialog-content>
+    <mat-form-field>
+      <input matInput formControlName="email" placeholder="your email">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="password" placeholder="your password">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="password" placeholder="confirm your password">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="firstName" placeholder="first name">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="lastName" placeholder="first name">
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button type="submit"> Log in</button>
+    <button mat-button type="button" mat-dialog-close>Cancel</button>
+  </mat-dialog-actions>
+</form>

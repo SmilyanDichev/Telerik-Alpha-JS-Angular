@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-register',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  rForm: FormGroup;
+  email: string;
+  password: string;
+  fistName: string;
+  lastName: string;
+
+  constructor( private fomBuilder: FormBuilder,
+    private dialogRef: MatDialogRef <RegisterComponent>) { }
 
   ngOnInit() {
+    this.rForm = this.fomBuilder.group ({
+      email: [null, Validators.compose(
+        [Validators.required, Validators.email, Validators.maxLength(1024)])],
+      password: [null, Validators.compose(
+        [Validators.minLength(3),Validators.maxLength(256)])],
+      firstName:[],
+      lastName: [],
+    })
   }
-
+  submit(rForm){
+    this.dialogRef.close(rForm.values);
+  }
 }
