@@ -22,11 +22,10 @@ export class ToolbarComponent implements OnInit {
   
   
   menuClick(){
-    console.log("menu");
     this.clickMenuEvent.emit(null)
   }
   loginClick(){
-    console.log("in");
+
     this.clickLoginEvent.emit(null)
   }
   registerClick(){
