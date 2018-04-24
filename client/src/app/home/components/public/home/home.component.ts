@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.background);
+    // console.log(this.background);
     // console.log(config.default);
   }
 
