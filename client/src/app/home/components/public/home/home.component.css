@@ -8,3 +8,7 @@
     border: rgb(160, 136, 136)
 };
 
+.picture{
+    background-repeat: no-repeat;
+    background-size: cover;
+}

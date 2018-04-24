@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-// import * as configJson from '../../../../config/config';
+import * as config from '../../../../config/config.json';
+declare function require(url: string)
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  // backgroundUlr = configJson.homePageBackgroundUrl;
+  background = (<any>config).background;
   constructor() { }
 
   ngOnInit() {
-    // console.log(configJson);
+    console.log(this.background);
+    // console.log(config.default);
   }
 
 }
