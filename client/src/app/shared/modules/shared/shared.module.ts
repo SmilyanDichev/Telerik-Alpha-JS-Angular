@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatDialogModule, MatIconModule, MatToolbarModule, MatButtonModule, MatCardModule, MatSelectModule,  MatInputModule,  MatSidenavModule, MatListModule  } from '@angular/material';
+import { MatDialogModule, MatIconModule, MatToolbarModule, 
+          MatButtonModule,MatCardModule, MatSelectModule, 
+           MatInputModule,  MatSidenavModule, MatListModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';

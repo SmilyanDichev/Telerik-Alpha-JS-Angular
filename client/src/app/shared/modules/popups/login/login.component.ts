@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { SharedModule } from '../../shared/shared.module';
+// import { SharedModule } from '../../shared/shared.module';
 import { MatDialogRef } from '@angular/material';
 @Component({
   selector: 'app-login',
@@ -12,9 +12,10 @@ export class LoginComponent implements OnInit {
   rForm: FormGroup;
   email: string;
   password: string;
+
   constructor(private formBuilder:FormBuilder,
-    private dialogRef: MatDialogRef <LoginComponent>) {
-   }
+              private dialogRef: MatDialogRef <LoginComponent>
+            ) { }
    
   ngOnInit() {
     this.rForm= this.formBuilder.group({
@@ -22,8 +23,6 @@ export class LoginComponent implements OnInit {
       password : [null, Validators.compose([Validators.minLength(3),Validators.maxLength(100)])],
     })
   }
-
-
   submit(rForm) {
     this.dialogRef.close(rForm.value);
   }

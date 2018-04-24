@@ -19,7 +19,7 @@ import { LoginComponent } from './shared/modules/popups/login/login.component';
 import { RegisterComponent } from './shared/modules/popups/register/register.component';
 import { ApplyJobComponent } from './shared/modules/popups/apply-job/apply-job.component';
 import { RegisterOrLoginComponent } from './shared/modules/popups/register-or-login/register-or-login.component';
-
+import { PopupsModule } from './shared/modules/popups/popups.module';
 export function  tokenGetter(){
   return localStorage.getItem('access_token');
 }
