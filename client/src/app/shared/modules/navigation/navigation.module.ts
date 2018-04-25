@@ -15,6 +15,8 @@ import { DialogComponent } from './dialog/dialog.component';
 import { PopupsModule } from '../popups/popups.module';
 import { LoginComponent } from '../popups/login/login.component';
 import { RegisterComponent } from '../popups/register/register.component';
+import { LoginService } from '../../../core/login/login.service';
+
 
 
 @NgModule({
@@ -30,7 +32,7 @@ import { RegisterComponent } from '../popups/register/register.component';
   NavigationComponent,
   DialogComponent,
 ],
-  exports:[
+  exports: [
   NavigationComponent,
   // SidebarComponent,
   // ToolbarComponent,
@@ -43,6 +45,9 @@ entryComponents:
   // ApplyJobComponent,
   // RegisterOrLoginComponent,
 
+],
+providers:[
+  LoginService,
 ]
 })
 export class NavigationModule { }

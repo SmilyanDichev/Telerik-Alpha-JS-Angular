@@ -1,26 +1,27 @@
 <div fxFill fxLayout="row" fxLayoutAlign="center">
   <div class="container" fxFlex="100" fxFlex.gt-md="90" fxLayoutAlign="none" fxLayoutGap="20px" fxLayout fxLayout="column">
     <!-- <div fxFlex="20" class="item">item 1</div> -->
-    <div fxFlex="1"></div>
-    <div  fxLayout="column" fxFlex="60" [ngStyle]="{'background-image': 'url(\'' + background + '\')','background-size':'cover'}" class="item picture">
-      <div  fxFlex="40"></div>
-      <div  fxFlex="40" headline fxLayout="row" fxLayoutAlign="center" >
-        <div fxFlex="40" class="home-text" >Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Omnis adipisci deleniti alias, maiores quaerat rem necessitatibus est
-             nulla pariatur corporis! Hic sunt quaerat mollitia fugiat nihil voluptatem 
-             itaque consequuntur praesentium?</div> </div>
-      <div fxFlex="20" fxFill fxLayout="row"  fxLayoutAlign="center">
+    <div fxFlex="6"></div>
+    <div fxLayout="column" fxFlex="64" [ngStyle]="{'background-image': 'url(\'' + background + '\')','background-size':'cover'}"
+      class="item picture">
+      <div fxFlex="40"></div>
+      <div fxFlex="40" headline fxLayout="row" fxLayoutAlign="center">
+        <div fxFlex="60" class="home-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis adipisci deleniti alias, maiores quaerat rem necessitatibus
+          est nulla pariatur corporis! Hic sunt quaerat mollitia fugiat nihil voluptatem itaque consequuntur praesentium?</div>
+      </div>
+      <div fxFlex="10" fxFill fxLayout="row" fxLayoutAlign="center">
         <div fxLayout="column" fxfill>
-          <button  mat-raised-button>JOIN US NOW!</button>
-          <button  mat-raised-button>WIN A HOLLIDAY</button>
+          <button mat-raised-button>JOIN US NOW!</button>
+          <button mat-raised-button>WIN A HOLLIDAY</button>
         </div>
       </div>
-      
+
     </div>
     <div fxFlex="30" class="item" fxLayout="row">
       <div fxFlex="20" class="item">item 1</div>
       <div fxFlex="60" class="item">item 2</div>
       <div fxFlex="20" class="item">item 1</div>
     </div>
+    <div fxFlex="10"></div>
   </div>
 </div>

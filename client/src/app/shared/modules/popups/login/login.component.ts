@@ -13,18 +13,15 @@ export class LoginComponent implements OnInit {
   email: string;
   password: string;
 
-  constructor(private formBuilder:FormBuilder,
-              private dialogRef: MatDialogRef <LoginComponent>
-            ) { }
-   
+  constructor(private formBuilder: FormBuilder,
+              private dialogRef: MatDialogRef <LoginComponent>) { }
   ngOnInit() {
-    this.rForm= this.formBuilder.group({
+    this.rForm = this.formBuilder.group({
       email: [null, Validators.compose([Validators.required, Validators.email])],
       password : [null, Validators.compose([Validators.minLength(3),Validators.maxLength(100)])],
-    })
+    });
   }
   submit(rForm) {
     this.dialogRef.close(rForm.value);
   }
 }
-

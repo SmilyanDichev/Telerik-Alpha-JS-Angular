@@ -20,6 +20,7 @@ import { RegisterComponent } from './shared/modules/popups/register/register.com
 import { ApplyJobComponent } from './shared/modules/popups/apply-job/apply-job.component';
 import { RegisterOrLoginComponent } from './shared/modules/popups/register-or-login/register-or-login.component';
 import { PopupsModule } from './shared/modules/popups/popups.module';
+import { AuthService } from './core/auth/auth.service';
 export function  tokenGetter(){
   return localStorage.getItem('access_token');
 }
@@ -27,10 +28,6 @@ export function  tokenGetter(){
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    RegisterComponent,
-    ApplyJobComponent,
-    RegisterOrLoginComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -48,9 +45,11 @@ export function  tokenGetter(){
         whitelistedDomains: ['localhost:8000'],
         blacklistedRoutes: []
       }
-    })
+    }),
+    PopupsModule,
   ],
-  providers: [AppConfig],
+  providers: [AppConfig,
+  AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

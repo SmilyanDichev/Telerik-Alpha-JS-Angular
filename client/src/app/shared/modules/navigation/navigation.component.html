@@ -2,6 +2,6 @@
   <mat-sidenav #sidenav mode="over" class="app-sidenav">
     <app-sidebar (clickCloseEvent)="sidenav.toggle()" (clickLoginEvent)="loginModal()" (clickRegisterEvent)="registerModal()" (clickLogoutEvent)="logoutModal()"></app-sidebar>
   </mat-sidenav>
-  <app-toolbar (clickMenuEvent)="sidenav.toggle()" (clickLoginEvent)="loginModal()" (clickRegisterEvent)="registerModal()" (clickLogoutEvent)="logoutModal()" ></app-toolbar>
   <router-outlet></router-outlet>
+  <app-toolbar (clickMenuEvent)="sidenav.toggle()" (clickLoginEvent)="loginModal()" (clickRegisterEvent)="registerModal()" (clickLogoutEvent)="logoutModal()" ></app-toolbar>
 </mat-sidenav-container>
