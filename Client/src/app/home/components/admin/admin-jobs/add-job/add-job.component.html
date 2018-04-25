@@ -1,0 +1,28 @@
+<form [formGroup]="rForm" (ngSubmit)="submit(rForm)">
+    <h1 mat-dialog-title> Add Job Ad </h1>
+    <mat-dialog-content>
+      <div>
+      <mat-form-field>
+        <input matInput formControlName="title" placeholder="Job title">
+      </mat-form-field>
+    </div>
+      <div>
+      <mat-form-field>
+        <input matInput formControlName="description" placeholder="About">
+      </mat-form-field>
+    </div>
+      <div>
+      <mat-form-field>
+        <input matInput formControlName="category" placeholder="Category">
+      </mat-form-field>
+    </div>
+      <mat-form-field>
+        <input matInput formControlName="status" placeholder="Status">
+      </mat-form-field>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-button type="submit"> Ad Job</button>
+        <button mat-button type="button" mat-dialog-close >Cancel</button>
+    </mat-dialog-actions>
+  </form>
+  

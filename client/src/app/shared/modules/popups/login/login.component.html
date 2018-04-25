@@ -1,9 +1,11 @@
 <form [formGroup]="rForm" (ngSubmit)="submit(rForm)">
   <h1 mat-dialog-title> Login </h1>
   <mat-dialog-content>
+    <div>
     <mat-form-field>
       <input matInput formControlName="email" placeholder="your email">
     </mat-form-field>
+  </div>
     <mat-form-field>
       <input matInput formControlName="password" placeholder="your password">
     </mat-form-field>
