@@ -1,4 +1,4 @@
-import { HttpOptions } from '../../shared/models/http-options/http-options'
+import { HttpOptions } from '../../shared/models/http-options/http-options';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { AppConfig } from '../../config/app-config';
 import { Observable } from 'rxjs/Observable';
@@ -8,13 +8,13 @@ import 'rxjs/add/operator/map';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable()
-export class AuthService{
-    constructor(private appConfig: AppConfig, private http: HttpClient, private jwtService: JwtHelperService) {}
-    
-    register(user: User, options?: HttpOptions) : Observable<Object>{
-        return this.http.post(`${this.appConfig.apiUrl}/register`,user , options)
-    }  
-    
+export class AuthService {
+    constructor(private appConfig: AppConfig, private http: HttpClient, private jwtService: JwtHelperService) { }
+
+    register(user: User, options?: HttpOptions): Observable<Object> {
+        return this.http.post(`${this.appConfig.apiUrl}/register`, user, options);
+    }
+
     login(user: User, options?: HttpOptions): Observable<Object> {
         return this.http.post(`${this.appConfig.apiUrl}/login`, user, options);
     }

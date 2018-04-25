@@ -8,6 +8,12 @@
     border: rgb(160, 136, 136)
 };
 
+.home-text {
+    color: "red";
+    font-size: 550px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
 .picture{
     background-repeat: no-repeat;
     background-size: cover;
