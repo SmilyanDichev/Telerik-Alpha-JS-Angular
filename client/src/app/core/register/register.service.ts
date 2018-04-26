@@ -7,9 +7,9 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 @Injectable()
 export class RegisterService {
 
-  constructor(private auth: AuthService,  private user: User) {
+  constructor(private auth: AuthService) {
   }
-  register(user): boolean {
+  register( user: User): boolean {
     this.auth.register(user, { observe: 'response', responseType: 'json' })
       .subscribe((res: HttpResponse<{ token: string }>) => {
         localStorage.setItem('access_token', res.body.token);

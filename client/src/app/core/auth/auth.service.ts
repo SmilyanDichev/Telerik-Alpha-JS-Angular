@@ -12,11 +12,11 @@ export class AuthService {
     constructor(private appConfig: AppConfig, private http: HttpClient, private jwtService: JwtHelperService) { }
 
     register(user: User, options?: HttpOptions): Observable<Object> {
-        return this.http.post(`${this.appConfig.apiUrl}/register`, user, options);
+        return this.http.post(`${this.appConfig.apiUrl}users/register`, user, options);
     }
 
     login(user: User, options?: HttpOptions): Observable<Object> {
-        return this.http.post(`${this.appConfig.apiUrl}/login`, user, options);
+        return this.http.post(`${this.appConfig.apiUrl}users/login`, user, options);
     }
 
     isAuthenticated(): boolean {

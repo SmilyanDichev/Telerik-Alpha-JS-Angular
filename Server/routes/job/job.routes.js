@@ -12,7 +12,7 @@ const init = (app, data) => {
         getJobById,
         getAllJobs,
         createNewJob,
-        editJob
+        editJob,
     } = jobController.init(app, data);
     const {
         applyJob,
@@ -41,7 +41,7 @@ const init = (app, data) => {
                 const jobDetails = await getJobById(jobId);
                 res.status(200).json(jobDetails);
             } catch (exception) {
-                console.log('invalid job or request to get job details in job routes rejected!\n'+ exception);
+                console.log('invalid job or request to get job details in job routes rejected!\n' + exception);
                 res.redirect('/activeJobs');
             }
         })
@@ -97,7 +97,7 @@ const init = (app, data) => {
                 })
             }
         });
-    app.use('/job', router);
+    app.use('/jobs', router);
 };
 
 module.exports = {

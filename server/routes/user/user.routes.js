@@ -26,7 +26,7 @@ const init = (app, data) => {
         .post('/login', async (req, res) => {
             await controller.login(req, res);
         });
-        app.use('/user', router);
+        app.use('/users', router);
 };
 
 module.exports = {

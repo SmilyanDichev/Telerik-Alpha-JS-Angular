@@ -5,9 +5,7 @@ import { HttpResponse, HttpErrorResponse} from '@angular/common/http';
 
 @Injectable()
 export class LoginService {
-
   constructor(private auth: AuthService) {
-
    }
   login(user): boolean {
     this.auth.login(user, { observe: 'response', responseType: 'json' })

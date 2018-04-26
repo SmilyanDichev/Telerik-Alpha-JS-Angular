@@ -3,8 +3,6 @@ import { HttpClientModule } from '@angular/common/http'
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'; //TO DO reactive or regular forms
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap/';
-
-
 import { ToastrModule } from 'ngx-toastr';
 import { JwtModule } from '@auth0/angular-jwt';
 import { NavigationModule } from './shared/modules/navigation/navigation.module';
@@ -15,10 +13,10 @@ import { PublicModule } from './home/components/public/public.module';
 import { JobModule } from './home/components/public/job/job.module';
 import { AppConfig } from './config/app-config';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './shared/modules/popups/login/login.component';
-import { RegisterComponent } from './shared/modules/popups/register/register.component';
-import { ApplyJobComponent } from './shared/modules/popups/apply-job/apply-job.component';
-import { RegisterOrLoginComponent } from './shared/modules/popups/register-or-login/register-or-login.component';
+// import { LoginComponent } from './shared/modules/popups/login/login.component';
+// import { RegisterComponent } from './shared/modules/popups/register/register.component';
+// import { ApplyJobComponent } from './shared/modules/popups/apply-job/apply-job.component';
+// import { RegisterOrLoginComponent } from './shared/modules/popups/register-or-login/register-or-login.component';
 import { PopupsModule } from './shared/modules/popups/popups.module';
 import { AuthService } from './core/auth/auth.service';
 export function  tokenGetter(){

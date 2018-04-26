@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatDialogModule, MatIconModule, MatToolbarModule, 
-          MatButtonModule,MatCardModule, MatSelectModule, 
+import { MatDialogModule, MatIconModule, MatToolbarModule,
+          MatButtonModule, MatCardModule, MatSelectModule,
            MatInputModule,  MatSidenavModule, MatListModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -14,10 +14,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatDialogModule,
     MatButtonModule,
     MatListModule,
-    MatCardModule, 
-    MatSelectModule, 
-    MatInputModule, 
-    MatIconModule, 
+    MatCardModule,
+    MatSelectModule,
+    MatInputModule,
+    MatIconModule,
     MatSidenavModule,
     FlexLayoutModule,
     MatToolbarModule,
@@ -27,14 +27,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   declarations: [
   ],
-  exports:[
+  exports: [
     CommonModule,
     MatButtonModule,
-    MatCardModule, 
-    MatSelectModule, 
-    MatInputModule, 
+    MatCardModule,
+    MatSelectModule,
+    MatInputModule,
     MatIconModule,
-    MatListModule, 
+    MatListModule,
     MatSidenavModule,
     FlexLayoutModule,
     MatToolbarModule,
@@ -42,7 +42,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatDialogModule,
     FormsModule,
     ReactiveFormsModule,
-
   ]
 })
 export class SharedModule { }
