@@ -18,12 +18,14 @@ const init = (app, data) => {
             });
         })
         .get('/', (req, res)=>{
-             res.send('user test route!');
+             res.send('NodeJS SERVER');
         })
         .post('/register', async (req, res) => {
+            console.log('! ! ! register ! ! !');
             await controller.register(req.body);
         })
         .post('/login', async (req, res) => {
+            console.log('! ! ! login ! ! !');
             await controller.login(req, res);
         });
         app.use('/users', router);

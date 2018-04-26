@@ -38,9 +38,9 @@ export class NavigationComponent implements OnInit {
         const isSuccess = this.login.login(user);
         console.log(isSuccess);
         if (isSuccess) {
-          // this.toastr.success(`Logging Success!`);
+           this.toastr.success(`Logging Success!`);
         } else {
-          // this.toastr.warning(`Logging Failure!`);
+           this.toastr.warning(`Logging Failure!`);
         }
       });
   }

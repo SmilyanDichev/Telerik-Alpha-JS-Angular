@@ -3,22 +3,28 @@ const init = (app, data) => {
         try {
             return await data.getAllActiveJobs();
         } catch (exception) {
-            throw new Error('Request to get all active jobs rejected in job controller!\n' + exception);
+            throw new Error(
+                'Request to get all active jobs rejected in job controller!\n' +
+                exception);
         }
     };
     const getJobById = async (id) => {
         try {
             return await data.getById(id);
         } catch (exception) {
-            throw new Error('Request to get job by id rejected in job controller!\n' + exception);
+            throw new Error(
+                'Request to get job by id rejected in job controller!\n' +
+                exception);
         }
     };
-    
+
     const getAllJobs = async () => {
         try {
-            return await getAllNotDeletedJobs();
+            return await data.getAllNotDeletedJobs();
         } catch (exception) {
-            throw new Error('Request to get all non-deleted jobs rejected in job controller!\n' +exception);
+            throw new Error(
+                'Request to get all non-deleted jobs rejected in job controller!\n' +
+                exception);
         }
     };
     const createNewJob = async (newJob) => {
@@ -30,7 +36,9 @@ const init = (app, data) => {
                 isDeleted: newJob.isDeleted,
             });
         } catch (exception) {
-            throw new Error('Request to create a new job rejected in job controller!\n' + exception);
+            throw new Error(
+                'Request to create a new job rejected in job controller!\n' +
+                exception);
         }
     };
     const editJob = async (job) => {
@@ -40,9 +48,11 @@ const init = (app, data) => {
                 description: job.description,
                 isActive: job.isActive,
                 isDeleted: job.isDeleted,
-            })
+            });
         } catch (exception) {
-            throw new Error('Request to edit job rejected in job controller!\n' + exception);
+            throw new Error(
+                'Request to edit job rejected in job controller!\n' +
+                exception);
         }
     };
 
