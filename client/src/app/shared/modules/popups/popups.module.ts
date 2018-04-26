@@ -19,7 +19,7 @@ import { SharedModule } from '../shared/shared.module';
     RegisterComponent,
     RegisterOrLoginComponent,
   ],
-  exports:[
+  exports: [
     LoginComponent,
     ApplyJobComponent,
     RegisterComponent,
