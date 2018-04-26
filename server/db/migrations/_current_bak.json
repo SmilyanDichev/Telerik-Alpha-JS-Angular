@@ -89,10 +89,6 @@
                     "allowNull": false,
                     "seqType": "Sequelize.BOOLEAN"
                 },
-                "isDeleted": {
-                    "allowNull": false,
-                    "seqType": "Sequelize.BOOLEAN"
-                },
                 "createdAt": {
                     "allowNull": false,
                     "seqType": "Sequelize.DATE"
@@ -316,5 +312,5 @@
             "indexes": []
         }
     },
-    "revision": 2
+    "revision": 1
 }
