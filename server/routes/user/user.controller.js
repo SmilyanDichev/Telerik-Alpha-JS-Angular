@@ -3,67 +3,80 @@ const init = (app, data) => {
     const jwt = require('jwt-simple');
     const moment = require('moment');
     const config = require('../../config/config');
-    const login = () => {
-        try {
-            return async (req, res) => {
-                const userFound = await data.user.getUserByEmail(req.body.email);
-                let isPassword;
-                let token;
+
+    const login = async  (req, res) => {
+        // console.log('inside routes!');
+        // return async ( req, res) => {
+        // console.log('inside routes!');
+        // console.log(req.body.email);
+            const userFound = await data.user.getByEmail(req.body.email);
+            let isPassword;
+            let token;
+            try {
                 if (userFound) {
-                    isPassword =
-                        bcrypt.compare(req.body.password, userFound.password);
-                    if (isPassword) {
-                        const expire =
-                            moment(new Date())
-                            .add(config.JWT_EXPIRE_TIME, 'seconds')
-                            .unix();
+                    // temporary
+                    isPassword=userFound.password===req.body.password?true:false;
+                    token ='tokenString';
+                    console.log(isPassword);
+                    console.log(userFound);
 
-                        const payload = {
-                            sub: userFound.id,
-                            email: userFound.email,
-                            password: userFound.password,
-                            exp: expire,
-                            iss: config.JWT_ISS,
-                        };
+                    //TO DO
+                    // isPassword =
+                    //     bcrypt.compare(req.body.password, userFound.password);
+                    // // isPassword=userFound.password===req.body.password?true:false;
+                    // if (isPassword) {
+                    //     const expire =
+                    //         moment(new Date())
+                    //         .add(config.JWT_EXPIRE_TIME, 'seconds')
+                    //         .unix();
 
-                        const secret = config.JWT_SECRET;
-                        token = jwt.encode(payload, secret);
-                    }
+                    //     const payload = {
+                    //         sub: userFound.id,
+                    //         email: userFound.email,
+                    //         password: userFound.password,
+                    //         exp: expire,
+                    //         iss: config.JWT_ISS,
+                    //     };
+                    //     const secret = config.JWT_SECRET;
+                    //     token = jwt.encode(payload, secret);
+                    // }
                 }
                 // Response managment
+                console.log('managment !');
                 if (!userFound) {
                     res.send(404).send({
                         msg: 'Email not found',
                     });
                 }
-                if (userFound & !isPassword) {
+                if (userFound && !isPassword) {
                     res.send(404).send({
                         msg: 'Wrong password',
                     });
                 }
-                if (userFound & isPassword) {
+                if (userFound && isPassword) {
+                    console.log('success');
                     res.status(200).send({
                         msg: 'Login Success',
                         token: token,
                     });
                 }
+            } catch (exception) {
+                if (userFound && !isPassword) {
+                    res.send(400).send({
+                        msg: 'Login Failure',
+                    });
+                }
+                throw new Error('Request to create job application rejected!\n' + exception);
             }
-        } catch (exception) {
-            if (userFound & !isPassword) {
-                res.send(400).send({
-                    msg: 'Login Failure',
-                });
-            }
-            throw new Error('Request to create job application rejected!\n' + exception);
-        }
+        // };
     };
     const register = () => {
-        try {
-            return async (req, res) => {
-                const authUserData = (userReq) => {
-                    // TO DO user data aunt
-                    return true;
-                };
+        return async (req, res) => {
+            const authUserData = (userReq) => {
+                // TO DO user data aunt
+                return true;
+            };
+            try {
                 const isValidUserData = authUserData(req);
                 const userFound = await data.user.getUserByEmail(req.body.email);
                 if (!userFound && isValidUserData) {
@@ -82,39 +95,40 @@ const init = (app, data) => {
                         msg: 'Register Success',
                     });
                 }
-            };
+            } catch (exception) {
+                res.status(400).send({
+                    msg: 'Register Failure',
+                });
+                throw new Error('Request to register a user rejected!\n' + exception);
+            }
+        };
+    };
+
+    const applyJob = async (application) => {
+        try {
+            await data.create({
+                comment: application.comment,
+                cvUrl: application.cvUrl,
+                letterUrl: application.letterUrl,
+                JobId: application.jobId,
+                UserId: application.userId,
+            });
+            // res.status(200).send({
+            //     msg: 'Job application Success',
+            // });
         } catch (exception) {
-            res.status(400).send({
-                msg: 'Register Failure'
-            })
-            throw new Error('Request to register a user rejected!\n' + exception);
+            // res.status(400).send({
+            //     msg: 'Job application Failure'
+            // })
+            throw new Error('Request to create job application rejected!\n' + exception);
         }
-    }
-};
-const applyJob = async (application) => {
-    try {
-        await data.create({
-            comment: application.comment,
-            cvUrl: application.cvUrl,
-            letterUrl: application.letterUrl,
-            JobId: application.jobId,
-            UserId: application.userId,
-        });
-        res.status(200).send({
-            msg: 'Job application Success',
-        });
-    } catch (exception) {
-        res.status(400).send({
-            msg: 'Job application Failure'
-        })
-        throw new Error('Request to create job application rejected!\n' + exception);
-    }
-};
-return {
-    login,
-    register,
-    applyJob,
-};
+    };
+
+    return {
+        login,
+        register,
+        applyJob,
+    };
 };
 
 module.exports = {
