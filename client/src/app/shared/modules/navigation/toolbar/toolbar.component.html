@@ -19,9 +19,10 @@
       </button>
     </div>
     <div  fxFlex.gt-md="30" fxLayoutAlign="end center">
-      <a  mat-button (click)="logoutClick()">Log Out</a>
-      <a  mat-button (click)="loginClick()">Log In</a>
-      <a  mat-button (click)="registerClick()">Register</a>
+      <a  *ngIf="isAuth" mat-button (click)="logoutClick()">Log Out</a>
+      <a  *ngIf="isAuth" mat-button>Hello {{currentUserEmail}}</a>
+      <a  *ngIf="!isAuth"  mat-button (click)="loginClick()">Log In</a>
+      <a  *ngIf="!isAuth"  mat-button (click)="registerClick()">Register</a>
     </div>
   </nav>
 </mat-toolbar>

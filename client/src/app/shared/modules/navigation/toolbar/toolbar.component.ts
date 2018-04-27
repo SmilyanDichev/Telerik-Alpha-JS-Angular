@@ -1,4 +1,4 @@
-import { Component, OnInit , Output, EventEmitter } from '@angular/core';
+import { Component, OnInit , Output, EventEmitter, Input } from '@angular/core';
 
 
 @Component({
@@ -9,6 +9,12 @@ import { Component, OnInit , Output, EventEmitter } from '@angular/core';
 
 
 export class ToolbarComponent implements OnInit {
+
+  @Input()
+  isAuth: boolean;
+
+  @Input()
+  currentUserEmail: string;
 
   @Output() clickMenuEvent = new EventEmitter();
   @Output() clickLoginEvent = new EventEmitter();
@@ -31,5 +37,7 @@ export class ToolbarComponent implements OnInit {
     this.clickLogoutEvent.emit(null);
   }
   ngOnInit() {
+
+    console.log(this.isAuth);
   }
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../../shared/models/user/user';
 import { AuthService } from '../../core/auth/auth.service';
 import { HttpResponse, HttpErrorResponse} from '@angular/common/http';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
 
 @Injectable()
 export class LoginService {

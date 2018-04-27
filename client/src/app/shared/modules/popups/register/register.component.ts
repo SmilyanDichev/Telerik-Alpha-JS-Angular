@@ -19,16 +19,17 @@ export class RegisterComponent implements OnInit {
     private dialogRef: MatDialogRef <RegisterComponent>) { }
 
   ngOnInit() {
+    this.dialogRef.disableClose = true;
     this.rForm = this.fomBuilder.group({
       email: [null, Validators.compose(
         [Validators.required, Validators.email, Validators.maxLength(1024)])],
       password: [null, Validators.compose(
         [Validators.minLength(3), Validators.maxLength(256)])],
-      firstName: [],
-      lastName: [],
+      firstName: [null],
+      lastName: [null],
     });
   }
   submit(rForm) {
-    this.dialogRef.close(rForm.values);
+    this.dialogRef.close(rForm.value);
   }
 }
