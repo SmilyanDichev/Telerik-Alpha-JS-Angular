@@ -20,10 +20,12 @@ const init = (app, data) => {
                 // // console.log(isPassword);
                 // // console.log(userFound);
                 // token = jwt.encode(req.email, 'xxx');
+
                 // //TO DO
                 isPassword =
                     await bcrypt.compareSync(req.password, userFound.password);
                 // isPassword=userFound.password===req.body.password?true:false;
+                console.log(isPassword);
                 if (isPassword) {
                     const expire =
                         moment(new Date())
@@ -78,7 +80,6 @@ const init = (app, data) => {
         try {
             const isValidUserData = authUserData(req);
             const userFound = await data.user.getByEmail(req.email);
-
             if (!userFound && isValidUserData) {
                 const passwordHashed = await bcrypt.hashSync(req.password);
                 const user = {
