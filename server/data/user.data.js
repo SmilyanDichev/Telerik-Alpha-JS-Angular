@@ -12,7 +12,6 @@ class UserData extends Data {
     constructor() {
         super(User, [Job]);
     }
-
     getByEmail(email) {
         return this.Model.findOne({
             where: {

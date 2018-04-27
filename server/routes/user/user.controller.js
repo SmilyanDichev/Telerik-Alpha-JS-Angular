@@ -4,104 +4,101 @@ const init = (app, data) => {
     const moment = require('moment');
     const config = require('../../config/config');
 
-    const login = async  (req, res) => {
+    const login = async (req, res) => {
         // console.log('inside routes!');
         // return async ( req, res) => {
         // console.log('inside routes!');
         // console.log(req.body.email);
-            const userFound = await data.user.getByEmail(req.body.email);
-            let isPassword;
-            let token;
-            try {
-                if (userFound) {
-                    // temporary
-                    isPassword=userFound.password===req.body.password?true:false;
-                    token ='tokenString';
-                    console.log(isPassword);
-                    console.log(userFound);
+        const userFound = await data.user.getByEmail(req.email);
+        let isPassword;
+        let token;
+        try {
+            if (userFound) {
+                // temporary
+                // isPassword = userFound.password === req.body.password ? true : false;
+                // // token ='tokenString';
+                // // console.log(isPassword);
+                // // console.log(userFound);
+                // token = jwt.encode(req.email, 'xxx');
+                // //TO DO
+                isPassword =
+                    await bcrypt.compareSync(req.password, userFound.password);
+                // isPassword=userFound.password===req.body.password?true:false;
+                if (isPassword) {
+                    const expire =
+                        moment(new Date())
+                        .add(config.JWT_EXPIRE_TIME, 'seconds')
+                        .unix();
 
-                    //TO DO
-                    // isPassword =
-                    //     bcrypt.compare(req.body.password, userFound.password);
-                    // // isPassword=userFound.password===req.body.password?true:false;
-                    // if (isPassword) {
-                    //     const expire =
-                    //         moment(new Date())
-                    //         .add(config.JWT_EXPIRE_TIME, 'seconds')
-                    //         .unix();
-
-                    //     const payload = {
-                    //         sub: userFound.id,
-                    //         email: userFound.email,
-                    //         password: userFound.password,
-                    //         exp: expire,
-                    //         iss: config.JWT_ISS,
-                    //     };
-                    //     const secret = config.JWT_SECRET;
-                    //     token = jwt.encode(payload, secret);
-                    // }
+                    const payload = {
+                        sub: userFound.id,
+                        email: userFound.email,
+                        password: userFound.password,
+                        exp: expire,
+                        iss: config.JWT_ISS,
+                    };
+                    const secret = config.JWT_SECRET;
+                    token = jwt.encode(payload, secret);
                 }
-                // Response managment
-                console.log('managment !');
-                if (!userFound) {
-                    res.send(404).send({
-                        msg: 'Email not found',
-                    });
-                }
-                if (userFound && !isPassword) {
-                    res.send(404).send({
-                        msg: 'Wrong password',
-                    });
-                }
-                if (userFound && isPassword) {
-                    console.log('success');
-                    res.status(200).send({
-                        msg: 'Login Success',
-                        token: token,
-                    });
-                }
-            } catch (exception) {
-                if (userFound && !isPassword) {
-                    res.send(400).send({
-                        msg: 'Login Failure',
-                    });
-                }
-                throw new Error('Request to create job application rejected!\n' + exception);
             }
+            // Response management
+            console.log('management !');
+            if (!userFound) {
+                res.send(404).send({
+                    msg: 'Email not found',
+                });
+            }
+            if (userFound && !isPassword) {
+                res.send(404).send({
+                    msg: 'Wrong password',
+                });
+            }
+            if (userFound && isPassword) {
+                console.log('success');
+                res.status(200).send({
+                    msg: 'Login Success',
+                    token: token,
+                });
+            }
+        } catch (exception) {
+            if (userFound && !isPassword) {
+                res.send(400).send({
+                    msg: 'Login Failure',
+                });
+            }
+            throw new Error('Request to create job application rejected!\n' + exception);
+        }
         // };
     };
-    const register = () => {
-        return async (req, res) => {
-            const authUserData = (userReq) => {
-                // TO DO user data aunt
-                return true;
-            };
-            try {
-                const isValidUserData = authUserData(req);
-                const userFound = await data.user.getUserByEmail(req.body.email);
-                if (!userFound && isValidUserData) {
-                    const saltRounds = 10;
-                    const passwordHashed =
-                        bcrypt.hash(req.body.password, saltRounds);
-                    const user = {
-                        email: req.body.email,
-                        password: passwordHashed,
-                        firstName: req.body.firstName,
-                        lastName: req.body.lastName,
-                        isAdmin: false,
-                    };
-                    data.user.create(user);
-                    res.status(200).send({
-                        msg: 'Register Success',
-                    });
-                }
-            } catch (exception) {
-                res.status(400).send({
-                    msg: 'Register Failure',
-                });
-                throw new Error('Request to register a user rejected!\n' + exception);
-            }
+    const register = async (req, res) => {
+        const authUserData = (userReq) => {
+            // TO DO user data aunt
+            return true;
         };
+        try {
+            const isValidUserData = authUserData(req);
+            const userFound = await data.user.getByEmail(req.email);
+
+            if (!userFound && isValidUserData) {
+                const passwordHashed = await bcrypt.hashSync(req.password);
+                const user = {
+                    email: req.email,
+                    password: passwordHashed,
+                    firstName: req.firstName,
+                    lastName: req.lastName,
+                    isAdmin: false,
+                };
+                data.user.create(user);
+                res.status(200).send({
+                    msg: 'Register Success',
+                });
+            }
+        } catch (exception) {
+            res.status(400).send({
+                msg: 'Register Failure',
+            });
+            throw new Error('Request to register a user rejected!\n' + exception);
+        }
     };
 
     const applyJob = async (application) => {

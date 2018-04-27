@@ -21,12 +21,13 @@ const init = (app, data) => {
              res.send('NodeJS SERVER');
         })
         .post('/register', async (req, res) => {
-            console.log('! ! ! register ! ! !');
-            await controller.register(req.body);
+            // console.log('! ! ! register ! ! !');
+            // console.log(req.body);
+            await controller.register(req.body, res);
         })
         .post('/login', async (req, res) => {
             console.log('! ! ! login ! ! !');
-            await controller.login(req, res);
+            await controller.login(req.body, res);
         });
         app.use('/users', router);
 };

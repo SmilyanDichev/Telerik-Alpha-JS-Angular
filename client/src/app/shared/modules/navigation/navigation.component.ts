@@ -43,7 +43,6 @@ export class NavigationComponent implements OnInit, DoCheck  {
   }
 
   loginModal() {
-    // let newUser;
     console.log('login modal');
     this.loginComponentRef = this.dialog.open(LoginComponent);
     this.loginComponentRef
@@ -60,7 +59,6 @@ export class NavigationComponent implements OnInit, DoCheck  {
             console.log(err);
           });
       });
-    // .map(console.log('outside subscribe ', newUser));
   }
 
   logoutModal() {
@@ -71,7 +69,6 @@ export class NavigationComponent implements OnInit, DoCheck  {
 
   registerModal() {
     console.log('register modal');
-    console.log(this.registerComponentRef);
     this.registerComponentRef = this.dialog.open(RegisterComponent);
     this.registerComponentRef
       .afterClosed()

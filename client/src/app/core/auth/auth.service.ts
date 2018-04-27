@@ -27,8 +27,7 @@ export class AuthService {
     isAuthenticated(): boolean {
         const token = this.jwtService.tokenGetter();
         const decoded = this.jwtService.decodeToken(token);
-
-        console.log(token);
+        // console.log(token);
         // return !!token && !this.jwtService.isTokenExpired(token) && decoded.iss === this.appConfig.jwt_issuer;
         return !!token;
     }
