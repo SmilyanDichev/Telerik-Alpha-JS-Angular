@@ -15,9 +15,6 @@ import { DialogComponent } from './dialog/dialog.component';
 import { PopupsModule } from '../popups/popups.module';
 import { LoginComponent } from '../popups/login/login.component';
 import { RegisterComponent } from '../popups/register/register.component';
-import { LoginService } from '../../../core/login/login.service';
-import { RegisterService } from '../../../core/register/register.service';
-
 
 
 @NgModule({
@@ -48,8 +45,6 @@ entryComponents:
 
 ],
 providers: [
-  LoginService,
-  RegisterService,
 ]
 })
 export class NavigationModule { }
