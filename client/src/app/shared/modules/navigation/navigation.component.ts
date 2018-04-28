@@ -20,7 +20,6 @@ export class NavigationComponent implements OnInit, DoCheck  {
 
   loginComponentRef: MatDialogRef<LoginComponent>;
   registerComponentRef: MatDialogRef<RegisterComponent>;
-  
   currentUserEmail: string;
 
   constructor(private dialog: MatDialog,
