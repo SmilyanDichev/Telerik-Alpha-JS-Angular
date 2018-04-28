@@ -12,7 +12,7 @@ const init = (app, data) => {
         .get('/links', passport.authenticate('jwt', {
             session: false,
         }), async (req, res) => {
-            const allLinks = await controller.getAllLink(req.body);
+            const allLinks = await controller.getAllLinks(req.body);
             res.status(200).json({
                 msg: 'success',
                 links: allLinks,
@@ -26,7 +26,29 @@ const init = (app, data) => {
                 msg: 'success',
                 contacts: allContacts,
             });
-        });
+        })
+        .post('/contacts/add', passport.authenticate('jwt', {
+            session: false,
+        }, async (req, res) => {
+            await controller.createContact(req.body);
+        }))
+        .post('/contact/edit', passport.authenticate('jwt', {
+            session: false,
+        }, async (req, res) => {
+            await controller.editContact(req.body);
+        }))
+        .post('/links/add', passport.authenticate('jwt', {
+            session: false,
+        }, async (req, res) => {
+            await controller.createLink(req.body);
+        }))
+        .post('/links/edit', passport.authenticate('jwt', {
+            session: false,
+        }, async (req, res) => {
+            await controller.editLink(req.body);
+        }))
+        ;
+    app.use('/', router);
 };
 
 module.exports = {
