@@ -1,8 +1,6 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { LoginComponent } from '../popups/login/login.component';
-import { LoginService } from '../../../core/login/login.service';
-import { RegisterService } from '../../../core/register/register.service';
 import { RegisterComponent } from '../popups/register/register.component';
 
 
@@ -26,7 +24,6 @@ export class NavigationComponent implements OnInit, DoCheck  {
   currentUserEmail: string;
 
   constructor(private dialog: MatDialog,
-    private register: RegisterService,
     private authService: AuthService,
     public toastr: ToastrService) { }
 

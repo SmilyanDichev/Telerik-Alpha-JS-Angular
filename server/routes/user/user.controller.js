@@ -5,27 +5,13 @@ const init = (app, data) => {
     const config = require('../../config/config');
 
     const login = async (req, res) => {
-        // console.log('inside routes!');
-        // return async ( req, res) => {
-        // console.log('inside routes!');
-        // console.log(req.body.email);
         const userFound = await data.user.getByEmail(req.email);
         let isPassword;
         let token;
         try {
             if (userFound) {
-                // temporary
-                // isPassword = userFound.password === req.body.password ? true : false;
-                // // token ='tokenString';
-                // // console.log(isPassword);
-                // // console.log(userFound);
-                // token = jwt.encode(req.email, 'xxx');
-
-                // //TO DO
                 isPassword =
                     await bcrypt.compareSync(req.password, userFound.password);
-                // isPassword=userFound.password===req.body.password?true:false;
-                console.log(isPassword);
                 if (isPassword) {
                     const expire =
                         moment(new Date())
@@ -43,8 +29,6 @@ const init = (app, data) => {
                     token = jwt.encode(payload, secret);
                 }
             }
-            // Response management
-            console.log('management !');
             if (!userFound) {
                 res.send(404).send({
                     msg: 'Email not found',
@@ -56,7 +40,6 @@ const init = (app, data) => {
                 });
             }
             if (userFound && isPassword) {
-                console.log('success');
                 res.status(200).send({
                     msg: 'Login Success',
                     token: token,
@@ -70,8 +53,8 @@ const init = (app, data) => {
             }
             throw new Error('Request to create job application rejected!\n' + exception);
         }
-        // };
     };
+
     const register = async (req, res) => {
         const authUserData = (userReq) => {
             // TO DO user data aunt
@@ -103,6 +86,7 @@ const init = (app, data) => {
     };
 
     const applyJob = async (application) => {
+            // TO DO responses
         try {
             await data.create({
                 comment: application.comment,
