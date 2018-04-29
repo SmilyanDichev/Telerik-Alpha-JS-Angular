@@ -1,3 +1,24 @@
-<p>
-  apply-job works!
-</p>
+<form [formGroup]="rForm" (ngSubmit)="submit(rForm)">
+  <h1 mat-dialog-title> Apply for {{title}} </h1>
+  <mat-dialog-content>
+    <div>
+    <mat-form-field>
+      <input matInput formControlName="comment" placeholder="Comment">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <input type="file" matInput formControlName="cv">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <input type="file" matInput formControlName="letter">
+    </mat-form-field>
+  </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+      <button mat-button type="submit">Apply</button>
+      <button mat-button type="button" mat-dialog-close >Cancel</button>
+  </mat-dialog-actions>
+</form>

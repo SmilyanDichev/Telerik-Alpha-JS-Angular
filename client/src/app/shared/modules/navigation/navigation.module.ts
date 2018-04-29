@@ -35,7 +35,7 @@ import { RegisterComponent } from '../popups/register/register.component';
   // SidebarComponent,
   // ToolbarComponent,
 ],
-entryComponents:
+  entryComponents:
 [
   LoginComponent,
   // DialogComponent,
