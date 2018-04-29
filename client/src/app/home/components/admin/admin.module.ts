@@ -12,7 +12,7 @@ import { AdminContactsComponent } from './admin-contacts/admin-contacts.componen
 import { AdminJobsComponent } from './admin-jobs/admin-jobs.component';
 import { AdminLinksComponent } from './admin-links/admin-links.component';
 import { AdminUsersComponent } from './admin-user/admin-users.component';
-import { AddJobComponent } from '../../../shared/modules/popups/add-job/add-job.component';
+import { AddJobComponent } from './admin-jobs/add-job/add-job.component';
 
 @NgModule({
     declarations: [

@@ -10,22 +10,25 @@ import { AdminUsersComponent } from './components/admin/admin-user/admin-users.c
 import { AdminLinksComponent } from './components/admin/admin-links/admin-links.component';
 import { AdminContactsComponent } from './components/admin/admin-contacts/admin-contacts.component';
 
-//TO DO create components
 export const ROUTES: Routes = [
-    {path:'home', component: HomeComponent },
-    {path:'', redirectTo: 'home', pathMatch: 'full'},
-    {path:'jobs',component: JobListComponent, children: [
-        {path: '', component: JobListComponent },
-        {path: ':id', component: JobDetailsComponent}
-    ]}, // children
-    {path:'contacts' , component: ContactsComponent},
-    {path:'admin',  children: [
-        { path: '', redirectTo: 'home', pathMatch: 'full' },
-        { path:'applications', component: AdminAplicationsComponent },
-        { path:'jobs', component: AdminJobsComponent },
-        { path:'users', component: AdminUsersComponent },
-        { path:'links', component: AdminLinksComponent },
-        { path:'contacts', component: AdminContactsComponent }, 
-    ] },
-    { path:'**', redirectTo:'home'},
+    { path: 'home', component: HomeComponent },
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    {
+        path: 'jobs', component: JobListComponent, children: [
+            { path: '', component: JobListComponent },
+            { path: ':id', component: JobDetailsComponent }
+        ]
+    }, // children
+    { path: 'contacts', component: ContactsComponent },
+    {
+        path: 'admin', children: [
+            { path: '', redirectTo: 'home', pathMatch: 'full' },
+            { path: 'applications', component: AdminAplicationsComponent },
+            { path: 'jobs', component: AdminJobsComponent },
+            { path: 'users', component: AdminUsersComponent },
+            { path: 'links', component: AdminLinksComponent },
+            { path: 'contacts', component: AdminContactsComponent },
+        ]
+    },
+    { path: '**', redirectTo: 'home' },
 ];
