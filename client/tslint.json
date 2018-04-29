@@ -86,12 +86,10 @@
     "no-duplicate-variable": [true, "check-parameters"],
     "no-empty": true,
     "no-eval": true,
-    "no-floating-promises": true,
-    "no-for-in-array": true,
-    "no-implicit-dependencies": [true, "dev", "peer"],
-    "no-inferred-empty-object-type": true,
-    "no-invalid-template-strings": true,
-    "no-invalid-this": true,
+    // "no-inferrable-types": [
+    //   true,
+    //   "ignore-params"
+    // ],
     "no-misused-new": true,
     "no-null-keyword": false,
     "no-object-literal-type-assertion": false,
