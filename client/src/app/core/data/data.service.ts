@@ -33,6 +33,10 @@ export class DataService {
       return this.http.post(`${this.appConfig.apiUrl}/jobs/edit`, job);
     }
 
+    createJob(job) {
+      return this.http.post(`${this.appConfig.apiUrl}/jobs/create`, job);
+    }
+
 
     // contacts
     getContacts() {
