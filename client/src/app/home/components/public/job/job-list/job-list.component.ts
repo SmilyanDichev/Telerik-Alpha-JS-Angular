@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MatFormField, MatTableDataSource} from '@angular/material';
-import { DataService } from '../../../../../core/data/data.service';
-
-
-
-
+import { MatFormField, MatTableDataSource } from '@angular/material';
+import { JobService } from '../../../../../core/job/job.service';
 
 @Component({
   selector: 'app-job-list',
@@ -12,18 +8,18 @@ import { DataService } from '../../../../../core/data/data.service';
   styleUrls: ['./job-list.component.css']
 })
 export class JobListComponent implements OnInit {
-  jobsData: any[];
+  private jobsData: any[];
+  private displayedColumns = ['position', 'name', 'weight', 'symbol'];
+  private dataSource = new MatTableDataSource(ELEMENT_DATA);
 
-  displayedColumns = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
-
-  constructor(dataService: DataService) { }
-
-  ngOnInit() {
+  constructor(jobService: JobService) {
   }
 
-  getJobs() {
-    this.DataService.
+  public ngOnInit() {
+  }
+
+  private getJobs() {
+    this.jobService.getActiveJobs() ;
   }
 
 }

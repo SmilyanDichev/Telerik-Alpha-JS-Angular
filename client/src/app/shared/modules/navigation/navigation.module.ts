@@ -22,20 +22,20 @@ import { RegisterComponent } from '../popups/register/register.component';
     // MatIconModule,
   ],
   declarations: [
-  SidebarComponent,
-  ToolbarComponent,
-  NavigationComponent,
-  DialogComponent,
-],
+    SidebarComponent,
+    ToolbarComponent,
+    NavigationComponent,
+    DialogComponent,
+  ],
   exports: [
-  NavigationComponent,
-],
+    NavigationComponent,
+  ],
   entryComponents:
-[
-  LoginComponent,
-  RegisterComponent,
-],
-providers: [
-]
+    [
+      LoginComponent,
+      RegisterComponent,
+    ],
+  providers: [
+  ]
 })
 export class NavigationModule { }
