@@ -7,60 +7,32 @@ import { Observable } from 'rxjs/Observable';
 export class DataService {
 
   constructor(private appConfig: AppConfig, private http: HttpClient) { }
-    // Jobs
 
-  private getUserJobHistory(): Observable<Object> {
-      // return  this.http
-      // TO DO
-    }
-    applyJob() {
-    // return  this.http
-      // TO DO
-    }
 
-  getActiveJobs() {
-      return  this.http.get(`${this.appConfig.apiUrl}/jobs/activejobs`);
-    }
-
-  getAllJobs() {
-      return  this.http.get(`${this.appConfig.apiUrl}/jobs/alljobs`);
-    }
-
-  getJobDetails(jobID) {
-      return this.http.get(`${this.appConfig.apiUrl}/jobs/:${jobID}`);
-    }
-
-  editJob(job) {
-      return this.http.post(`${this.appConfig.apiUrl}/jobs/edit`, job);
-    }
-  createJob(job) {
-      return this.http.post(`${this.appConfig.apiUrl}/jobs/create`, job);
-    }
     // contacts
-  getContacts() {
-      return  this.http.get(`${this.appConfig.apiUrl}/contacts`);
-    }
-
-  createContact(contact) {
-      return this.http.post(`${this.appConfig.apiUrl}/contacts/add`, contact);
-    }
-
-  editContact(contact) {
-      return this.http.post(`${this.appConfig.apiUrl}/contacts/edit`, contact);
-    }
-
-    // links
-  getLinks() {
-      return  this.http.get(`${this.appConfig.apiUrl}/links`);
-    }
-  createLink(link) {
-      return this.http.post(`${this.appConfig.apiUrl}/links/add`, link);
-    }
-
-  editLink(link) {
-      return this.http.post(`${this.appConfig.apiUrl}/links/edit`, link);
-    }
-
+  public getContacts(): Observable<object> {
+    return this.http.get(`${this.appConfig.apiUrl}/contacts`);
   }
 
+  public createContact(contact): Observable<object> {
+    return this.http.post(`${this.appConfig.apiUrl}/contacts/add`, contact);
+  }
+
+  public editContact(contact): Observable<object> {
+    return this.http.post(`${this.appConfig.apiUrl}/contacts/edit`, contact);
+  }
+
+  // links
+  public getLinks(): Observable<object> {
+    return this.http.get(`${this.appConfig.apiUrl}/links`);
+  }
+  public createLink(link): Observable<object> {
+    return this.http.post(`${this.appConfig.apiUrl}/links/add`, link);
+  }
+
+  public editLink(link) Observable<object> {
+    return this.http.post(`${this.appConfig.apiUrl}/links/edit`, link);
+  }
+
+}
 

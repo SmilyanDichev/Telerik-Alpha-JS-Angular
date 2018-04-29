@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AppConfig } from '../../config/app-config';
+import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
+
 
 @Injectable()
 export class JobService {
@@ -9,32 +11,32 @@ export class JobService {
 
   }
 
-  getUserJobHistory() {
+  public getUserJobHistory(): Observable<object> {
     // return  this.http
     // TO DO
   }
-  applyJob() {
+  public applyJob(): Observable<object> {
     // return  this.http
     // TO DO
   }
 
-  getActiveJobs() {
+  public getActiveJobs(): Observable<object> {
     return this.http.get(`${this.appConfig.apiUrl}/jobs/activejobs`);
   }
 
-  getAllJobs() {
+  public getAllJobs(): Observable<object> {
     return this.http.get(`${this.appConfig.apiUrl}/jobs/alljobs`);
   }
 
-  getJobDetails(jobID) {
+  public getJobDetails(jobID): Observable<object> {
     return this.http.get(`${this.appConfig.apiUrl}/jobs/:${jobID}`);
   }
 
-  editJob(job) {
+  public editJob(job): Observable<object> {
     return this.http.post(`${this.appConfig.apiUrl}/jobs/edit`, job);
   }
 
-  createJob(job) {
+  public createJob(job): Observable<object> {
     return this.http.post(`${this.appConfig.apiUrl}/jobs/create`, job);
   }
 
