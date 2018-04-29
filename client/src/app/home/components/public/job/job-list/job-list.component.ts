@@ -22,18 +22,11 @@ export class JobListComponent implements OnInit {
   ngOnInit() {
   }
 
-
-
   getJobs() {
     this.DataService.
-
   }
 
-
-
-
 }
-
 
 export interface Element {
   name: string;
@@ -41,7 +34,6 @@ export interface Element {
   weight: number;
   symbol: string;
 }
-
 
 const ELEMENT_DATA: Element[] = [
   {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
