@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as config from '../../../../config/config.json';
-declare function require(url: string)
+declare function require(url: string);
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -8,6 +8,7 @@ declare function require(url: string)
 })
 export class HomeComponent implements OnInit {
   background = (<any>config).background;
+  
   constructor() { }
 
   ngOnInit() {

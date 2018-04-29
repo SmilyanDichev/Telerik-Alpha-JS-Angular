@@ -19,7 +19,9 @@ import { AppComponent } from './app.component';
 // import { RegisterOrLoginComponent } from './shared/modules/popups/register-or-login/register-or-login.component';
 import { PopupsModule } from './shared/modules/popups/popups.module';
 import { AuthService } from './core/auth/auth.service';
-export function  tokenGetter(){
+import { AgmCoreModule } from '@agm/core';
+
+export function  tokenGetter() {
   return localStorage.getItem('access_token');
 }
 
@@ -36,6 +38,10 @@ export function  tokenGetter(){
     HttpClientModule,
     NavigationModule,
     SharedModule,
+    AgmCoreModule.forRoot({
+      // apiKey: AppConfig.googleMapsKey
+      apiKey: 'AIzaSyCGJqupv-L7oKpsfN5pNmH6cWernso96vI',
+    }),
     NgbModule.forRoot(),
     JwtModule.forRoot({
       config: {

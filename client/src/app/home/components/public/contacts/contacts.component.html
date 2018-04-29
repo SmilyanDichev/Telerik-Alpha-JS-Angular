@@ -1,3 +1,21 @@
-<p>
-  contacts works!
-</p>
+<div fxFill fxLayout="row" fxLayoutAlign="center">
+  <div fxFlex="10"> </div>
+  <div fxFlex="20" fxLayout="column" fxLayoutAlign="center">
+    <div fxFlex="20" class="item">item 1</div>
+    <div fxFlex="60" class="item">item 2</div>
+    <div fxFlex="20" class="item">item 1</div>
+    <div fxFlex="20" class="item">item 1</div>
+  </div>
+  <div fxFlex="10"> </div>
+  <div fxFill fxFlex="50" fxLayout="column" fxLayoutAlign="center">
+    <div fxFill fxFlex="80" class="item">
+   
+        <!-- this creates a google map on the page with the given lat/lng from -->
+        <!-- the component as the initial center of the map: -->
+        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+          <agm-marker [latitude]="lat" [longitude]="lng" ></agm-marker>
+        </agm-map>
+    </div>
+  </div>
+  <div fxFlex="10"> </div>
+</div>

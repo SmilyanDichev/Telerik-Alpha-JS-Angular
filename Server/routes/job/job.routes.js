@@ -35,6 +35,19 @@ const init = (app, data) => {
                 });
             }
         })
+        .get('/allJobs', passport.authenticate('jwt', {
+            session: true,
+        }), async (req, res) => {
+            try {
+                const allJobs = await getAllJobs();
+                res.status(200).json(allJobs);
+            } catch (exception) {
+                res.status(502).json({
+                    msg: 'Request to get all jobs in job routes rejected!',
+                    err: exception,
+                });
+            }
+        })
         .get('/:id', async (req, res) => {
             const jobId = req.body.id;
             try {
@@ -55,19 +68,6 @@ const init = (app, data) => {
                 res.status(502).json({
                     msg: 'Job application in job routes rejected!',
                     err: exception,
-                })
-            }
-        })
-        .get('/allJobs', passport.authenticate('jwt', {
-            session: true,
-        }), async (req, res) => {
-            try {
-                const allJobs = await getAllJobs();
-                res.status(200).json(allJobs);
-            } catch (exception) {
-                res.status(502).json({
-                    msg: 'Request to get all jobs in job routes rejected!',
-                    err: exception,
                 });
             }
         })
@@ -76,7 +76,7 @@ const init = (app, data) => {
         }), async (req, res) => {
             try {
                 await createNewJob(res.body);
-                res.redirect('/job')
+                res.redirect('/job');
             } catch (exception) {
                 res.status(502).json({
                     msg: 'Request to create job rejected in job routes!',
@@ -94,7 +94,7 @@ const init = (app, data) => {
                 res.status(502).json({
                     msg: 'Request to edit job in job routes rejected!',
                     err: exception,
-                })
+                });
             }
         });
     app.use('/jobs', router);
