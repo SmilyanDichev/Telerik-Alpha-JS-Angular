@@ -1,10 +1,10 @@
-import { Component, DoCheck, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material';
-import { LoginComponent } from '../popups/login/login.component';
-import { RegisterComponent } from '../popups/register/register.component';
-import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../../core/auth/auth.service';
+import { Component, DoCheck, OnInit } from '@angular/core';
+import { LoginComponent } from '../popups/login/login.component';
+import { MatDialog, MatDialogRef } from '@angular/material';
+import { RegisterComponent } from '../popups/register/register.component';
 import { resolveDefinition } from '@angular/core/src/view/util';
+import { ToastrService } from 'ngx-toastr';
 import { User } from '../../models/user/user';
 
 
@@ -36,7 +36,11 @@ export class NavigationComponent implements OnInit, DoCheck {
   private sidebarToggle(sidebar): void {
     sidebar.toggle();
   }
-
+  private logoutModal(): void {
+    this.toastr.success('logout navigation');
+    localStorage.removeItem('access_token');
+    console.log('logout navigation');
+  }
   private loginModal(): void {
     console.log('login modal');
     this.loginComponentRef = this.dialog.open(LoginComponent);
@@ -51,16 +55,9 @@ export class NavigationComponent implements OnInit, DoCheck {
           },(err => {
             this.toastr.error(`Wrong username or password`, 'Error');
             console.log(err);
-          });
+          }));
       });
   }
-
-  private logoutModal(): void {
-    this.toastr.success('logout navigation');
-    localStorage.removeItem('access_token');
-    console.log('logout navigation');
-  }
-
   private registerModal(): void {
     console.log('register modal');
     this.registerComponentRef = this.dialog.open(RegisterComponent);
@@ -73,7 +70,7 @@ export class NavigationComponent implements OnInit, DoCheck {
             console.log(res);
           }, (err) => {
             console.log(err);
-          }
+          },
         );
       });
   }

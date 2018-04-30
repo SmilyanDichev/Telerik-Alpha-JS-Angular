@@ -14,8 +14,6 @@ import { JobModule } from './home/components/public/job/job.module';
 import { AppConfig } from './config/app-config';
 import { AppComponent } from './app.component';
 import { PopupsModule } from './shared/modules/popups/popups.module';
-import { AuthService } from './core/auth/auth.service';
-import { DataService } from './core/data/data.service';
 import { MapService } from './shared/services/map/map.service';
 import { AgmCoreModule } from '@agm/core';
 
@@ -51,8 +49,8 @@ export function  tokenGetter() {
     PopupsModule,
   ],
   providers: [AppConfig,
-              AuthService,
-              DataService,
+              // AuthService,
+              // DataService,
               MapService],
   bootstrap: [AppComponent]
 })

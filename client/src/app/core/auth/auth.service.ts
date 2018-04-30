@@ -3,7 +3,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { HttpOptions } from '../../shared/models/http-options/http-options';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { LoginResponse } from '../../shared/models/login-response/login-response';
+import { LoginResponse } from '../../shared/models/login-response/login-reponse';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../../shared/models/user/user';
 // import 'rxjs/add/operator/map';

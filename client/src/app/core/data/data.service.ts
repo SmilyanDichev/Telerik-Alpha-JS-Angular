@@ -30,7 +30,7 @@ export class DataService {
     return this.http.post(`${this.appConfig.apiUrl}/links/add`, link);
   }
 
-  public editLink(link) Observable<object> {
+  public editLink(link): Observable<object> {
     return this.http.post(`${this.appConfig.apiUrl}/links/edit`, link);
   }
 

@@ -12,14 +12,17 @@ export class JobListComponent implements OnInit {
   private displayedColumns = ['position', 'name', 'weight', 'symbol'];
   private dataSource = new MatTableDataSource(ELEMENT_DATA);
 
-  constructor(jobService: JobService) {
+  constructor(private jobService: JobService) {
   }
 
   public ngOnInit() {
+    this.getJobs()
   }
 
-  private getJobs() {
-    this.jobService.getActiveJobs() ;
+  private getJobs(): void {
+   this.jobService.getActiveJobs().subscribe((res:any[]) => {
+        this.jobsData=res;
+    })
   }
 
 }
