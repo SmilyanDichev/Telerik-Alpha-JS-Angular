@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AppConfig } from '../../config/app-config';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class DataService {
@@ -9,11 +8,11 @@ export class DataService {
   constructor(private appConfig: AppConfig, private http: HttpClient) { }
     // Jobs
 
-  private getUserJobHistory(): Observable<Object> {
+    private getUserJobHistory() {
       // return  this.http
       // TO DO
     }
-    applyJob() {
+    public applyJob() {
     // return  this.http
       // TO DO
     }
@@ -34,7 +33,7 @@ export class DataService {
       return this.http.post(`${this.appConfig.apiUrl}/jobs/edit`, job);
     }
   createJob(job) {
-      return this.http.post(`${this.appConfig.apiUrl}/jobs/create`, job);
+      return this.http.post(`${this.appConfig.apiUrl}jobs/create`, job);
     }
     // contacts
   getContacts() {
@@ -62,5 +61,3 @@ export class DataService {
     }
 
   }
-
-

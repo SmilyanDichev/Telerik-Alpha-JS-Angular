@@ -7,7 +7,8 @@
     "add-migration": "node ./node_modules/sequelize-auto-migrations/bin/makemigration.js",
     "migrate": "cd db && sequelize db:migrate",
     "start": "node ./server.js",
-    "test": "./node_modules/.bin/nyc --all ./node_modules/.bin/mocha ./tests/**/*.js"
+    "test": "./node_modules/.bin/nyc --all ./node_modules/.bin/mocha ./tests/**/*.js",
+    "seed": "node_modules/.bin/sequelize db:seed:all"
   },
   "keywords": [],
   "author": "",

@@ -75,9 +75,13 @@ const init = (app, data) => {
             session: true,
         }), async (req, res) => {
             try {
-                await createNewJob(res.body);
-                res.redirect('/job');
+                console.log('-------------> CREATING NEW JOB BEEP BOOP', req.body);
+                await createNewJob(req.body);
+                console.log('-------------> JOB IS DONE!');
+                res.redirect('/jobs');
             } catch (exception) {
+                console.log('-------------> JOB FAILED!', exception);
+
                 res.status(502).json({
                     msg: 'Request to create job rejected in job routes!',
                     err: exception,

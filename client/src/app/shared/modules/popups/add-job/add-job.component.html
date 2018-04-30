@@ -1,27 +1,34 @@
+<form [formGroup]="rForm" (ngSubmit)="submit(rForm)">
 <h1 mat-dialog-title> Add Job Ad</h1>
 <mat-dialog-content>
   <div>
     <mat-form-field>
-      <input matInput [(ngModel)]="data.title" placeholder="Job title">
+      <input matInput formControlName="title" placeholder="Job title">
     </mat-form-field>
   </div>
   <div>
     <mat-form-field>
-      <input matInput [(ngModel)]="data.description" placeholder="description">
+      <input matInput formControlName="description" placeholder="description">
     </mat-form-field>
   </div>
   <div>
     <mat-form-field>
-      <input matInput [(ngModel)]="data.category" placeholder="category">
+      <!-- <input matInput formControlName="category" placeholder="category"> -->
+      <mat-select formControlName="category" placeholder="cetegory">
+        <mat-option *ngFor="let catOption of catOptions" [value]="catOption">
+          {{ catOption }}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
   </div>
   <div>
     <mat-form-field>
-      <input matInput [(ngModel)]="data.status" placeholder="status">
+      <input matInput formControlName="status" placeholder="status">
     </mat-form-field>
   </div>
 </mat-dialog-content>
 <mat-dialog-content>
-  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
-  <button mat-button (click)="noClick()">Cancel</button>
+  <button mat-button  type="submit" cdkFocusInitial>Ok</button>
+  <button mat-button mat-dialog-close >Cancel</button>
 </mat-dialog-content>
+</form>

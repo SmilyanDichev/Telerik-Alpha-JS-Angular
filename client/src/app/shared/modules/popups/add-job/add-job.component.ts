@@ -9,6 +9,10 @@ import { MatDialogRef } from '@angular/material';
 })
 export class AddJobComponent implements OnInit {
 
+  private catOptions: string[] = [
+    'IT', 'HR', 'Accounting',
+  ];
+
   private rForm: FormGroup;
   private title: string;
   private description: string;
@@ -33,7 +37,7 @@ export class AddJobComponent implements OnInit {
         Validators.minLength(minLenTitle),
         Validators.maxLength(maxLenTitle),
       ])],
-      descriptions: [null, Validators.compose([
+      description: [null, Validators.compose([
         Validators.required,
         Validators.minLength(minLenDescription),
         Validators.maxLength(maxLenDescription),

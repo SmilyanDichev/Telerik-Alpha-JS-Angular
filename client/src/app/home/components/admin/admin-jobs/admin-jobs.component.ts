@@ -3,6 +3,7 @@ import { MatDialog, MatDialogRef } from '@angular/material';
 import { EventEmitter } from 'events';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../../../core/auth/auth.service';
+import { JobService } from './../../../../core/data';
 import { AddJobComponent } from './../../../../shared/modules/popups/add-job/add-job.component';
 
 @Component({
@@ -18,7 +19,8 @@ export class AdminJobsComponent implements OnInit {
 
   constructor(private dialog: MatDialog,
               private authService: AuthService,
-              public toastr: ToastrService) {}
+              public toastr: ToastrService,
+              private jobService: JobService) {}
 
   public ngOnInit(): void {
                 console.log('Admin Jobs Page Opened!');
@@ -35,9 +37,21 @@ export class AdminJobsComponent implements OnInit {
     this.addJobComponentRef
       .afterClosed()
       .subscribe((job) => {
-        console.log('New Job Details: ', job);
-        // this.toastr.success(`${job.title} added!`, 'Success');
-        // this.toastr.error('New Job Failed!', 'Error');
+        console.log('Sending data to dataServer! ', job);
+        this.jobService.createJob(job)
+          .subscribe(
+           () => {
+          console.log('Client post succesful => Job Details: ', job);
+          this.toastr.success(`${job.title} added!`, 'Success');
+        }, (error) => {
+          console.log('Sending data to dataServer failed! ', error, job);
+
+          this.toastr.error('New Job Failed!', 'Error');
+      });
+      },
+
+                 (error) => {
+        this.toastr.error('New Job Failed!', 'Error');
       });
   }
 }
