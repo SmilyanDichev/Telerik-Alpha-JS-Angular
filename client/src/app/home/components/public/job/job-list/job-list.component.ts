@@ -21,7 +21,8 @@ export class JobListComponent implements OnInit {
 
   private getJobs(): void {
    this.jobService.getActiveJobs().subscribe((res:any[]) => {
-        this.jobsData=res;
+        // this.jobsData=res;
+        console.log(res);
     })
   }
 

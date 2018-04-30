@@ -20,23 +20,23 @@ export class JobService {
   // }
 
   public getActiveJobs(): Observable<object> {
-    return this.http.get(`${this.appConfig.apiUrl}/jobs/activejobs`);
+    return this.http.get(`${this.appConfig.apiUrl}jobs/active`);
   }
 
   public getAllJobs(): Observable<object> {
-    return this.http.get(`${this.appConfig.apiUrl}/jobs/alljobs`);
+    return this.http.get(`${this.appConfig.apiUrl}jobs/all`);
   }
 
   public getJobDetails(jobID: number): Observable<object> {
-    return this.http.get(`${this.appConfig.apiUrl}/jobs/:${jobID}`);
+    return this.http.get(`${this.appConfig.apiUrl}jobs/:${jobID}`);
   }
 
   public editJob(job: Job): Observable<object> {
-    return this.http.post(`${this.appConfig.apiUrl}/jobs/edit`, job);
+    return this.http.post(`${this.appConfig.apiUrl}jobs/edit`, job);
   }
 
   public createJob(job: Job): Observable<object> {
-    return this.http.post(`${this.appConfig.apiUrl}/jobs/create`, job);
+    return this.http.post(`${this.appConfig.apiUrl}jobs/create`, job);
   }
 
 }
