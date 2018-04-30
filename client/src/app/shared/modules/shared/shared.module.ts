@@ -2,12 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatDialogModule, MatIconModule, MatToolbarModule,
           MatButtonModule, MatCardModule, MatSelectModule,
-           MatInputModule,  MatSidenavModule, MatListModule } from '@angular/material';
+          MatInputModule,  MatSidenavModule, MatListModule} from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import {MatTableModule} from '@angular/material/table';
+import { AuthService } from '../../../core/auth/auth.service';
+import { DataService } from '../../../core/data/data.service';
+import { JobService } from '../../../core/job/job.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -24,6 +27,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    MatTableModule,
   ],
   declarations: [
   ],
@@ -37,11 +41,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatListModule,
     MatSidenavModule,
     FlexLayoutModule,
+    MatTableModule,
     MatToolbarModule,
     BrowserAnimationsModule,
     MatDialogModule,
     FormsModule,
     ReactiveFormsModule,
+  ],
+  providers: [
+    AuthService,
+    DataService,
+    JobService,
   ]
 })
 export class SharedModule { }

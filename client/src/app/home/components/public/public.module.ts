@@ -24,8 +24,11 @@ import { JobModule } from './job/job.module';
     exports: [
         JobModule,
         ContactsComponent,
-        AgmCoreModule,
+        // AgmCoreModule,
         HomeComponent,
+    ],
+    providers: [
+        GoogleMapsAPIWrapper,
     ]
 })
 

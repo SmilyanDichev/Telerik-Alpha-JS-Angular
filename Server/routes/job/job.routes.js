@@ -24,9 +24,12 @@ const init = (app, data) => {
     // TO DO user history JWT  strategy and check only admin
 
     router
-        .get('/activeJobs', async (req, res) => {
+        .get('/active', async (req, res) => {
+            console.log('! ! ! active ! ! !');
+            console.log(req.body);
             try {
                 const publicJobs = await getPublicJobs();
+                console.log(res);
                 res.status(200).json(publicJobs);
             } catch (exception) {
                 res.status(502).json({
@@ -35,7 +38,7 @@ const init = (app, data) => {
                 });
             }
         })
-        .get('/allJobs', passport.authenticate('jwt', {
+        .get('/all', passport.authenticate('jwt', {
             session: true,
         }), async (req, res) => {
             try {

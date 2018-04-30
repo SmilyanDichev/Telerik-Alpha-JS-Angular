@@ -6,9 +6,6 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MatIconModule } from '@angular/material/icon';
 
-// import { MaterialModule } from '../material/material.module';
-// import { an        } from '@angular/animations';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { RouterModule } from '@angular/router';
 import { NavigationComponent } from './navigation.component';
 import { DialogComponent } from './dialog/dialog.component';
@@ -25,26 +22,20 @@ import { RegisterComponent } from '../popups/register/register.component';
     // MatIconModule,
   ],
   declarations: [
-  SidebarComponent,
-  ToolbarComponent,
-  NavigationComponent,
-  DialogComponent,
-],
+    SidebarComponent,
+    ToolbarComponent,
+    NavigationComponent,
+    DialogComponent,
+  ],
   exports: [
-  NavigationComponent,
-  // SidebarComponent,
-  // ToolbarComponent,
-],
+    NavigationComponent,
+  ],
   entryComponents:
-[
-  LoginComponent,
-  // DialogComponent,
-  RegisterComponent,
-  // ApplyJobComponent,
-  // RegisterOrLoginComponent,
-
-],
-providers: [
-]
+    [
+      LoginComponent,
+      RegisterComponent,
+    ],
+  providers: [
+  ]
 })
 export class NavigationModule { }

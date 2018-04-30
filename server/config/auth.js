@@ -19,7 +19,7 @@ const init = (app, data) => {
 
     passport.use(new LocalStrategy(localOpts,
         async (email, password, done) => {
-            const userFound = await data.use.getByEmail(email);
+            const userFound = await data.user.getByEmail(email);
             try {
                 if (userFound) {
                     return done(null, userFound);

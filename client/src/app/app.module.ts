@@ -1,14 +1,12 @@
 
 import { AgmCoreModule } from '@agm/core';
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // TO DO reactive or regular forms
 import { BrowserModule } from '@angular/platform-browser';
 import { JwtModule } from '@auth0/angular-jwt';
+import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap/';
 import { ToastrModule } from 'ngx-toastr';
-import { AppComponent } from './app.component';
-import { AppConfig } from './config/app-config';
 import { AuthService } from './core/auth/auth.service';
 import { ContactService, JobService, LinkService } from './core/data';
 import { AppRoutingModule } from './home/app-routes.module';
@@ -18,6 +16,9 @@ import { PublicModule } from './home/components/public/public.module';
 import { NavigationModule } from './shared/modules/navigation/navigation.module';
 import { PopupsModule } from './shared/modules/popups/popups.module';
 import { SharedModule } from './shared/modules/shared/shared.module';
+import { AppConfig } from './config/app-config';
+import { AppComponent } from './app.component';
+import { MapService } from './shared/services/map/map.service';
 // import { LoginComponent } from './shared/modules/popups/login/login.component';
 // import { RegisterComponent } from './shared/modules/popups/register/register.component';
 // import { ApplyJobComponent } from './shared/modules/popups/apply-job/apply-job.component';
@@ -61,6 +62,7 @@ export function  tokenGetter() {
   JobService,
   ContactService,
   LinkService,
+  MapService
 ],
   bootstrap: [AppComponent]
 })
