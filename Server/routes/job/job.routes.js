@@ -26,9 +26,10 @@ const init = (app, data) => {
     router
         .get('/active', async (req, res) => {
             console.log('! ! ! active ! ! !');
-            console.log('! ! ! active ! ! !');
+            console.log(req.body);
             try {
                 const publicJobs = await getPublicJobs();
+                console.log(res);
                 res.status(200).json(publicJobs);
             } catch (exception) {
                 res.status(502).json({

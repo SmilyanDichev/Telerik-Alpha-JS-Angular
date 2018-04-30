@@ -1,7 +1,12 @@
 const init = (app, data) => {
+    // const bcrypt = require('bcrypt-nodejs');
+    // const jwt = require('jwt-simple');
+    // const moment = require('moment');
+    // const config = require('../../config/config');
+
     const getPublicJobs = async () => {
         try {
-            return await data.getAllActiveJobs();
+            return await data.job.getAllActiveJobs();
         } catch (exception) {
             throw new Error(
                 'Request to get all active jobs rejected in job controller!\n' +
@@ -10,7 +15,7 @@ const init = (app, data) => {
     };
     const getJobById = async (id) => {
         try {
-            return await data.getById(id);
+            return await data.job.getById(id);
         } catch (exception) {
             throw new Error(
                 'Request to get job by id rejected in job controller!\n' +
@@ -20,7 +25,7 @@ const init = (app, data) => {
 
     const getAllJobs = async () => {
         try {
-            return await data.getAllNotDeletedJobs();
+            return await data.job.getAllNotDeletedJobs();
         } catch (exception) {
             throw new Error(
                 'Request to get all non-deleted jobs rejected in job controller!\n' +
@@ -29,7 +34,7 @@ const init = (app, data) => {
     };
     const createNewJob = async (newJob) => {
         try {
-            return await data.create({
+            return await data.job.create({
                 title: newJob.title,
                 description: newJob.description,
                 isActive: newJob.isActive,
@@ -43,7 +48,7 @@ const init = (app, data) => {
     };
     const editJob = async (job) => {
         try {
-            return await data.editJobData(job.id, {
+            return await data.job.editJobData(job.id, {
                 title: job.title,
                 description: job.description,
                 isActive: job.isActive,
