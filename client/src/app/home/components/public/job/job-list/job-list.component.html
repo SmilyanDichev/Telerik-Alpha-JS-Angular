@@ -1,43 +1,33 @@
 <div fxFill fxFlex="100" fxLayout="column">
-  <div fxFlex="25"></div>
-  <div fxFlex="70" fxFill fxLayout="row" fxLayoutAlign="center">
-    <div fxFlex="10"> </div>
-    <div fxFlex="80" fxLayout="column" fxLayoutAlign="center">
-      <div class="example-container mat-elevation-z8">
+  <div fxFlex="10"></div>
+  <div fxFlex="70" fxFill fxLayout="row" fxLayoutAlign="start start">
+    <div fxFlex="5"> </div>
+    <div fxFlex="65" fxLayout="column" fxLayoutAlign="center space-around">
+      <div fxFill >
         <mat-table #table [dataSource]="dataSource">
-
-          <!--- Note that these columns can be defined in any order.
-                    The actual rendered columns are set as a property on the row definition" -->
-
-          <!-- Position Column -->
-          <ng-container matColumnDef="id">
-            <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+          <ng-container   matColumnDef="title">
+            <mat-header-cell  fxFlex="70" *matHeaderCellDef> JobPosition </mat-header-cell>
+            <mat-cell fxFlex="85" *matCellDef="let element"> {{element.title}} </mat-cell>
+          </ng-container>
+          <ng-container  matColumnDef="actions"> 
+            <mat-header-cell  fxFlex="30" *matHeaderCellDef></mat-header-cell>>
+            <mat-cell fxFill fxFlex="15" *matCellDef="let element"><button color="primary" mat-raised-button>More</button></mat-cell>
           </ng-container>
 
-          <!-- Name Column -->
-          <ng-container matColumnDef="title">
-            <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
-          </ng-container>
-
-          <!-- Weight Column -->
-          <ng-container matColumnDef="description">
-            <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
-          </ng-container>
-
-          <!-- Symbol Column -->
-          <!-- <ng-container matColumnDef="symbol">
-            <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
-          </ng-container> -->
-
-          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-header-row  *matHeaderRowDef="displayedColumns"></mat-header-row>
           <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
         </mat-table>
       </div>
+    
+    
     </div>
-    <div fxFlex="10"> </div>
+    <div fxFlex="5"> </div>
+    <div fxFill fxFlex="15" color="primary" fxLayout="row" fxLayoutAlign="center space-around">
+      <div >BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA</div>
+      <div >BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA</div>
+      <div >BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA</div>
+      <div >BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA</div>
+    </div>
+    <div fxFlex="5"> </div>
   </div>
 </div>
