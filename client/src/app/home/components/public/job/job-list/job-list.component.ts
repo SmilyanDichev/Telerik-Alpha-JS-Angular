@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit,} from '@angular/core';
 import { MatFormField, MatTableDataSource } from '@angular/material';
 import { JobService } from '../../../../../core/job/job.service';
 
@@ -7,22 +7,27 @@ import { JobService } from '../../../../../core/job/job.service';
   templateUrl: './job-list.component.html',
   styleUrls: ['./job-list.component.css']
 })
-export class JobListComponent implements OnInit {
+export class JobListComponent implements OnInit, DoCheck  {
   private jobsData: any[];
-  private displayedColumns = ['position', 'name', 'weight', 'symbol'];
-  private dataSource = new MatTableDataSource(ELEMENT_DATA);
+  private displayedColumns = ['id', 'title', 'description'];
+   private dataSource = new MatTableDataSource(this.jobsData);
 
   constructor(private jobService: JobService) {
   }
 
   public ngOnInit() {
-    this.getJobs()
+    this.getJobs();
+  }
+
+  public ngDoCheck(){
+   this.dataSource = new MatTableDataSource(this.jobsData);
   }
 
   private getJobs(): void {
    this.jobService.getActiveJobs().subscribe((res:any[]) => {
-        // this.jobsData=res;
+        this.jobsData=res;
         console.log(res);
+        // this.dataSource = new MatTableDataSource(this.jobsData);
     })
   }
 
