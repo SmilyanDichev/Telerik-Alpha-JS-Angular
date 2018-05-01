@@ -26,7 +26,7 @@ export class JobListComponent implements OnInit, DoCheck  {
   private getJobs(): void {
    this.jobService.getActiveJobs().subscribe((res:any[]) => {
         this.jobsData=res;
-        console.log(res);
+        // console.log(res);
         // this.dataSource = new MatTableDataSource(this.jobsData);
     })
   }
