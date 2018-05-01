@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
 
@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
   lastName: string;
 
   constructor( private fomBuilder: FormBuilder,
-    private dialogRef: MatDialogRef <RegisterComponent>) { }
+               private dialogRef: MatDialogRef <RegisterComponent>) { }
 
   ngOnInit() {
     this.dialogRef.disableClose = true;

@@ -31,8 +31,8 @@ export class JobService {
     return this.http.get(`${this.appConfig.apiUrl}jobs/:${jobID}`);
   }
 
-  public editJob(job: Job): Observable<object> {
-    return this.http.post(`${this.appConfig.apiUrl}jobs/edit`, job);
+  public editJob(jobId: number, jobObj: Job): Observable<object> {
+    return this.http.post(`${this.appConfig.apiUrl}jobs/edit`, jobObj);
   }
 
   public createJob(job: Job): Observable<object> {

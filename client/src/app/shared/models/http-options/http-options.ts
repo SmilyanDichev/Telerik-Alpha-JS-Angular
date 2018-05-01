@@ -1,6 +1,6 @@
 import { HttpHeaders, HttpParams } from '@angular/common/http';
 
-export class HttpOptions { 
+export class HttpOptions {
     body?: any;
     headers?: HttpHeaders | {
         [header: string]: string | string []; 

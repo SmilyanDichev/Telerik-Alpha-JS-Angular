@@ -6,6 +6,8 @@ import { AddContactComponent } from './add-contact/add-contact.component';
 import { AddJobComponent } from './add-job/add-job.component';
 import { AddLinkComponent } from './add-link/add-link.component';
 import { ApplyJobComponent } from './apply-job/apply-job.component';
+import { ConfirmComponent } from './confirm/confirm.component';
+import { EditJobComponent } from './edit-job/edit-job.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterOrLoginComponent } from './register-or-login/register-or-login.component';
 import { RegisterComponent } from './register/register.component';
@@ -24,6 +26,8 @@ import { RegisterComponent } from './register/register.component';
     AddJobComponent,
     AddLinkComponent,
     AddContactComponent,
+    EditJobComponent,
+    ConfirmComponent,
   ],
   exports: [
     LoginComponent,
@@ -33,6 +37,7 @@ import { RegisterComponent } from './register/register.component';
     AddJobComponent,
     AddLinkComponent,
     AddContactComponent,
+    EditJobComponent,
   ],
 })
 export class PopupsModule { }

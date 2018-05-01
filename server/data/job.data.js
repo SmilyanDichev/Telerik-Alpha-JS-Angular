@@ -35,10 +35,10 @@ class JobData extends Data {
             description: job.description,
             isActive: job.isActive,
             isDeleted: job.isDeleted,
-        },{
+        }, {
             where: {
-                id: job.id
-            }
+                id: job.id,
+            },
         }
         );
     }

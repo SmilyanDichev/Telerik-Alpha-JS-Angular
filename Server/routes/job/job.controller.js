@@ -9,7 +9,7 @@ const init = (app, data) => {
             return await data.job.getAllActiveJobs();
         } catch (exception) {
             throw new Error(
-                'Request to get all active jobs rejected in job controller!\n' +
+                'Request to get all active jobs rejected in job controller! ' +
                 exception);
         }
     };
@@ -18,7 +18,7 @@ const init = (app, data) => {
             return await data.job.getById(id);
         } catch (exception) {
             throw new Error(
-                'Request to get job by id rejected in job controller!\n' +
+                'Request to get job by id rejected in job controller! ' +
                 exception);
         }
     };
@@ -28,7 +28,8 @@ const init = (app, data) => {
             return await data.job.getAllNotDeletedJobs();
         } catch (exception) {
             throw new Error(
-                'Request to get all non-deleted jobs rejected in job controller!\n' +
+                `Request to get all non-deleted jobs
+                rejected in job controller! `,
                 exception);
         }
     };
@@ -42,7 +43,7 @@ const init = (app, data) => {
             });
         } catch (exception) {
             throw new Error(
-                'Request to create a new job rejected in job controller!\n' +
+                'Request to create a new job rejected in job controller! ' +
                 exception);
         }
     };
@@ -56,7 +57,7 @@ const init = (app, data) => {
             });
         } catch (exception) {
             throw new Error(
-                'Request to edit job rejected in job controller!\n' +
+                'Request to edit job rejected in job controller! ' +
                 exception);
         }
     };

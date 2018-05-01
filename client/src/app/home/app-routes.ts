@@ -9,6 +9,7 @@ import { AdminJobsComponent } from './components/admin/admin-jobs/admin-jobs.com
 import { AdminUsersComponent } from './components/admin/admin-user/admin-users.component';
 import { AdminLinksComponent } from './components/admin/admin-links/admin-links.component';
 import { AdminContactsComponent } from './components/admin/admin-contacts/admin-contacts.component';
+import { AdminGuard } from '../core/guards/admin.guard';
 
 export const ROUTES: Routes = [
     { path: 'home', component: HomeComponent },
@@ -17,7 +18,7 @@ export const ROUTES: Routes = [
     { path: 'jobs/:id', component: JobDetailsComponent },
     { path: 'contacts', component: ContactsComponent },
     {
-        path: 'admin', children: [
+        path: 'admin', canActivate: [AdminGuard], children: [
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'applications', component: AdminAplicationsComponent },
             { path: 'jobs', component: AdminJobsComponent },

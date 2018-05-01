@@ -8,9 +8,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTableModule} from '@angular/material/table';
-import { AuthService } from '../../../core/auth/auth.service';
-import { DataService } from '../../../core/data/data.service';
-import { JobService } from '../../../core/job/job.service';
+import { AuthService, JobService, LinkService, ContactService, AdminGuard } from '../../../core';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -54,8 +53,10 @@ import { JobService } from '../../../core/job/job.service';
   ],
   providers: [
     AuthService,
-    DataService,
     JobService,
+    LinkService,
+    ContactService,
+    AdminGuard,
   ]
 })
 export class SharedModule { }

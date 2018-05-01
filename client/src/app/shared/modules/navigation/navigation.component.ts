@@ -1,41 +1,45 @@
-import { AuthService } from '../../../core/auth/auth.service';
 import { Component, DoCheck, OnInit } from '@angular/core';
-import { LoginComponent } from '../popups/login/login.component';
-import { MatDialog, MatDialogRef } from '@angular/material';
-import { RegisterComponent } from '../popups/register/register.component';
 import { resolveDefinition } from '@angular/core/src/view/util';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../../../core/auth/auth.service';
 import { User } from '../../models/user/user';
-
+import { LoginComponent } from '../popups/login/login.component';
+import { RegisterComponent } from '../popups/register/register.component';
 
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.css'],
 })
-export class NavigationComponent implements OnInit, DoCheck {
+export class NavigationComponent implements OnInit/*, DoCheck*/ {
 
   private loginComponentRef: MatDialogRef<LoginComponent>;
   private registerComponentRef: MatDialogRef<RegisterComponent>;
   private currentUserEmail: string;
-  private isAdmin: boolean;
+  private propertyIsAdmin: boolean;
 
   constructor(private dialog: MatDialog,
               private authService: AuthService,
               private toastr: ToastrService) { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.currentUserEmail = this.authService.getCurrentUser();
-    this.isAdmin = this.authService.getAdminStatus();
+    this.propertyIsAdmin = this.authService.getAdminStatus();
   }
 
-  public ngDoCheck(): void {
-    this.currentUserEmail = this.authService.getCurrentUser();
-  }
+  // public ngDoCheck(): void {
+  //   this.currentUserEmail = this.authService.getCurrentUser();
+  // }
   private isAuth(): boolean {
     return this.authService.isAuthenticated();
   }
-  private sidebarToggle(sidebar): void {
+
+  private isAdmin(): boolean {
+    return this.authService.isAdmin();
+  }
+
+  private sidebarToggle(sidebar: any): void {
     sidebar.toggle();
   }
   private logoutModal(): void {
@@ -54,7 +58,7 @@ export class NavigationComponent implements OnInit, DoCheck {
             localStorage.setItem('access_token', res.token);
             this.toastr.success(`${user.email} logged in!`, 'Success');
             console.log(res);
-          },(err => {
+          },                                   ((err) => {
             this.toastr.error(`Wrong username or password`, 'Error');
             console.log(err);
           }));
@@ -70,7 +74,7 @@ export class NavigationComponent implements OnInit, DoCheck {
         this.authService.register(user).subscribe(
           (res) => {
             console.log(res);
-          }, (err) => {
+       }, (err) => {
             console.log(err);
           },
         );

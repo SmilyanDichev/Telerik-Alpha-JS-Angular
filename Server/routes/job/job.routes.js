@@ -26,10 +26,10 @@ const init = (app, data) => {
     router
         .get('/active', async (req, res) => {
             console.log('! ! ! active ! ! !');
-            console.log(req.body);
+            // console.log(req.body);
             try {
                 const publicJobs = await getPublicJobs();
-                console.log(res);
+                // console.log(res);
                 res.status(200).json(publicJobs);
             } catch (exception) {
                 res.status(502).json({
@@ -38,14 +38,16 @@ const init = (app, data) => {
                 });
             }
         })
-        .get('/all', passport.authenticate('jwt', {
-            session: true,
-        }), async (req, res) => {
+        .get('/all', passport.authenticate('jwt-admin', {
+            session: false,
+        }),
+        async (req, res) => {
+            console.log('HERE===============================================');
             try {
                 const allJobs = await getAllJobs();
                 res.status(200).json(allJobs);
             } catch (exception) {
-                res.status(502).json({
+                res.status(401).json({
                     msg: 'Request to get all jobs in job routes rejected!',
                     err: exception,
                 });
@@ -57,7 +59,8 @@ const init = (app, data) => {
                 const jobDetails = await getJobById(jobId);
                 res.status(200).json(jobDetails);
             } catch (exception) {
-                console.log('invalid job or request to get job details in job routes rejected!\n' + exception);
+                console.log('invalid job or request to get ' +
+                'job details in job routes rejected! ' + exception);
                 res.redirect('/activeJobs');
             }
         })
@@ -78,9 +81,14 @@ const init = (app, data) => {
             session: true,
         }), async (req, res) => {
             try {
-                await createNewJob(res.body);
-                res.redirect('/job');
+                console.log('-------------> CREATING NEW JOB BEEP BOOP',
+                req.body);
+                await createNewJob(req.body);
+                console.log('-------------> JOB IS DONE!');
+                res.redirect('/jobs');
             } catch (exception) {
+                console.log('-------------> JOB FAILED!', exception);
+
                 res.status(502).json({
                     msg: 'Request to create job rejected in job routes!',
                     err: exception,
