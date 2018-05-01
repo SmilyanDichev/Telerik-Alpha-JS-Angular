@@ -3,9 +3,10 @@ import { MatDialog, MatDialogRef } from '@angular/material';
 import { EventEmitter } from 'events';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../../../core/auth/auth.service';
-import { JobService } from './../../../../core/data';
+import { JobService } from './../../../../core';
 import { AddJobComponent } from './../../../../shared/modules/popups/add-job/add-job.component';
-
+import { ConfirmComponent } from './../../../../shared/modules/popups/confirm/confirm.component';
+import { EditJobComponent } from './../../../../shared/modules/popups/edit-job/edit-job.component';
 @Component({
   selector: 'app-admin-jobs',
   templateUrl: './admin-jobs.component.html',
@@ -14,6 +15,8 @@ import { AddJobComponent } from './../../../../shared/modules/popups/add-job/add
 export class AdminJobsComponent implements OnInit {
 
   public addJobComponentRef: MatDialogRef<AddJobComponent>;
+  public editJobComponentRef: MatDialogRef<EditJobComponent>;
+  public confirmComponent: MatDialogRef<ConfirmComponent>;
 
   private currentUserEmail: string;
 
@@ -25,26 +28,30 @@ export class AdminJobsComponent implements OnInit {
   public ngOnInit(): void {
                 console.log('Admin Jobs Page Opened!');
                 this.currentUserEmail = this.authService.getCurrentUser();
-              }
+  }
 
   public OpenAddJobPopup(): void {
-                console.log('Add Job Clicked!');
-              }
+    console.log('Add Job Clicked!');
+  }
+
+  public OpenEditJobPopup(): void {
+    console.log('Edit Job Clicked!');
+  }
 
   public addJobModal(): void {
     console.log('Add-job Modal Opened!');
     this.addJobComponentRef = this.dialog.open(AddJobComponent);
     this.addJobComponentRef
       .afterClosed()
-      .subscribe((job) => {
-        console.log('Sending data to dataServer! ', job);
-        this.jobService.createJob(job)
+      .subscribe((jobObj) => {
+        console.log('Sending new job data to JobService!', jobObj);
+        this.jobService.createJob(jobObj)
           .subscribe(
-           () => {
-          console.log('Client post succesful => Job Details: ', job);
-          this.toastr.success(`${job.title} added!`, 'Success');
+           (reply) => {
+          console.log('Client post succesful => Job Details: ', reply);
+          this.toastr.success(`${jobObj.title} added!`, 'Success');
         }, (error) => {
-          console.log('Sending data to dataServer failed! ', error, job);
+          console.log('Sending data to JobService failed! ', error, jobObj);
 
           this.toastr.error('New Job Failed!', 'Error');
       });
@@ -53,5 +60,28 @@ export class AdminJobsComponent implements OnInit {
                  (error) => {
         this.toastr.error('New Job Failed!', 'Error');
       });
+  }
+
+  public editJobModal(jobId: number): void {
+    console.log('Edit-job Modal Opened!');
+    this.editJobComponentRef = this.dialog.open(EditJobComponent);
+    this.editJobComponentRef
+      .afterClosed()
+      .subscribe((jobObj) => {
+        console.log('Sending job edit to JobService!', jobObj);
+        this.jobService.editJob(jobId, jobObj)
+          .subscribe(
+               (reply) => {
+              console.log('Job Edit request succesful! ', reply);
+              this.toastr.success(`${jobObj.title} updated!`, 'Success');
+            }, (error) => {
+              console.log('Sending updated job data to JobService failed!', error, jobObj);
+               },
+          );
+      });
+  }
+  public confirm(): void {
+    console.log('Confirm Modal Opened!');
+    this.confirmComponent = this.dialog.open(ConfirmComponent);
   }
 }

@@ -4,36 +4,12 @@
 <p>
   admin.job works!
 </p>
-
-<p>
-  admin.job works!
-</p>
-<p>
-  admin.job works!
-</p>
-<p>
-  admin.job works!
-</p>
-<p>
-  admin.job works!
-</p>
-<p>
-  admin.job works!
-</p>
-<p>
-  admin.job works!
-</p>
-<p>
-  admin.job works!
-</p>
-<p>
-  admin.job works!
-</p>
-<p>
-  admin.job works!
-</p>
-<p>
-  admin.job works!
-</p>
-
-<button mat-button (click)="addJobModal()">Add Job</button>
+<h2>Job Ads Administraction</h2>
+<div>  
+  <button mat-button (click)="addJobModal()">Create</button>
+</div>
+<div>
+  Job Title Description Category Status
+  <button mat-button (click)="editJobModal()">Edit</button>
+  <button mat-button (click)="confirm()">Delete</button>
+</div>

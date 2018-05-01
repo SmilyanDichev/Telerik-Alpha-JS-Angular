@@ -8,24 +8,31 @@
   </div>
   <div>
     <mat-form-field>
-      <input matInput formControlName="description" placeholder="description">
+      <!-- <input matInput formControlName="description" placeholder="description"> -->
+      <textarea matInput formControlName="description" placeholder="description"></textarea>
     </mat-form-field>
   </div>
+
   <div>
     <mat-form-field>
-      <!-- <input matInput formControlName="category" placeholder="category"> -->
-      <mat-select formControlName="category" placeholder="cetegory">
+      <mat-select formControlName="category" placeholder="category">
         <mat-option *ngFor="let catOption of catOptions" [value]="catOption">
           {{ catOption }}
         </mat-option>
       </mat-select>
     </mat-form-field>
   </div>
+
   <div>
     <mat-form-field>
-      <input matInput formControlName="status" placeholder="status">
+      <mat-select formControlName="status" placeholder="status">
+        <mat-option *ngFor="let statusOption of statusOptions" [value]="statusOption">
+          {{ statusOption }}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
   </div>
+
 </mat-dialog-content>
 <mat-dialog-content>
   <button mat-button  type="submit" cdkFocusInitial>Ok</button>

@@ -3,11 +3,11 @@ import { FormBuilder, FormGroup, Validator, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
 
 @Component({
-  selector: 'app-add-job',
-  templateUrl: './add-job.component.html',
-  styleUrls: ['./add-job.component.css'],
+  selector: 'app-edit-job',
+  templateUrl: './edit-job.component.html',
+  styleUrls: ['./edit-job.component.css'],
 })
-export class AddJobComponent implements OnInit {
+export class EditJobComponent implements OnInit {
 
   private catOptions: string[] = [
     'IT', 'HR', 'Accounting',
@@ -23,7 +23,7 @@ export class AddJobComponent implements OnInit {
   private status: string;
 
   constructor(private formBuilder: FormBuilder,
-              private dialogRef: MatDialogRef <AddJobComponent> ,
+              private dialogRef: MatDialogRef <EditJobComponent> ,
   ) {}
 
   public ngOnInit(): void {
