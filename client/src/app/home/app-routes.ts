@@ -25,7 +25,7 @@ export const ROUTES: Routes = [
             { path: 'users', component: AdminUsersComponent },
             { path: 'links', component: AdminLinksComponent },
             { path: 'contacts', component: AdminContactsComponent },
-        ]
+        ],
     },
     { path: '**', redirectTo: 'home' },
 ];

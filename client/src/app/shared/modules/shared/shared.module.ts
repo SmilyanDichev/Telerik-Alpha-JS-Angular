@@ -1,14 +1,14 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatDialogModule, MatDatepickerModule, MatIconModule, MatToolbarModule,
-          MatButtonModule, MatCardModule, MatSelectModule, MatNativeDateModule,
-          MatInputModule,  MatSidenavModule, MatListModule} from '@angular/material';
+import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
+import {
+  MatButtonModule, MatCardModule, MatDatepickerModule,
+  MatDialogModule, MatIconModule, MatInputModule, MatListModule,
+  MatNativeDateModule, MatPaginatorModule, MatSelectModule, MatSidenavModule, MatToolbarModule } from '@angular/material';
+import { MatTableModule } from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatTableModule} from '@angular/material/table';
-import { AuthService, JobService, LinkService, ContactService, AdminGuard } from '../../../core';
+import { AdminGuard, AuthService, ContactService, JobService, LinkService } from '../../../core';
 
 @NgModule({
   imports: [
@@ -21,6 +21,7 @@ import { AuthService, JobService, LinkService, ContactService, AdminGuard } from
     MatSelectModule,
     MatInputModule,
     MatIconModule,
+    MatPaginatorModule,
     MatSidenavModule,
     FlexLayoutModule,
     MatToolbarModule,
@@ -40,6 +41,7 @@ import { AuthService, JobService, LinkService, ContactService, AdminGuard } from
     MatDatepickerModule,
     MatSelectModule,
     MatInputModule,
+    MatPaginatorModule,
     MatIconModule,
     MatListModule,
     MatSidenavModule,
@@ -57,6 +59,6 @@ import { AuthService, JobService, LinkService, ContactService, AdminGuard } from
     LinkService,
     ContactService,
     AdminGuard,
-  ]
+  ],
 })
 export class SharedModule { }

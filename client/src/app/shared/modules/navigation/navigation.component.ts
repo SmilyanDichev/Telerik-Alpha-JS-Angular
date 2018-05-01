@@ -12,41 +12,42 @@ import { RegisterComponent } from '../popups/register/register.component';
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.css'],
 })
-export class NavigationComponent implements OnInit/*, DoCheck*/ {
+export class NavigationComponent  implement  DoCheck {
 
   private loginComponentRef: MatDialogRef<LoginComponent>;
   private registerComponentRef: MatDialogRef<RegisterComponent>;
   private currentUserEmail: string;
-  private propertyIsAdmin: boolean;
+  // private isAdmin: boolean;
 
   constructor(private dialog: MatDialog,
               private authService: AuthService,
               private toastr: ToastrService) { }
 
-  public ngOnInit(): void {
-    this.currentUserEmail = this.authService.getCurrentUser();
-    this.propertyIsAdmin = this.authService.getAdminStatus();
+  // public ngOnInit(): void {
+  // }
+
+  public ngDoCheck(): void {
+    this.currentUserEmail = this.authService.getCurrentUserEmail();
   }
 
-  // public ngDoCheck(): void {
-  //   this.currentUserEmail = this.authService.getCurrentUser();
-  // }
   private isAuth(): boolean {
     return this.authService.isAuthenticated();
   }
 
   private isAdmin(): boolean {
-    return this.authService.isAdmin();
+    return this.authService.getAdminStatus();
   }
 
   private sidebarToggle(sidebar: any): void {
     sidebar.toggle();
   }
+
   private logoutModal(): void {
     this.toastr.success('logout navigation');
     localStorage.removeItem('access_token');
     console.log('logout navigation');
   }
+
   private loginModal(): void {
     console.log('login modal');
     this.loginComponentRef = this.dialog.open(LoginComponent);
@@ -64,6 +65,7 @@ export class NavigationComponent implements OnInit/*, DoCheck*/ {
           }));
       });
   }
+
   private registerModal(): void {
     console.log('register modal');
     this.registerComponentRef = this.dialog.open(RegisterComponent);

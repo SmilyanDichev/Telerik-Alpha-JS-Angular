@@ -28,36 +28,23 @@ export class AuthService {
         return !!token;
     }
 
-    public isAdmin(): boolean {
-        const token = this.jwtService.tokenGetter();
-        // console.log(token);
-        if (token) {
-            const decoded = this.jwtService.decodeToken(token);
-
-            return decoded.isAdmin;
-        }
-
-        return false;
-
-    }
-
     public logout(): void {
         localStorage.removeItem('access_token');
     }
 
-    public getCurrentUser(): string {
+    public getCurrentUserEmail(): string {
         const token = this.jwtService.tokenGetter();
         const decoded = this.jwtService.decodeToken(token);
         // console.log(decoded);
-        return decoded!==null?decoded.email:'empty';
+        return decoded !== null ? decoded.email : 'empty';
         // return 'abv.bg';
     }
 
     public getAdminStatus(): boolean {
         const token = this.jwtService.tokenGetter();
         const decoded = this.jwtService.decodeToken(token);
-        console.log('is an admin', decoded);
-        return decoded!==null?decoded.isAdmin:false;
+        // console.log('is an admin', decoded);
+        return decoded !== null ? decoded.isAdmin : false;
         // return true;
     }
 }
