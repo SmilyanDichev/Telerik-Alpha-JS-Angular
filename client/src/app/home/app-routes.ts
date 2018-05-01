@@ -14,7 +14,7 @@ export const ROUTES: Routes = [
     { path: 'home', component: HomeComponent },
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'jobs', component: JobListComponent },
-    { path: 'jobs/:id', component: JobListComponent },
+    { path: 'jobs/:id', component: JobDetailsComponent },
     { path: 'contacts', component: ContactsComponent },
     {
         path: 'admin', children: [
