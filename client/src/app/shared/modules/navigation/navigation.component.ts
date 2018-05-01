@@ -12,7 +12,7 @@ import { RegisterComponent } from '../popups/register/register.component';
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.css'],
 })
-export class NavigationComponent  implement  DoCheck {
+export class NavigationComponent  implements  DoCheck {
 
   private loginComponentRef: MatDialogRef<LoginComponent>;
   private registerComponentRef: MatDialogRef<RegisterComponent>;
