@@ -36,7 +36,7 @@ export class AuthService {
         const token = this.jwtService.tokenGetter();
         const decoded = this.jwtService.decodeToken(token);
         // console.log(decoded);
-        // return decoded.email;
-        return 'abv.bg';
+        return decoded!==null?decoded.email: 'empty';
+        // return 'abv.bg';
     }
 }
