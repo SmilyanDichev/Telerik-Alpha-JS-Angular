@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -6,10 +6,17 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-  @Output() clickCloseEvent = new EventEmitter();
-  @Output() clickLoginEvent = new EventEmitter();
-  @Output() clickRegisterEvent = new EventEmitter();
-  @Output() clickLogoutEvent = new EventEmitter();
+  @Input()
+  isAdmin:boolean;
+
+  @Output() 
+  clickCloseEvent = new EventEmitter();
+  @Output() 
+  clickLoginEvent = new EventEmitter();
+  @Output() 
+  clickRegisterEvent = new EventEmitter();
+  @Output() 
+  clickLogoutEvent = new EventEmitter();
   constructor() { }
 
   closeClick(){

@@ -1,11 +1,5 @@
-import { Component, OnInit, Output } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material';
-import { ToastrService } from 'ngx-toastr';
-import { AuthService } from './../../../../../core/auth/auth.service';
-import { LoginComponent } from './../../../../../shared/modules/popups/login/login.component';
-import { RegisterOrLoginComponent } from './../../../../../shared/modules/popups/register-or-login/register-or-login.component';
-import { RegisterComponent } from './../../../../../shared/modules/popups/register/register.component';
-
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-job-details',
   templateUrl: './job-details.component.html',
@@ -13,15 +7,13 @@ import { RegisterComponent } from './../../../../../shared/modules/popups/regist
 })
 export class JobDetailsComponent implements OnInit {
 
-  public registerOrLoginComponentRef: MatDialogRef<RegisterOrLoginComponent>;
-
-  constructor(private dialog: MatDialog) { }
+  constructor(
+    private route: ActivatedRoute) {
+      this.route.params
+      .subscribe((params) => console.log(params));
+   }
 
   public ngOnInit(): void {
-    console.log('Job Details Page Opened!');
-  }
-  public regOrLoginModal(): void {
-    console.log('Register Modal opened!');
-    this.dialog.open(RegisterOrLoginComponent);
+    //
   }
 }
