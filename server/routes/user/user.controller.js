@@ -51,8 +51,8 @@ const init = (app, data) => {
                     msg: 'Login Failure',
                 });
             }
-            throw new Error(`Request to create job
-            application rejected! ` + exception);
+            throw new Error(`Request to create job application rejected! `
+             + exception);
         }
     };
 
@@ -82,8 +82,8 @@ const init = (app, data) => {
             res.status(400).send({
                 msg: 'Register Failure',
             });
-            throw new Error(`Request to register
-            a user rejected! ` + exception);
+            throw new Error(`Request to register a user rejected! `
+             + exception);
         }
     };
 
@@ -104,8 +104,8 @@ const init = (app, data) => {
             // res.status(400).send({
             //     msg: 'Job application Failure'
             // })
-            throw new Error(`Request to create job
-            application rejected! ` + exception);
+            throw new Error(`Request to create job application rejected! `
+             + exception);
         }
     };
 
