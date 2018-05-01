@@ -5,8 +5,8 @@
       <a mat-button class="nav-link" [routerLink]="['/jobs']">Jobs</a>
       <a mat-button class="nav-link" [routerLink]="['/contacts']">Contacts</a>
     </div>
-
-    <div fxFlex.gt-md="40" class="mat-elevation-z2"  color="accent" fxLayoutAlign="center center" fxHide fxShow.gt-md id="routes-admin">
+    <div *ngIf="!isAdmin" fxFlex.gt-md="40"  fxLayoutAlign="center center" fxHide fxShow.gt-md  id="not-admin-placeholder"> </div>
+    <div *ngIf="isAdmin" fxFlex.gt-md="40" class="mat-elevation-z2"  color="accent" fxLayoutAlign="center center" fxHide fxShow.gt-md id="routes-admin">
       <a mat-button class="nav-link" [routerLink]="['/admin/users']">Users</a>
       <a mat-button class="nav-link" [routerLink]="['/admin/jobs']">Jobs</a>
       <a mat-button class="nav-link" [routerLink]="['/admin/contacts']">Contacts</a>

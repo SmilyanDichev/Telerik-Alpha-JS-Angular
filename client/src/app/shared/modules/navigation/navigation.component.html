@@ -3,5 +3,5 @@
     <app-sidebar  (clickCloseEvent)="sidenav.toggle()" (clickLoginEvent)="loginModal()" (clickRegisterEvent)="registerModal()" (clickLogoutEvent)="logoutModal()"></app-sidebar>
   </mat-sidenav>
   <router-outlet></router-outlet>
-  <app-toolbar [isAuth]="isAuth()" [currentUserEmail]="currentUserEmail" (clickMenuEvent)="sidenav.toggle()" (clickLoginEvent)="loginModal()" (clickRegisterEvent)="registerModal()" (clickLogoutEvent)="logoutModal()" ></app-toolbar>
+  <app-toolbar [isAuth]="isAuth()" [isAdmin]="isAdmin" [currentUserEmail]="currentUserEmail" (clickMenuEvent)="sidenav.toggle()" (clickLoginEvent)="loginModal()" (clickRegisterEvent)="registerModal()" (clickLogoutEvent)="logoutModal()" ></app-toolbar>
 </mat-sidenav-container>

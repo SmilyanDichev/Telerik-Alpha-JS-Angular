@@ -18,6 +18,7 @@ export class NavigationComponent implements OnInit, DoCheck {
   private loginComponentRef: MatDialogRef<LoginComponent>;
   private registerComponentRef: MatDialogRef<RegisterComponent>;
   private currentUserEmail: string;
+  private isAdmin: boolean;
 
   constructor(private dialog: MatDialog,
               private authService: AuthService,
@@ -25,6 +26,7 @@ export class NavigationComponent implements OnInit, DoCheck {
 
   ngOnInit(): void {
     this.currentUserEmail = this.authService.getCurrentUser();
+    this.isAdmin = this.authService.getAdminStatus();
   }
 
   public ngDoCheck(): void {

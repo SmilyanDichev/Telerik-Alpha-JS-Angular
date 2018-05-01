@@ -14,6 +14,9 @@ export class ToolbarComponent implements OnInit {
   isAuth: boolean;
 
   @Input()
+  isAdmin: boolean;
+
+  @Input()
   currentUserEmail: string;
 
   @Output() clickMenuEvent = new EventEmitter();

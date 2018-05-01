@@ -18,7 +18,7 @@
   </a>
 </mat-nav-list>
 
-<mat-nav-list >
+<mat-nav-list  *ngIf="isAdmin">
   <br>
   <a mat-list-item class="sidenav-link" [routerLink]="['admin/users']" (click)="closeClick()">
     <span class="title" mat-line>Users</span>
