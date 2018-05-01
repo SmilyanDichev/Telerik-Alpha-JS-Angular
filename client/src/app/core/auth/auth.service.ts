@@ -28,6 +28,19 @@ export class AuthService {
         return !!token;
     }
 
+    public isAdmin(): boolean {
+        const token = this.jwtService.tokenGetter();
+        // console.log(token);
+        if (token) {
+            const decoded = this.jwtService.decodeToken(token);
+
+            return decoded.isAdmin;
+        }
+
+        return false;
+
+    }
+
     public logout(): void {
         localStorage.removeItem('access_token');
     }

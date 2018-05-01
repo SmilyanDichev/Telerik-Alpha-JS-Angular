@@ -30,14 +30,6 @@ export class AdminJobsComponent implements OnInit {
                 this.currentUserEmail = this.authService.getCurrentUser();
   }
 
-  public OpenAddJobPopup(): void {
-    console.log('Add Job Clicked!');
-  }
-
-  public OpenEditJobPopup(): void {
-    console.log('Edit Job Clicked!');
-  }
-
   public addJobModal(): void {
     console.log('Add-job Modal Opened!');
     this.addJobComponentRef = this.dialog.open(AddJobComponent);

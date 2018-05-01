@@ -21,7 +21,7 @@ const init = (app, data) => {
                     const payload = {
                         sub: userFound.id,
                         email: userFound.email,
-                        password: userFound.password,
+                        isAdmin: userFound.isAdmin,
                         exp: expire,
                         iss: config.JWT_ISS,
                     };

@@ -1,18 +1,15 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
+import { RouterModule } from '@angular/router';
+import { LoginComponent } from '../popups/login/login.component';
+import { PopupsModule } from '../popups/popups.module';
+import { RegisterComponent } from '../popups/register/register.component';
 import { SharedModule } from '../shared/shared.module';
-
+import { DialogComponent } from './dialog/dialog.component';
+import { NavigationComponent } from './navigation.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
-import { MatIconModule } from '@angular/material/icon';
-
-import { RouterModule } from '@angular/router';
-import { NavigationComponent } from './navigation.component';
-import { DialogComponent } from './dialog/dialog.component';
-import { PopupsModule } from '../popups/popups.module';
-import { LoginComponent } from '../popups/login/login.component';
-import { RegisterComponent } from '../popups/register/register.component';
-
 
 @NgModule({
   imports: [
@@ -36,6 +33,6 @@ import { RegisterComponent } from '../popups/register/register.component';
       RegisterComponent,
     ],
   providers: [
-  ]
+  ],
 })
 export class NavigationModule { }

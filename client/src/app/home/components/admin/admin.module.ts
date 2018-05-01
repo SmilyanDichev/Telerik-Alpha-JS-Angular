@@ -14,8 +14,10 @@ import { PopupsModule } from './../../../shared/modules/popups/popups.module';
 import { AdminAplicationsComponent } from './admin-aplications/admin-aplications.component';
 import { AdminContactsComponent } from './admin-contacts/admin-contacts.component';
 import { AdminJobsComponent } from './admin-jobs/admin-jobs.component';
+import { TableComponent } from './admin-jobs/table/table.component';
 import { AdminLinksComponent } from './admin-links/admin-links.component';
 import { AdminUsersComponent } from './admin-user/admin-users.component';
+
 @NgModule({
     declarations: [
         AdminAplicationsComponent,
@@ -23,6 +25,7 @@ import { AdminUsersComponent } from './admin-user/admin-users.component';
         AdminJobsComponent,
         AdminLinksComponent,
         AdminUsersComponent,
+        TableComponent,
     ],
     imports: [
         CommonModule,

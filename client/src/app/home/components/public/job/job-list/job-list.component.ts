@@ -5,7 +5,7 @@ import { JobService } from '../../../../../core/job/job.service';
 @Component({
   selector: 'app-job-list',
   templateUrl: './job-list.component.html',
-  styleUrls: ['./job-list.component.css']
+  styleUrls: ['./job-list.component.css'],
 })
 export class JobListComponent implements OnInit {
   private jobsData: any[];
@@ -15,27 +15,27 @@ export class JobListComponent implements OnInit {
   constructor(private jobService: JobService) {
   }
 
-  public ngOnInit() {
-    this.getJobs()
+  public ngOnInit(): void {
+    this.getJobs();
   }
 
   private getJobs(): void {
    this.jobService.getActiveJobs().subscribe((res:any[]) => {
         // this.jobsData=res;
         console.log(res);
-    })
+    });
   }
 
 }
 
-export interface Element {
+export interface IElement {
   name: string;
   position: number;
   weight: number;
   symbol: string;
 }
 
-const ELEMENT_DATA: Element[] = [
+const ELEMENT_DATA: IElement[] = [
   {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
   {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
   {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},

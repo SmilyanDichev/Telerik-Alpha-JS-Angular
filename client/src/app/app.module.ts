@@ -18,6 +18,7 @@ import { SharedModule } from './shared/modules/shared/shared.module';
 import { AppConfig } from './config/app-config';
 import { AppComponent } from './app.component';
 import { MapService } from './shared/services/map/map.service';
+import { AdminGuard } from './core/guards/admin.guard';
 // import { LoginComponent } from './shared/modules/popups/login/login.component';
 // import { RegisterComponent } from './shared/modules/popups/register/register.component';
 // import { ApplyJobComponent } from './shared/modules/popups/apply-job/apply-job.component';
@@ -50,8 +51,8 @@ export function  tokenGetter() {
       config: {
         tokenGetter: tokenGetter,
         whitelistedDomains: ['localhost:8000'],
-        blacklistedRoutes: []
-      }
+        blacklistedRoutes: [],
+      },
     }),
     PopupsModule,
   ],
@@ -61,7 +62,7 @@ export function  tokenGetter() {
   JobService,
   ContactService,
   LinkService,
-  MapService
+  MapService,
 ],
   bootstrap: [AppComponent]
 })

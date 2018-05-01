@@ -28,8 +28,8 @@ const init = (app, data) => {
             return await data.job.getAllNotDeletedJobs();
         } catch (exception) {
             throw new Error(
-                'Request to get all non-deleted jobs' +
-                ' rejected in job controller! ' +
+                `Request to get all non-deleted jobs
+                rejected in job controller! `,
                 exception);
         }
     };

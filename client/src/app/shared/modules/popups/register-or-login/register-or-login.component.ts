@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material';
+import { LoginComponent } from './../login/login.component';
+import { RegisterComponent } from './../register/register.component';
 
 @Component({
   selector: 'app-register-or-login',
@@ -9,11 +11,20 @@ import { MatDialogRef } from '@angular/material';
 })
 export class RegisterOrLoginComponent implements OnInit {
 
-  constructor(private fomBuilder: FormBuilder,
-              private dialogRef: MatDialogRef <RegisterOrLoginComponent>) { }
+  // public registerOrLoginComponentRef: MatDialogRef<RegisterOrLoginComponent>;
+
+  constructor(private dialog: MatDialog) { }
 
   public ngOnInit(): void {
-    this.dialogRef.disableClose = true;
+    console.log('RegOrLogin Modal opened!');
   }
 
+  public openLoginModal(): void {
+    console.log('Login Modal opened!');
+    this.dialog.open(LoginComponent);
+  }
+  public openRegModal(): void {
+    console.log('Register Modal opened!');
+    this.dialog.open(RegisterComponent);
+  }
 }
