@@ -2,11 +2,11 @@ const {
     Router,
 } = require('express');
 const passport = require('passport');
-const userControler = require('./user.controller');
+const controler = require('./user.controller');
 
 const init = (app, data) => {
     const router = new Router();
-    const controller = userControler.init(app, data);
+    const controller = controler.init(app, data);
 
     // TO DO user history JWT  strategy and check only admin
     router
