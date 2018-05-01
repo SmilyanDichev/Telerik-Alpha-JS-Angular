@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatDialogModule, MatIconModule, MatToolbarModule,
-          MatButtonModule, MatCardModule, MatSelectModule,
+import { MatDialogModule, MatDatepickerModule, MatIconModule, MatToolbarModule,
+          MatButtonModule, MatCardModule, MatSelectModule, MatNativeDateModule,
           MatInputModule,  MatSidenavModule, MatListModule} from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -15,6 +15,7 @@ import { JobService } from '../../../core/job/job.service';
   imports: [
     CommonModule,
     MatDialogModule,
+    MatDatepickerModule,
     MatButtonModule,
     MatListModule,
     MatCardModule,
@@ -28,6 +29,7 @@ import { JobService } from '../../../core/job/job.service';
     FormsModule,
     ReactiveFormsModule,
     MatTableModule,
+    MatNativeDateModule,
   ],
   declarations: [
   ],
@@ -35,6 +37,8 @@ import { JobService } from '../../../core/job/job.service';
     CommonModule,
     MatButtonModule,
     MatCardModule,
+    MatDialogModule,
+    MatDatepickerModule,
     MatSelectModule,
     MatInputModule,
     MatIconModule,
@@ -44,9 +48,9 @@ import { JobService } from '../../../core/job/job.service';
     MatTableModule,
     MatToolbarModule,
     BrowserAnimationsModule,
-    MatDialogModule,
     FormsModule,
     ReactiveFormsModule,
+    MatNativeDateModule,
   ],
   providers: [
     AuthService,

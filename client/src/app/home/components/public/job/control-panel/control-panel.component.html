@@ -1,3 +1,32 @@
-<p>
-  control-panel works!
-</p>
+<div fxFill fxFlex="100" fxLayout="column">
+  <form [formGroup]='rForm' (ngSubmit)="submit(rForm)">
+    <mat-dialog-content>
+      <div>
+        <mat-form-field>
+          <input matInput formControlName="keyword" placeholder="filter by keyword">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-select matSelect formControlName="select" placeholder="filter by category">
+            <mat-option *ngFor="let category of categories" [value]="category">
+            </mat-option>
+            <mat-option [value]=1></mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input formControlName="date" matInput [matDatepicker]="picker" placeholder="Choose a date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-raised-button color="primary" type="submit"> Filter</button>
+        <button mat-raised-button color="primary" type="button"> Reset</button>
+    </mat-dialog-actions>
+  </form>
+
+</div>

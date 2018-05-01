@@ -13,12 +13,8 @@ import { AdminContactsComponent } from './components/admin/admin-contacts/admin-
 export const ROUTES: Routes = [
     { path: 'home', component: HomeComponent },
     { path: '', redirectTo: 'home', pathMatch: 'full' },
-    {
-        path: 'jobs', component: JobListComponent, children: [
-            { path: '', component: JobListComponent },
-            { path: ':id', component: JobDetailsComponent }
-        ]
-    }, // children
+    { path: 'jobs', component: JobListComponent },
+    { path: 'jobs/:id', component: JobListComponent },
     { path: 'contacts', component: ContactsComponent },
     {
         path: 'admin', children: [

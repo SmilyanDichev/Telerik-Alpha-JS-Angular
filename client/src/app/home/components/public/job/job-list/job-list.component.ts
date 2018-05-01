@@ -10,17 +10,17 @@ import { JobService } from '../../../../../core/job/job.service';
 export class JobListComponent implements OnInit, DoCheck  {
   private jobsData: any[];
   private displayedColumns = ['title',"actions"];
-   private dataSource = new MatTableDataSource(this.jobsData);
+  private dataSource = new MatTableDataSource(this.jobsData);
 
   constructor(private jobService: JobService) {
   }
 
   public ngOnInit() {
-    this.getJobs();
+  this.getJobs();
   }
 
   public ngDoCheck(){
-   this.dataSource = new MatTableDataSource(this.jobsData);
+  this.dataSource = new MatTableDataSource(this.jobsData);
   }
 
   private getJobs(): void {
