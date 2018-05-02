@@ -28,7 +28,8 @@ export class JobService {
   }
 
   public getJobDetails(jobID: number): Observable<object> {
-    return this.http.get(`${this.appConfig.apiUrl}jobs/:${jobID}`);
+    console.log('jobID', jobID);
+    return this.http.get(`${this.appConfig.apiUrl}jobs/${jobID}`);
   }
 
   public editJob(jobId: number, jobObj: Job): Observable<object> {

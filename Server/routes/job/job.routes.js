@@ -42,7 +42,6 @@ const init = (app, data) => {
             session: false,
         }),
         async (req, res) => {
-            console.log('HERE===============================================');
             try {
                 const allJobs = await getAllJobs();
                 res.status(200).json(allJobs);
@@ -54,14 +53,17 @@ const init = (app, data) => {
             }
         })
         .get('/:id', async (req, res) => {
-            const jobId = req.body.id;
+            const jobId = req.params.id;
+            console.log('jobId');
+            console.log(jobId);
             try {
                 const jobDetails = await getJobById(jobId);
                 res.status(200).json(jobDetails);
             } catch (exception) {
-                console.log('invalid job or request to get ' +
-                'job details in job routes rejected! ' + exception);
-                res.redirect('/activeJobs');
+                res.status(502).json({
+                    msg: 'Job application in job routes rejected!',
+                    err: exception,
+                });
             }
         })
         .post('/apply', passport.authenticate('jwt', {

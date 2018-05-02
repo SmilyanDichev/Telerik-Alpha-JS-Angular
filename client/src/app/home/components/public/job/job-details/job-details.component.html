@@ -1,16 +1,16 @@
-<p>
-  job.details works!
-</p>
-<p>
-  job.details works!
-</p>
-<p>
-  job.details works!
-</p>
-<!-- <form [formGroup]="rForm" (ngSubmit)="submit(rForm)">
-  <mat-dialog-actions>
-    <button mat-button type="submit"(click)="regOrLoginModal()" mat-dialog-close> Register</button>
-  </mat-dialog-actions>
-</form> -->
-<router-outlet></router-outlet>
+<div fxFill fxFlex="100" fxLayout="column">
+  <div fxFlex="10"></div>
+  <div fxFlex="70" fxFill fxLayout="row" fxLayoutAlign="start start">
+    <div fxFlex="5"> </div>
+    <div  fxFill fxFlex="90" fxLayout="column"  >
+        <h1  fxFlex="2" fxLayoutAlign="center center" >{{details.title}}</h1>
+        <h3  fxFlex="2" fxLayoutAlign="center center" >Description</h3>
+        <div class="mat-elevation-z2" fxFlex="92"> {{details.description}}</div>
+        <div fxFlex="2"></div>
+        <div  fxFlex="2" fxLayoutAlign="center center"><a mat-raised-button color="primary">apply now</a></div>
+        <!-- <router-outlet></router-outlet> -->
+    </div>
+  </div>
+</div>
+
 

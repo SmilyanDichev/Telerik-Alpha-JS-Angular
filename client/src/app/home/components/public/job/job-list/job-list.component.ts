@@ -20,7 +20,6 @@ export class JobListComponent implements OnInit {
     this.getJobs();
     }
 
-
   private ngDoCheck(): void {
   }
 

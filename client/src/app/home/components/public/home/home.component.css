@@ -1,17 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Courgette');
+
 .item {
     border-style: solid;
     border-width: medium;
-    /* height: 200px; */
-    /* width: 50%; */
-    /* height: 200px; */
     background-color: rgb(219, 219, 219);
     border: rgb(160, 136, 136)
 };
 
-.home-text {
-    color: "red";
-    font-size: 550px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+.text span{
+    font-size: auto;
+}
+#text {
+    font-size: 500%;
+    font-family: "Courgette", Times, serif;
+    color: whitesmoke;
+    text-align: center;
 }
 
 .picture{
