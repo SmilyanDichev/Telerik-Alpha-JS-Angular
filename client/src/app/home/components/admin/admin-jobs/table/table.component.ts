@@ -1,7 +1,9 @@
+import { CommonModule } from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatFormField, MatTableDataSource } from '@angular/material';
+import { MatTableModule } from '@angular/material/table';
 import { JobService } from '../../../../../core/job/job.service';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'admin-jobs-table',
@@ -10,29 +12,33 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class TableComponent implements OnInit {
 
-  private jobsData: object[];
-  private displayedColumns = ['id', 'title', 'createdAt', 'view', 'edit', 'delete'];
-  private dataSource = new MatTableDataSource(this.jobsData);
+private jobsData: object[];
+private displayedColumns = ['id', 'title', 'status', 'createdAt', 'view', 'edit', 'delete'];
+private dataSource; // = new MatTableDataSource(JOB_DATA);
 
-  constructor(private jobService: JobService) {
+constructor(private jobService: JobService) {
   }
 
-  public ngOnInit(): void {
+public ngOnInit(): void {
     this.getJobs();
-    // get data
-    // visualise data
+
+    // get data DONE
+    // visualise data DONE
     // update table
-    // view, edit, delete job => update
+    // add, view, edit, delete job => update
   }
 
-  private getJobs(): void {
+private getJobs(): void {
     this.jobService.getAllJobs().subscribe(
       (res: object[]) => {
-      this.jobsData = res;
-      console.log('Job data from jobService received!', res);
+        res.map((el) => {
+          jobObjectConverter(el);
+        });
+        this.dataSource = new MatTableDataSource(res);
+        console.log('Job data from jobService received!', res);
       },
       (error: HttpErrorResponse) => {
-          console.log(error.status);
+          console.log('Job data from jobService FAILED!', error);
       });
   }
 }
@@ -42,12 +48,3 @@ export interface IJob {
   title: string;
   createdAt: string;
 }
-
-const JOB_DATA: IJob[] = [
-  { id: 1, title: 'Graduate Big Boy', createdAt: '11/10/2016' },
-  { id: 2, title: 'Junior Big Boy', createdAt: '11/10/2016' },
-  { id: 3, title: 'Big Boy', createdAt: '11/10/2016' },
-  { id: 4, title: 'Senior Big Boy', createdAt: '11/10/2016' },
-  { id: 5, title: 'Master Big Boy', createdAt: '11/10/2016' },
-  { id: 10, title: '"The" Big Boy', createdAt: '11/10/2016' },
-];

@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, FormsModule,
     ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatDialogModule, MatDialogRef,
     MatFormField, MatFormFieldModule } from '@angular/material';
+import { MatTableModule } from '@angular/material/table';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { JobService } from './../../../core';
@@ -35,6 +36,7 @@ import { AdminUsersComponent } from './admin-user/admin-users.component';
         MatFormFieldModule,
         MatDialogModule,
         PopupsModule,
+        MatTableModule,
     ],
     exports: [
         AdminAplicationsComponent,
@@ -43,6 +45,7 @@ import { AdminUsersComponent } from './admin-user/admin-users.component';
         AdminLinksComponent,
         AdminUsersComponent,
         MatFormField,
+        MatTableModule,
     ],
     entryComponents: [
         AddJobComponent,
