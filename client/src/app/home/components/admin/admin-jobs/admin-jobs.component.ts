@@ -27,7 +27,7 @@ export class AdminJobsComponent implements OnInit {
 
   public ngOnInit(): void {
                 console.log('Admin Jobs Page Opened!');
-                this.currentUserEmail = this.authService.getCurrentUser();
+                this.currentUserEmail = this.authService.getCurrentUserEmail();
   }
 
   public addJobModal(): void {
