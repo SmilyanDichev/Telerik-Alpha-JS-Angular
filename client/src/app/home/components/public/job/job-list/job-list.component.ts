@@ -10,30 +10,27 @@ import { JobService } from '../../../../../core/job/job.service';
 export class JobListComponent implements OnInit {
   private jobsData: any[];
   private displayedColumns = ['title', 'actions'];
-  private dataSource = new MatTableDataSource(this.jobsData);
+  private dataSource = new MatTableDataSource<any>;
 
-  @ViewChild(MatPaginator) private paginator: MatPaginator;
+  @ViewChild('paginator') private paginator: MatPaginator;
 
   constructor(private jobService: JobService) {
   }
-
   public ngOnInit(): void {
-  this.getJobs();
-  }
+    this.getJobs();
+    }
 
-  public ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
-  }
 
-  public ngDoCheck(): void {
-  this.dataSource = new MatTableDataSource(this.jobsData);
+  private ngDoCheck(): void {
   }
 
   private getJobs(): void {
    this.jobService.getActiveJobs().subscribe((res: any[]) => {
         this.jobsData = res;
+        this.dataSource = new MatTableDataSource(this.jobsData);
+        setTimeout(() => this.dataSource.paginator = this.paginator);
+        
         console.log(res);
     });
   }
-
 }

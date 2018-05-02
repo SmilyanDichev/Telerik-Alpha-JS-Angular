@@ -4,7 +4,7 @@
     <div fxFlex="5"> </div>
     <div fxFlex="65" fxLayout="column" fxLayoutAlign="center space-around">
       <div fxFill>
-        <mat-table #table [dataSource]="dataSource">
+        <mat-table #jobtable [dataSource]="dataSource">
           <ng-container matColumnDef="title">
             <mat-header-cell fxFlex="70" *matHeaderCellDef> <h1>JobPosition</h1> </mat-header-cell>
             <mat-cell fxFlex="85" *matCellDef="let element">
@@ -27,7 +27,7 @@
         </mat-table>
         <mat-paginator
           #paginator
-          [pageSize]="10"
+          [pageSize]="5"
           [pageSizeOptions] = "[5, 10, 20]"
           [showFirstLastButtons] = "true" >
         </mat-paginator>
