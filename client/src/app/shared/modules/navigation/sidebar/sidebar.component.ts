@@ -17,6 +17,7 @@ export class SidebarComponent implements OnInit {
   clickRegisterEvent = new EventEmitter();
   @Output() 
   clickLogoutEvent = new EventEmitter();
+  
   constructor() { }
 
   closeClick(){

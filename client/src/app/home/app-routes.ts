@@ -15,7 +15,7 @@ export const ROUTES: Routes = [
     { path: 'home', component: HomeComponent },
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'jobs', component: JobListComponent },
-    { path: 'jobs/:id', component: JobListComponent },
+    { path: 'jobs/:id', component: JobDetailsComponent },
     { path: 'contacts', component: ContactsComponent },
     {
         path: 'admin', canActivate: [AdminGuard], children: [
@@ -25,7 +25,7 @@ export const ROUTES: Routes = [
             { path: 'users', component: AdminUsersComponent },
             { path: 'links', component: AdminLinksComponent },
             { path: 'contacts', component: AdminContactsComponent },
-        ]
+        ],
     },
     { path: '**', redirectTo: 'home' },
 ];

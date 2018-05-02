@@ -3,6 +3,7 @@ const Data = require('./generic.data');
 const {
     User,
     Job,
+    JobCategory,
 } = require('../db/models');
 
 class JobData extends Data {
@@ -15,6 +16,9 @@ class JobData extends Data {
             where: {
                 isActive: true,
             },
+            include: [{
+                model: JobCategory,
+            }],
         });
     }
     getAllNotDeletedJobs() {

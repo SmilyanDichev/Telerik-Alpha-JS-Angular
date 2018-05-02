@@ -1,7 +1,9 @@
 <mat-sidenav-container fullscreen>
   <mat-sidenav #sidenav mode="over" class="app-sidenav">
-    <app-sidebar  (clickCloseEvent)="sidenav.toggle()" (clickLoginEvent)="loginModal()" (clickRegisterEvent)="registerModal()" (clickLogoutEvent)="logoutModal()"></app-sidebar>
+    <app-sidebar [isAdmin]="isAdmin()" (clickCloseEvent)="sidenav.toggle()" (clickLoginEvent)="loginModal()" (clickRegisterEvent)="registerModal()" (clickLogoutEvent)="logoutModal()"></app-sidebar>
   </mat-sidenav>
   <router-outlet></router-outlet>
-  <app-toolbar [isAuth]="isAuth()" [isAdmin]="propertyIsAdmin" [currentUserEmail]="currentUserEmail" (clickMenuEvent)="sidenav.toggle()" (clickLoginEvent)="loginModal()" (clickRegisterEvent)="registerModal()" (clickLogoutEvent)="logoutModal()" ></app-toolbar>
+  <app-toolbar [isAdmin]="isAdmin()" [isAuth]="isAuth()"  [currentUserEmail]="currentUserEmail" (clickMenuEvent)="sidenav.toggle()" (clickLoginEvent)="loginModal()" (clickRegisterEvent)="registerModal()" (clickLogoutEvent)="logoutModal()" ></app-toolbar>
 </mat-sidenav-container>
+
+<!--  -->
