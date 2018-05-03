@@ -1,24 +1,20 @@
   <mat-table #table [dataSource]="dataSource">
 
-    <!-- Position Column -->
     <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
     </ng-container>
 
-    <!-- Name Column -->
     <ng-container matColumnDef="title">
       <mat-header-cell *matHeaderCellDef> Job Title </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
     </ng-container>
 
-    <!-- Weight Column -->
     <ng-container matColumnDef="status">
       <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.isActive}} </mat-cell>
     </ng-container>
 
-    <!-- Symbol Column -->
     <ng-container matColumnDef="createdAt">
       <mat-header-cell *matHeaderCellDef> Created at </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.createdAt}} </mat-cell>
@@ -26,17 +22,23 @@
     
     <ng-container matColumnDef="view">
       <mat-header-cell *matHeaderCellDef> View </mat-header-cell>
-      <mat-cell *matCellDef="let element">  </mat-cell>
+      <mat-cell *matCellDef="let element"> 
+          <button mat-button (click)="openJobDetails({{element.id}})">View</button>        
+      </mat-cell>
     </ng-container>
     
     <ng-container matColumnDef="edit">
       <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
-      <mat-cell *matCellDef="let element">  </mat-cell>
+      <mat-cell *matCellDef="let element"> 
+          <button mat-button (click)="editJobModal({{element.id}})">Edit</button>
+        </mat-cell>
     </ng-container>
     
     <ng-container matColumnDef="delete">
       <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
-      <mat-cell *matCellDef="let element">  </mat-cell>
+      <mat-cell *matCellDef="let element"> 
+          <button mat-button (click)="confirm({{element.id}})">Delete</button>
+        </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

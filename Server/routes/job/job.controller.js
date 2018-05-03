@@ -39,7 +39,8 @@ const init = (app, data) => {
                 title: newJob.title,
                 description: newJob.description,
                 isActive: newJob.isActive,
-                isDeleted: newJob.isDeleted,
+                JobCategoryId: newJob.JobCategoryId,
+                isDeleted: 0,
             });
         } catch (exception) {
             throw new Error(

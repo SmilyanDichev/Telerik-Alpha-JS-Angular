@@ -77,8 +77,8 @@ const init = (app, data) => {
                 });
             }
         })
-        .post('/create', passport.authenticate('jwt', {
-            session: true,
+        .post('/create', passport.authenticate('jwt-admin', {
+            session: false,
         }), async (req, res) => {
             try {
                 console.log('-------------> CREATING NEW JOB BEEP BOOP',
@@ -96,7 +96,7 @@ const init = (app, data) => {
             }
         })
         .post('/edit', passport.authenticate('jwt', {
-            session: true,
+            session: false,
         }), async (req, res) => {
             try {
                 await editJob(res.body);
