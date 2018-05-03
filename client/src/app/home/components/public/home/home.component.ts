@@ -8,8 +8,14 @@ declare function require(url: string);
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  background = (<any>config).background;
-  text = (<any>config).text;
+  private background = (<any>config).background;
+  private text = (<any>config).text;
+  private twitterOptions: string = `{
+    tweetLimit: 1,
+    height: 10,
+    borderColor: '#a3349f',
+    chrome: ['noheader', 'nofooter', 'noborders', 'transparent' , 'noscrollbar']
+  }`;
 
   constructor() { }
 

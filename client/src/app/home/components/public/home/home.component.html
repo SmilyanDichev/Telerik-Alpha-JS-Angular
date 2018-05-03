@@ -17,17 +17,18 @@
       <div fxFlex="40" headline fxLayout="row" fxLayoutAlign="center">
       </div>
     </div>
-    <div fxFlex="30" class="item" fxLayout="row">
-      <ngx-twitter-timeline 
-      [data]="{
+    <div fxfill fxFlex="30" fxLayout="row">
+      <div fxFlex="20">
+        <h2 fxLayoutAlign="center" >Our Twitter Feed</h2>
+        <ngx-twitter-timeline [data]="{
             sourceType: 'url',
             url: 'https://twitter.com/twitterdev'}" [opts]="{
-            tweetLimit: 2
-        }" 
-        ></ngx-twitter-timeline>
-      <!-- <div fxFlex="20" class="item">item 1</div>
-      <div fxFlex="60" class="item">item 2</div>
-      <div fxFlex="20" class="item">item 1</div> -->
+              tweetLimit: 1,
+              height: 10,
+              borderColor: '#a3349f',
+              chrome: ['noheader', 'nofooter', 'noborders', 'transparent' , 'noscrollbar']
+            }"></ngx-twitter-timeline>
+      </div>
     </div>
     <div fxFlex="10"></div>
   </div>
