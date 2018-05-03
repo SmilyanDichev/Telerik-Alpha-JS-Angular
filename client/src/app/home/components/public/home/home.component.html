@@ -1,17 +1,34 @@
 <div fxFill fxLayout="row" fxLayoutAlign="center">
-  <div class="container" fxFlex="100" fxFlex.gt-md="90" fxLayoutAlign="none" fxLayoutGap="20px" fxLayout fxLayout="column">
+  <div class="container" fxFlex="100" fxFlex.gt-md="90" fxLayoutGap="20px" fxLayout fxLayout="column">
     <!-- <div fxFlex="20" class="item">item 1</div> -->
     <div fxFlex="6"></div>
     <div fxLayout="column" fxFlex="64" [ngStyle]="{'background-image': 'url(\'' + background + '\')','background-size':'cover'}"
-      class="item picture">
-      <div fxFlex="40"></div>
+      class="item picture" fxLayoutAlign="center center">
+      <div fxFlex="50"></div>
+      <div class="text" fxFlex="20">
+        <!-- TEXT TEXT TEXT TEXT TEXT -->
+        <span id="text">{{text}}</span>
+      </div>
+      <div fxFlex="10"></div>
+      <div fxFlex="20" fxLayoutAlign="space-around center">
+        <a mat-raised-button> Join Us </a>
+        <a mat-raised-button> Do Stuff </a>
+      </div>
       <div fxFlex="40" headline fxLayout="row" fxLayoutAlign="center">
       </div>
     </div>
-    <div fxFlex="30" class="item" fxLayout="row">
-      <div fxFlex="20" class="item">item 1</div>
-      <div fxFlex="60" class="item">item 2</div>
-      <div fxFlex="20" class="item">item 1</div>
+    <div fxfill fxFlex="30" fxLayout="row">
+      <div fxFlex="20">
+        <h2 fxLayoutAlign="center" >Our Twitter Feed</h2>
+        <ngx-twitter-timeline [data]="{
+            sourceType: 'url',
+            url: 'https://twitter.com/twitterdev'}" [opts]="{
+              tweetLimit: 1,
+              height: 10,
+              borderColor: '#a3349f',
+              chrome: ['noheader', 'nofooter', 'noborders', 'transparent' , 'noscrollbar']
+            }"></ngx-twitter-timeline>
+      </div>
     </div>
     <div fxFlex="10"></div>
   </div>

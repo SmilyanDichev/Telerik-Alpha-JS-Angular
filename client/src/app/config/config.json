@@ -1,1 +1,4 @@
-{ "background":"http://heyhuman.com/dev/wp-content/uploads/revslider/people2/header-people-pink.jpg" } 
+{
+  "background": "http://heyhuman.com/dev/wp-content/uploads/revslider/people2/header-people-pink.jpg",
+  "text":"Wellcome to our site!"
+}

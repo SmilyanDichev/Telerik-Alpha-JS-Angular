@@ -9,6 +9,7 @@ import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 import { ContactsComponent } from './contacts/contacts.component';
 import { HomeComponent } from './home/home.component';
 import { JobModule } from './job/job.module';
+import { NgxTwitterTimelineModule } from 'ngx-twitter-timeline';
 @NgModule({
     declarations: [
         ContactsComponent,
@@ -19,17 +20,19 @@ import { JobModule } from './job/job.module';
         RouterModule,
         JobModule,
         AgmCoreModule,
-        SharedModule
+        SharedModule,
+        NgxTwitterTimelineModule,
     ],
     exports: [
         JobModule,
         ContactsComponent,
         // AgmCoreModule,
         HomeComponent,
+        NgxTwitterTimelineModule,
     ],
     providers: [
         GoogleMapsAPIWrapper,
-    ]
+    ],
 })
 
 export class PublicModule {}
