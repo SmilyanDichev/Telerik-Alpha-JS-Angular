@@ -1,6 +1,8 @@
 import { Component, DoCheck, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { JobService } from '../../../../../core/job/job.service';
+import { FilterService} from '../../../../../core/filter/filter.service';
+// import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-job-list',
@@ -14,22 +16,32 @@ export class JobListComponent implements OnInit {
 
   @ViewChild('paginator') private paginator: MatPaginator;
 
-  constructor(private jobService: JobService) {
+  constructor(private jobService: JobService, private filterService: FilterService) {
   }
   public ngOnInit(): void {
-    this.getJobs();
+    this.setJobsTable();
     }
 
   private ngDoCheck(): void {
   }
 
-  private getJobs(): void {
+  private applyFilter(filterValues: string[]): void {
+    this.jobsData = this.filterService.tableData(this.jobsData, filterValues);
+    this.dataSource = new MatTableDataSource(this.jobsData);
+    setTimeout(() => this.dataSource.paginator = this.paginator);
+  }
+
+  private resetFilter(): void {
+    console.log('reset filter');
+    this.setJobsTable();
+  }
+
+  private setJobsTable(): void {
    this.jobService.getActiveJobs().subscribe((res: any[]) => {
         this.jobsData = res;
         this.dataSource = new MatTableDataSource(this.jobsData);
         setTimeout(() => this.dataSource.paginator = this.paginator);
-        
-        console.log(res);
+        // console.log(res);
     });
   }
 }

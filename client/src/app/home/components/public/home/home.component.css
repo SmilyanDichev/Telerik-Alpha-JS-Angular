@@ -16,6 +16,11 @@
     color: whitesmoke;
     text-align: center;
 }
+#small-text{
+    font-family: "Courgette", Times, serif;
+    text-align: center;
+    /* font-size: 75%; */
+}
 
 .picture{
     background-repeat: no-repeat;

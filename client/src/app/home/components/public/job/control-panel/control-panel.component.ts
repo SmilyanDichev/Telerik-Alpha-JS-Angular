@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 // import { CommonModule } from '../../../../../shared/modules/shared/shared.module';
+
 @Component({
   selector: 'app-control-panel',
   templateUrl: './control-panel.component.html',
@@ -8,32 +9,46 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 })
 export class ControlPanelComponent implements OnInit {
 
-  rForm: FormGroup;
-  keyword: string;
-  select: string;
-  date: string;
+  @Output()
+  private clickResetEvent = new EventEmitter();
+  @Output()
+  private clickFilterEvent = new EventEmitter();
+
+  private rForm: FormGroup;
+  private keyword: string;
+  private select: string;
+  private date: string;
   
-  categories = [
+  private categories: string[] = [
     'cat A',
     'cat B',
     'cat C',
     'cat D',
-  ]
+  ];
 
   constructor(private formBuilder: FormBuilder) {
    }
 
-  ngOnInit() {
-    this.rForm= this.formBuilder.group({
-      keyword: [null,],
+  ngOnInit(): void {
+    this.rForm = this.formBuilder.group({
+      keyword: [null],
       select: [null],
       date: [null],
-    })
-    
+    });
   }
 
-  submit(rForm){
-   console.log('filter submit');
+  private submit(rForm: object): void {
+    this.clickFilterEvent.emit(rForm);
+  }
+
+  private reset(): void {
+    this.keyword = null;
+    this.select = null;
+    this.date = null;
+    this.clickResetEvent.emit(null);
+  }
+
+  private getCategories(): void {
   }
 
 }
