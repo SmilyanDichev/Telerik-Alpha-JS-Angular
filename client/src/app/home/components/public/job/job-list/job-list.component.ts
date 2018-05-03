@@ -10,7 +10,7 @@ import { JobService } from '../../../../../core/job/job.service';
 export class JobListComponent implements OnInit {
   private jobsData: any[];
   private displayedColumns = ['title', 'actions'];
-  private dataSource = new MatTableDataSource<any>;
+  private dataSource = new MatTableDataSource<any>();
 
   @ViewChild('paginator') private paginator: MatPaginator;
 

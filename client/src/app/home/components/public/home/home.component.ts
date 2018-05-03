@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import * as config from '../../../../config/config.json';
 declare function require(url: string);
 @Component({
@@ -8,7 +9,8 @@ declare function require(url: string);
 })
 export class HomeComponent implements OnInit {
   background = (<any>config).background;
-  
+  text = (<any>config).text;
+
   constructor() { }
 
   ngOnInit() {
