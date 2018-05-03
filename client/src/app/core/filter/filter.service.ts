@@ -27,8 +27,6 @@ export class FilterService {
         }
       }
       if (date) {
-        console.log('date', date);
-        console.log('createdAt', ('' + job.createdAt).substring(0, finalChar));
         if (date !== ('' + job.createdAt).substring(0, finalChar)) {
           // break;
           isSuccess = false;
@@ -37,7 +35,6 @@ export class FilterService {
 
       return isSuccess === true;
     });
-    console.log('filter result', result);
     return result;
   }
 

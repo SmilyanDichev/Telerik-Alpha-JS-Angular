@@ -42,10 +42,8 @@ export class ControlPanelComponent implements OnInit {
   }
 
   private reset(): void {
-    this.keyword = null;
-    this.select = null;
-    this.date = null;
     this.clickResetEvent.emit(null);
+    this.rForm.reset();
   }
 
   private getCategories(): void {
