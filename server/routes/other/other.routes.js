@@ -27,6 +27,13 @@ const init = (app, data) => {
                 contacts: allContacts,
             });
         })
+        .get('/categories', async (req, res) => {
+            const allCategories = await controller.getAllCategories();
+            res.status(200).json({
+                msg: 'success',
+                contacts: allCategories,
+            });
+        })
         .post('/contacts/add', passport.authenticate('jwt', {
             session: false,
         }, async (req, res) => {

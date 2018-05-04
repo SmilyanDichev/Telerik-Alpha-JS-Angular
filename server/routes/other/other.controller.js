@@ -1,32 +1,40 @@
 const init = (app, data) => {
-        // Contacts
+    //Categories
 
-        const getAllContacts = async () => {
-            try {
-                return await data.contacts.getAllContacts();
-            } catch (exception) {
-                throw new Error(
-                    'Request to get all contacts rejected in other controller!\n' +
-                    exception);
-            }
-        };
+    const getAllCategories = async () => {
+        console.log('! ! !other controller categories ! ! !');
+        console.log(data.categories);
+        console.log(data.userJob);
+        // return await data.categories.getAll();
+    };
 
-        const createContact = async (contact) => {
-            try {
-                return await data.contact.create(contact);
-            } catch (exception) {
-                throw new Error(
-                    'Request to create new contact rejected \n' +
-                    exception);
-            }
-        };
+    // Contacts
+    const getAllContacts = async () => {
+        try {
+            return await data.contacts.getAllContacts();
+        } catch (exception) {
+            throw new Error(
+                'Request to get all contacts rejected in other controller!\n' +
+                exception);
+        }
+    };
 
-        const editContact= (link) => {
-            // TO DO
-        };
+    const createContact = async (contact) => {
+        try {
+            return await data.contacts.create(contact);
+        } catch (exception) {
+            throw new Error(
+                'Request to create new contact rejected \n' +
+                exception);
+        }
+    };
+
+    const editContact = (contact) => {
+        // TO DO
+    };
 
 
-        // Links
+    // Links
     const getAllLinks = async () => {
         try {
             return await data.link.getAllLink();
@@ -58,6 +66,7 @@ const init = (app, data) => {
         createContact,
         editLink,
         editContact,
+        getAllCategories,
     };
 };
 

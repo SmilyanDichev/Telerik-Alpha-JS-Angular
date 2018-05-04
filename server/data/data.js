@@ -3,14 +3,14 @@ const UserData = require('./user.data');
 const JobData = require('./job.data');
 const LinkData = require('./link.data');
 const ContactData = require('./contacts.data');
-const {
-    userJob,
-} = require('../db/models');
+const { UserJob } = require('../db/models/');
+const { JobCategory } = require('../db/models/');
 module.exports = {
     user: new UserData(),
     job: new JobData(),
     link: new LinkData(),
-    contact: new ContactData(),
-    userJob: new Data(userJob, [JobData, UserData]),
+    contacts: new ContactData(),
+    categories: new Data( JobCategory, []),
+    userJob: new Data(UserJob, [JobData, UserData]),
 };
 
