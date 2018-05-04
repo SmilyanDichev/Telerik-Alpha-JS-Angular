@@ -31,7 +31,7 @@ const init = (app, data) => {
             const allCategories = await controller.getAllCategories();
             res.status(200).json({
                 msg: 'success',
-                contacts: allCategories,
+                categories: allCategories,
             });
         })
         .post('/contacts/add', passport.authenticate('jwt', {

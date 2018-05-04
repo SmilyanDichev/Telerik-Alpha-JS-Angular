@@ -3,9 +3,9 @@ const init = (app, data) => {
 
     const getAllCategories = async () => {
         console.log('! ! !other controller categories ! ! !');
-        console.log(data.categories);
-        console.log(data.userJob);
-        // return await data.categories.getAll();
+        // console.log(data.categories);
+        // console.log(data.userJob);
+        return await data.categories.getAll();
     };
 
     // Contacts
