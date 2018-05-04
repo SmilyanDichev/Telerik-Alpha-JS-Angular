@@ -15,7 +15,7 @@ const init = (app, data) => {
             const allLinks = await controller.getAllLinks(req.body);
             res.status(200).json({
                 msg: 'success',
-                data: allLinks,
+                links: allLinks,
             });
         })
         .get('/contacts', passport.authenticate('jwt', {
@@ -24,17 +24,17 @@ const init = (app, data) => {
             const allContacts = await controller.getAllContacts(req.body);
             res.status(200).json({
                 msg: 'success',
-                data: allContacts,
+                contacts: allContacts,
             });
         })
         .get('/categories', async (req, res) => {
             let allCategories = await controller.getAllCategories();
-            allCategories=allCategories.map((x)=> {
+            allCategories.map((x)=> {
                 return x.name;
             });
             res.status(200).json({
                 msg: 'success',
-                data: allCategories,
+                categories: allCategories,
             });
         })
         .post('/contacts/add', passport.authenticate('jwt', {
