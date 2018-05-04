@@ -10,8 +10,11 @@ const init = (app, data) => {
 
     // Contacts
     const getAllContacts = async () => {
+        console.log(' ! ! ! get get all contact controller');
         try {
-            return await data.contacts.getAllContacts();
+            const allContacts = await data.contacts.getAll();
+            console.log(allContacts);
+            return allContacts;
         } catch (exception) {
             throw new Error(
                 'Request to get all contacts rejected in other controller!\n' +
