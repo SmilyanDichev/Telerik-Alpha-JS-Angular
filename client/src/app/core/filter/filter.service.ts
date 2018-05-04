@@ -9,7 +9,7 @@ export class FilterService {
   public tableData(initialData, filterData): object[] {
     const finalChar = 10;
     const keyword = filterData.keyword !== null ? filterData.keyword.toLowerCase().trim() : null;
-    const select = filterData.select !== null ? filterData.select.toLowerCase().trim() : null;
+    const categorie = filterData.categorie !== null ? filterData.categorie.toLowerCase().trim() : null;
     const date = filterData.date !== null ? this.formatDate(filterData.date) : null;
     const result = initialData.filter((job) => {
       let isSuccess = true;
@@ -20,8 +20,8 @@ export class FilterService {
           isSuccess = false;
         }
       }
-      if (select) {
-        if (job.JobCategory.name.toLowerCase().trim() !== select) {
+      if (categorie) {
+        if (job.JobCategory.name.toLowerCase().trim() !== categorie) {
           // break;
           isSuccess = false;
         }

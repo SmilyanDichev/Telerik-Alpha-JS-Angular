@@ -26,6 +26,7 @@ export class JobListComponent implements OnInit {
   }
 
   private applyFilter(filterValues: string[]): void {
+    console.log(filterValues);
     this.jobsData = this.filterService.tableData(this.jobsData, filterValues);
     this.dataSource = new MatTableDataSource(this.jobsData);
     setTimeout(() => this.dataSource.paginator = this.paginator);

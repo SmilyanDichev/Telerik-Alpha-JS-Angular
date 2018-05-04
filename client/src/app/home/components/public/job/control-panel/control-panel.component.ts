@@ -16,18 +16,20 @@ export class ControlPanelComponent implements OnInit {
 
   private rForm: FormGroup;
   private keyword: string;
-  private categories: object [];
+  // private categories: string [];
+  private categorie: string [];
   private date: string;
+  private input: string[];
 
   constructor(private formBuilder: FormBuilder,
-    private categorieService: CategorieService ) {
-   }
+              private categorieService: CategorieService) {
+  }
 
   public ngOnInit(): void {
     this.getAllCategories();
     this.rForm = this.formBuilder.group({
       keyword: [null],
-      categories: [null],
+      categorie: [null],
       date: [null],
     });
   }
@@ -43,14 +45,8 @@ export class ControlPanelComponent implements OnInit {
 
   private getAllCategories(): void {
     this.categorieService.getAllCategories().subscribe((res) => {
-      this.categories = res.categories.map((el)=>{
-        return el.name;
-      });
-      console.log('!!! get All categories res !!!', this.category);
-      // res=res.categories;
-      // const temp = res.categories.map( (el) => {
-      //   return el.name;
-      // });
+      console.log('!!! get All categories res !!!', res.categories);
+      this.input = res.categories;
     });
   }
 }
