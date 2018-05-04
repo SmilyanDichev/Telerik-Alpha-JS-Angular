@@ -1,11 +1,11 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-// import { CommonModule } from '../../../../../shared/modules/shared/shared.module';
+import { CategorieService } from '../../../../../core/categorie/categorie.service';
 
 @Component({
   selector: 'app-control-panel',
   templateUrl: './control-panel.component.html',
-  styleUrls: ['./control-panel.component.css']
+  styleUrls: ['./control-panel.component.css'],
 })
 export class ControlPanelComponent implements OnInit {
 
@@ -16,23 +16,18 @@ export class ControlPanelComponent implements OnInit {
 
   private rForm: FormGroup;
   private keyword: string;
-  private select: string;
+  private categories: object [];
   private date: string;
-  
-  private categories: string[] = [
-    'cat A',
-    'cat B',
-    'cat C',
-    'cat D',
-  ];
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+    private categorieService: CategorieService ) {
    }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
+    this.getAllCategories();
     this.rForm = this.formBuilder.group({
       keyword: [null],
-      select: [null],
+      categories: [null],
       date: [null],
     });
   }
@@ -46,7 +41,16 @@ export class ControlPanelComponent implements OnInit {
     this.rForm.reset();
   }
 
-  private getCategories(): void {
+  private getAllCategories(): void {
+    this.categorieService.getAllCategories().subscribe((res) => {
+      this.categories = res.categories.map((el)=>{
+        return el.name;
+      });
+      console.log('!!! get All categories res !!!', this.category);
+      // res=res.categories;
+      // const temp = res.categories.map( (el) => {
+      //   return el.name;
+      // });
+    });
   }
-
 }

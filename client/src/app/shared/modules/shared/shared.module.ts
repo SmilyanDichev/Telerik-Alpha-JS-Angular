@@ -9,7 +9,7 @@ import { MatButtonModule, MatCardModule, MatDatepickerModule,
 import { MatTableModule } from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminGuard, AuthService, ContactService, JobService, LinkService, FilterService } from '../../../core';
-
+import { CategorieService } from '../../../core/categorie/categorie.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -59,6 +59,7 @@ import { AdminGuard, AuthService, ContactService, JobService, LinkService, Filte
     LinkService,
     FilterService,
     ContactService,
+    CategorieService,
     AdminGuard,
   ],
 })

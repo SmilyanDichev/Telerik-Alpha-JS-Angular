@@ -1,7 +1,7 @@
-import { Component, DoCheck, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { FilterService } from '../../../../../core/filter/filter.service';
 import { JobService } from '../../../../../core/job/job.service';
-import { FilterService} from '../../../../../core/filter/filter.service';
 // import { filter } from 'rxjs/operators';
 
 @Component({
