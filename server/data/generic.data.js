@@ -4,9 +4,7 @@ class Data {
         this.includes = includes;
     }
     getAll() {
-        return this.Model.findAll({
-            include: this.includes,
-        });
+        return this.Model.findAll({});
     }
     getById(id) {
         return this.Model.findById(id, {

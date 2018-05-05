@@ -1,12 +1,13 @@
 const init = (app, data) => {
         // Contacts
 
-        const getAllContacts = async () => {
+        const getAllContacts = () => {
             try {
-                return await data.contacts.getAllContacts();
+                 return data.contact.getAll();
             } catch (exception) {
-                throw new Error(
-                    'Request to get all contacts rejected in other controller!\n' +
+                console.log(
+                    `-----------> Request to get all
+                    contacts rejected in other controller ` +
                     exception);
             }
         };
@@ -15,8 +16,8 @@ const init = (app, data) => {
             try {
                 return await data.contact.create(contact);
             } catch (exception) {
-                throw new Error(
-                    'Request to create new contact rejected \n' +
+                console.log(
+                    '-----------> Request to create new contact rejected ' +
                     exception);
             }
         };
@@ -31,8 +32,8 @@ const init = (app, data) => {
         try {
             return await data.link.getAllLink();
         } catch (exception) {
-            throw new Error(
-                'Request to get all links rejected in other controller!\n' +
+            console.log(
+                '-----------> Request to get all links rejected in other controller! ' +
                 exception);
         }
     };
@@ -41,8 +42,8 @@ const init = (app, data) => {
         try {
             return await data.link.create(link);
         } catch (exception) {
-            throw new Error(
-                'Request to create new link rejected \n' +
+            console.log(
+                '-----------> Request to create new link rejected ' +
                 exception);
         }
     };
