@@ -19,6 +19,10 @@ export class JobService {
   //   // return  this.http
   //   // TO DO
   // }
+  public deleteJob(jobId: number): Observable<object> {
+    console.log('Response acquired! sending request! ', jobId);
+    return this.http.post(`${this.appConfig.apiUrl}jobs/delete`, jobId);
+  }
 
   public getActiveJobs(): Observable<object> {
     return this.http.get(`${this.appConfig.apiUrl}jobs/active`);
@@ -29,7 +33,6 @@ export class JobService {
   }
 
   public getJobDetails(jobID: number): Observable<object> {
-    console.log('jobID', jobID);
     return this.http.get(`${this.appConfig.apiUrl}jobs/${jobID}`);
   }
 

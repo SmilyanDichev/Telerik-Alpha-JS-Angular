@@ -13,6 +13,7 @@ const init = (app, data) => {
         getAllJobs,
         createNewJob,
         editJob,
+        deleteJob,
     } = jobController.init(app, data);
     const {
         applyJob,
@@ -89,7 +90,8 @@ const init = (app, data) => {
                 console.log('-------------> JOB IS DONE!');
                 res.redirect('/jobs');
             } catch (exception) {
-                console.log('-------------> JOB FAILED!', exception);
+                console.log('-------------> JOB FAILED in job routes! '
+                , exception);
 
                 res.status(502).json({
                     msg: 'Request to create job rejected in job routes!',
@@ -97,6 +99,26 @@ const init = (app, data) => {
                 });
             }
         })
+        .post('/delete', passport.authenticate('jwt-admin', {
+            session: false,
+        }), async (req, res) => {
+            try {
+                console.log('-------------> DELETING JOB! the request body is ',
+                req.body);
+                await deleteJob(req.body);
+                res.redirect('/jobs');
+            } catch (exception) {
+                console.log('-------------> JOB DELETION FAILED in job routes! '
+                , exception);
+
+                res.status(502).json({
+                    msg: 'Request to delete job rejected in job routes! ',
+                    exception,
+                });
+            }
+        })
+
+
         .post('/edit', passport.authenticate('jwt', {
             session: false,
         }), async (req, res) => {
