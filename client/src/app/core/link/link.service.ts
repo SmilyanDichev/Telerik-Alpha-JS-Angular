@@ -9,14 +9,14 @@ export class LinkService {
 
     // links
   getLinks() {
-      return  this.http.get(`${this.appConfig.apiUrl}/links`);
+      return  this.http.get(`${this.appConfig.apiUrl}links`);
     }
   createLink(link) {
-      return this.http.post(`${this.appConfig.apiUrl}/links/add`, link);
+      return this.http.post(`${this.appConfig.apiUrl}links/add`, link);
     }
 
   editLink(link) {
-      return this.http.post(`${this.appConfig.apiUrl}/links/edit`, link);
+      return this.http.post(`${this.appConfig.apiUrl}links/edit`, link);
     }
 
   }
