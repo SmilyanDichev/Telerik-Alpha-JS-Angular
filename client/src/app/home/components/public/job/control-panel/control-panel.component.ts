@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { CategorieService } from '../../../../../core/categorie/categorie.service';
+import { CategoryService } from '../../../../../core/category/category.service';
 
 @Component({
   selector: 'app-control-panel',
@@ -17,19 +17,19 @@ export class ControlPanelComponent implements OnInit {
   private rForm: FormGroup;
   private keyword: string;
   // private categories: string [];
-  private categorie: string [];
+  private category: string [];
   private date: string;
   private input: string[];
 
   constructor(private formBuilder: FormBuilder,
-              private categorieService: CategorieService) {
+              private categoryService: CategoryService) {
   }
 
   public ngOnInit(): void {
     this.getAllCategories();
     this.rForm = this.formBuilder.group({
       keyword: [null],
-      categorie: [null],
+      category: [null],
       date: [null],
     });
   }
@@ -44,7 +44,7 @@ export class ControlPanelComponent implements OnInit {
   }
 
   private getAllCategories(): void {
-    this.categorieService.getAllCategories().subscribe((res) => {
+    this.categoryService.getAllCategories().subscribe((res) => {
       console.log('!!! get All categories res !!!', res.categories);
       this.input = res.categories;
     });
