@@ -1,9 +1,7 @@
+import { MapsAPILoader } from '@agm/core';
 import { Component, OnInit } from '@angular/core';
-import { AgmCoreModule, MapsAPILoader } from '@agm/core';
-import { MapService } from '../../../../shared/services/map/map.service';
-import { google } from '@agm/core/services/google-maps-types';
 import { ContactService } from '../../../../core/contact/contact.service';
-
+import { MapService } from '../../../../shared/services/map/map.service';
 
 
 @Component({
@@ -17,16 +15,29 @@ export class ContactsComponent implements OnInit {
   private lng: number ;
   private zoom: number = 18;
   private address: string  = 'bul. "Aleksandar Malinov" 31, 1729 g.k. Mladost 1A, Sofia';
+  private contacts: any[];
 
   constructor(
     private loader: MapsAPILoader,
-    private mapService: MapService) { }
+    private mapService: MapService,
+    private contactService: ContactService) { }
 
-  ngOnInit() {
-    this.mapService.geocodeAddress(this.address).subscribe((res) => {
-      console.log(res);
+  public ngOnInit(): void {
+    this.getMainAdress(this.address);
+    this.getAllContacts();
+  }
+
+  private getMainAdress(address: string): void {
+    this.mapService.geocodeAddress(address).subscribe((res) => {
       this.lat = res.lat;
       this.lng = res.lng;
+    });
+  }
+
+  private getAllContacts(): void {
+    console.log('getAllContacts');
+    this.contactService.getContacts().subscribe((res) => {
+      this.contacts = res.contacts;
     });
   }
 
