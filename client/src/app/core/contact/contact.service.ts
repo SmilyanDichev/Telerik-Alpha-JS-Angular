@@ -8,15 +8,15 @@ export class ContactService {
   constructor(private appConfig: AppConfig, private http: HttpClient) { }
     // Jobs
     // contacts
-  getContacts() {
-      return  this.http.get(`${this.appConfig.apiUrl}/contacts`);
+  public getContacts(): any {
+      return  this.http.get(`${this.appConfig.apiUrl}contacts`);
     }
 
-  createContact(contact) {
-      return this.http.post(`${this.appConfig.apiUrl}/contacts/add`, contact);
+  public createContact(contact): any {
+      return this.http.post(`${this.appConfig.apiUrl}contacts/add`, contact);
     }
 
-  editContact(contact) {
-      return this.http.post(`${this.appConfig.apiUrl}/contacts/edit`, contact);
+  public editContact(contact): any {
+      return this.http.post(`${this.appConfig.apiUrl}contacts/edit`, contact);
     }
 }
