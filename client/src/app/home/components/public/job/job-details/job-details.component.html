@@ -7,7 +7,7 @@
         <h3  fxFlex="2" fxLayoutAlign="center center" >Description</h3>
         <div class="mat-elevation-z2" fxFlex="92"> {{details.description}}</div>
         <div fxFlex="2"></div>
-        <div  fxFlex="2" fxLayoutAlign="center center"><a mat-raised-button color="primary">apply now</a></div>
+        <div  fxFlex="2" fxLayoutAlign="center center"><a (click)="applyJob(details.id)" mat-raised-button color="primary">apply now</a></div>
         <!-- <router-outlet></router-outlet> -->
     </div>
   </div>
