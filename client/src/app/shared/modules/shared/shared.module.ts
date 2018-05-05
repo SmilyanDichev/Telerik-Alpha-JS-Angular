@@ -8,7 +8,7 @@ import {
   MatNativeDateModule, MatPaginatorModule, MatSelectModule, MatSidenavModule, MatToolbarModule } from '@angular/material';
 import { MatTableModule } from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AdminGuard, AuthService, ContactService, JobService, LinkService } from '../../../core';
+import { AdminGuard, AuthService, ContactService, JobService, LinkService, UserService } from '../../../core';
 
 @NgModule({
   imports: [
@@ -59,6 +59,7 @@ import { AdminGuard, AuthService, ContactService, JobService, LinkService } from
     LinkService,
     ContactService,
     AdminGuard,
+    UserService,
   ],
 })
 export class SharedModule { }
