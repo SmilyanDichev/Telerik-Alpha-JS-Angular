@@ -1,12 +1,12 @@
 const Data = require('./generic.data');
 
 const {
-    Contacts,
+    Contact,
 } = require('../db/models/');
 
 class ContactsData extends Data {
     constructor() {
-        super(Contacts, []);
+        super(Contact, []);
     }
 
     editContact(contactId, newInfo) {
