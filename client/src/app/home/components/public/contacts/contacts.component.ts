@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AgmCoreModule, MapsAPILoader } from '@agm/core';
 import { MapService } from '../../../../shared/services/map/map.service';
 import { google } from '@agm/core/services/google-maps-types';
+import { ContactService } from '../../../../core/contact/contact.service';
+
 
 
 @Component({
@@ -10,16 +12,14 @@ import { google } from '@agm/core/services/google-maps-types';
   styleUrls: ['./contacts.component.css']
 })
 export class ContactsComponent implements OnInit {
-  title: string = 'My first AGM project';
-  lat: number ;
-  lng: number ;
-  zoom: number = 18;
-  address: string  = 'bul. "Aleksandar Malinov" 31, 1729 g.k. Mladost 1A, Sofia';
+  private title: string = 'My first AGM project';
+  private lat: number ;
+  private lng: number ;
+  private zoom: number = 18;
+  private address: string  = 'bul. "Aleksandar Malinov" 31, 1729 g.k. Mladost 1A, Sofia';
 
-  // constructor(private loader: MapsAPILoader, private zone: NgZone, private mapService: MapService) { }
   constructor(
     private loader: MapsAPILoader,
-    // private zone: NgZone,
     private mapService: MapService) { }
 
   ngOnInit() {
@@ -28,9 +28,6 @@ export class ContactsComponent implements OnInit {
       this.lat = res.lat;
       this.lng = res.lng;
     });
-    // this.mapService.getGeoLocation(this.address).subscribe((res) => {
-    //   console.log(res);
-    // });
   }
 
 }

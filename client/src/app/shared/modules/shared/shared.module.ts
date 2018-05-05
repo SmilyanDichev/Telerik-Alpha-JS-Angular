@@ -2,13 +2,14 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {
-  MatButtonModule, MatCardModule, MatDatepickerModule,
+import { MatButtonModule, MatCardModule, MatDatepickerModule,
   MatDialogModule, MatIconModule, MatInputModule, MatListModule,
-  MatNativeDateModule, MatPaginatorModule, MatSelectModule, MatSidenavModule, MatToolbarModule } from '@angular/material';
+   MatNativeDateModule, MatPaginatorModule, MatSelectModule,
+   MatSidenavModule, MatToolbarModule } from '@angular/material';
 import { MatTableModule } from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AdminGuard, AuthService, ContactService, JobService, LinkService, UserService } from '../../../core';
+import { AdminGuard, AuthService, ContactService, FilterService, JobService, LinkService, UserService } from '../../../core';
+import { CategorieService } from '../../../core/categorie/categorie.service';
 
 @NgModule({
   imports: [
@@ -57,7 +58,9 @@ import { AdminGuard, AuthService, ContactService, JobService, LinkService, UserS
     AuthService,
     JobService,
     LinkService,
+    FilterService,
     ContactService,
+    CategorieService,
     AdminGuard,
     UserService,
   ],

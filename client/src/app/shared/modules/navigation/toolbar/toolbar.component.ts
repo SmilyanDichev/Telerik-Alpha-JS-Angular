@@ -1,6 +1,5 @@
 import { Component, OnInit , Output, EventEmitter, Input } from '@angular/core';
 
-
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
@@ -11,36 +10,45 @@ import { Component, OnInit , Output, EventEmitter, Input } from '@angular/core';
 export class ToolbarComponent implements OnInit {
 
   @Input()
-  isAuth: boolean;
+  private isAuth: boolean;
 
   @Input()
-  isAdmin: boolean;
+  private isAdmin: boolean;
 
   @Input()
-  currentUserEmail: string;
+  private  currentUserEmail: string;
 
-  @Output() clickMenuEvent = new EventEmitter();
-  @Output() clickLoginEvent = new EventEmitter();
-  @Output() clickRegisterEvent = new EventEmitter();
-  @Output() clickLogoutEvent = new EventEmitter();
-  constructor() { }
+  @Output()
+  private clickMenuEvent = new EventEmitter();
 
-  menuClick() {
+  @Output()
+  private clickLoginEvent = new EventEmitter();
+
+  @Output()
+  private clickRegisterEvent = new EventEmitter();
+
+  @Output()
+  private clickLogoutEvent = new EventEmitter();
+
+  constructor() {
+   }
+
+  private menuClick(): void {
     this.clickMenuEvent.emit(null);
   }
-  loginClick() {
+
+  private loginClick(): void {
     this.clickLoginEvent.emit(null);
   }
-  registerClick() {
-    console.log('reg event');
+
+  private registerClick(): void {
     this.clickRegisterEvent.emit(null);
   }
-  logoutClick() {
-    console.log('out event');
+
+  private logoutClick(): void {
     this.clickLogoutEvent.emit(null);
   }
-  ngOnInit() {
 
-    console.log(this.isAuth);
+  public ngOnInit(): void {
   }
 }

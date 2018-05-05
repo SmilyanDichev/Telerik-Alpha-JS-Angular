@@ -68,10 +68,7 @@ public confirm(jobId: number): void {
   this.confirmComponentRef
   .afterClosed()
   .subscribe((permission) => {
-    console.log('Confirm Return Value ', permission, ' for jobID ', jobId);
-
     if (permission === true) {
-    console.log('Permission passed! On to Job Service! ', permission, ' for jobID ', jobId);
     this.jobService.deleteJob(jobId).subscribe(
            (res) => {
           console.log('Job Deleted Succesfully!');
@@ -89,7 +86,7 @@ private getJobs(): void {
     (res: JobObj[]) => {
       const convertedJobs = this.jobService.jobObjectConverter(res);
       this.dataSource = new MatTableDataSource(convertedJobs);
-      console.log('Job data from jobService received!', convertedJobs, res);
+      console.log('Job data from jobService received!', convertedJobs);
     },
     (error: HttpErrorResponse) => {
         console.log('Job data from jobService FAILED!', error);

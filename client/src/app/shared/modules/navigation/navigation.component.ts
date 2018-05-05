@@ -49,12 +49,10 @@ export class NavigationComponent  implements  DoCheck {
   }
 
   private loginModal(): void {
-    // console.log('login modal');
     this.loginComponentRef = this.dialog.open(LoginComponent);
     this.loginComponentRef
       .afterClosed()
       .subscribe((user) => {
-        // console.log('login dialog input data ', user);
         this.authService.login(user).subscribe((res) => {
             localStorage.setItem('access_token', res.token);
             this.toastr.success(`${user.email} logged in!`, 'Success');
@@ -67,12 +65,10 @@ export class NavigationComponent  implements  DoCheck {
   }
 
   private registerModal(): void {
-    // console.log('register modal');
     this.registerComponentRef = this.dialog.open(RegisterComponent);
     this.registerComponentRef
       .afterClosed()
       .subscribe((user) => {
-        // console.log('register dialog input data ', user);
         this.authService.register(user).subscribe(
           (res) => {
             console.log(res);

@@ -1,5 +1,5 @@
 <div fxFill fxFlex="100" fxLayout="column">
-  <form [formGroup]='rForm' (ngSubmit)="submit(rForm)">
+  <form [formGroup]='rForm' >
     <mat-dialog-content>
       <div>
         <mat-form-field>
@@ -8,10 +8,12 @@
       </div>
       <div>
         <mat-form-field>
-          <mat-select matSelect formControlName="select" placeholder="filter by category">
-            <mat-option *ngFor="let category of categories" [value]="category">
+          <mat-select matSelect formControlName="categorie" placeholder="filter by category">
+          <!-- <mat-select matSelect placeholder="filter by category"> -->
+            <mat-option *ngFor="let i of input" [value]="i.name">
+              {{i.name}}
             </mat-option>
-            <mat-option [value]=1></mat-option>
+            <!-- <mat-option [value]=1></mat-option> -->
           </mat-select>
         </mat-form-field>
       </div>
@@ -24,8 +26,8 @@
       </div>
     </mat-dialog-content>
     <mat-dialog-actions>
-        <button mat-raised-button color="primary" type="submit"> Filter</button>
-        <button mat-raised-button color="primary" type="button"> Reset</button>
+        <button mat-raised-button color="primary" (click)="submit(rForm)"> Filter</button>
+        <button mat-raised-button color="primary" (click)="reset(rForm)"> Reset</button>
     </mat-dialog-actions>
   </form>
 

@@ -35,7 +35,7 @@
     </div>
     <div fxFlex="5"> </div>
     <div fxFill fxFlex="15" color="primary" fxLayout="row" fxLayoutAlign="center space-around">
-      <app-control-panel>
+      <app-control-panel (clickFilterEvent)="applyFilter($event.value)" (clickResetEvent)="resetFilter()">
       </app-control-panel>
     </div>
     <div fxFlex="5"> </div>

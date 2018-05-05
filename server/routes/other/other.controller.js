@@ -1,39 +1,45 @@
 const init = (app, data) => {
-        // Contacts
+    // Categories
+    const getAllCategories = async () => {
+        console.log('! ! !other controller categories ! ! !');
+        return await data.categories.getAll();
+    };
 
-        const getAllContacts = () => {
-            try {
-                 return data.contact.getAll();
-            } catch (exception) {
-                console.log(
-                    `-----------> Request to get all
-                    contacts rejected in other controller ` +
-                    exception);
+    const getAllContacts = () => {
+        try {
+            return data.contact.getAll();
+        } catch (exception) {
+            console.log(
+                `-----------> Request to get all
+                contacts rejected in other controller ` +
+                exception);
             }
         };
 
-        const createContact = async (contact) => {
-            try {
-                return await data.contact.create(contact);
-            } catch (exception) {
-                console.log(
-                    '-----------> Request to create new contact rejected ' +
-                    exception);
-            }
-        };
+    // Contacts
+    const createContact = async (contact) => {
+        try {
+            return await data.contacts.create(contact);
+        } catch (exception) {
+            console.log(
+                '-----------> Request to create new contact rejected ' +
+                exception);
+        }
+    };
 
-        const editContact= (link) => {
-            // TO DO
-        };
+    const editContact = (contact) => {
+        // TO DO
+    };
 
 
-        // Links
+    // Links
     const getAllLinks = async () => {
         try {
             return await data.link.getAllLink();
         } catch (exception) {
             console.log(
-                '-----------> Request to get all links rejected in other controller! ' +
+                `-----------> Request to get all links
+                 rejected in other controller! ` +
                 exception);
         }
     };
@@ -59,6 +65,7 @@ const init = (app, data) => {
         createContact,
         editLink,
         editContact,
+        getAllCategories,
     };
 };
 

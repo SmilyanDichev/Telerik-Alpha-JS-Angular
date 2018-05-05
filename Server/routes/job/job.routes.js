@@ -35,7 +35,7 @@ const init = (app, data) => {
             } catch (exception) {
                 res.status(502).json({
                     msg: 'Request to get public jobs in job routes rejected!',
-                    err: exception,
+                    exception,
                 });
             }
         })
@@ -49,7 +49,7 @@ const init = (app, data) => {
             } catch (exception) {
                 res.status(401).json({
                     msg: 'Request to get all jobs in job routes rejected!',
-                    err: exception,
+                    exception,
                 });
             }
         })
@@ -63,7 +63,7 @@ const init = (app, data) => {
             } catch (exception) {
                 res.status(502).json({
                     msg: 'Job application in job routes rejected!',
-                    err: exception,
+                    exception,
                 });
             }
         })
@@ -76,7 +76,7 @@ const init = (app, data) => {
             } catch (exception) {
                 res.status(502).json({
                     msg: 'Job application in job routes rejected!',
-                    err: exception,
+                    exception,
                 });
             }
         })
@@ -84,10 +84,7 @@ const init = (app, data) => {
             session: false,
         }), async (req, res) => {
             try {
-                console.log('-------------> CREATING NEW JOB BEEP BOOP',
-                req.body);
                 await createNewJob(req.body);
-                console.log('-------------> JOB IS DONE!');
                 res.redirect('/jobs');
             } catch (exception) {
                 console.log('-------------> JOB FAILED in job routes! '
@@ -95,7 +92,7 @@ const init = (app, data) => {
 
                 res.status(502).json({
                     msg: 'Request to create job rejected in job routes!',
-                    err: exception,
+                    exception,
                 });
             }
         })
@@ -103,8 +100,6 @@ const init = (app, data) => {
             session: false,
         }), async (req, res) => {
             try {
-                console.log('-------------> DELETING JOB! the request body is ',
-                req.body);
                 await deleteJob(req.body);
                 res.redirect('/jobs');
             } catch (exception) {
@@ -128,7 +123,7 @@ const init = (app, data) => {
             } catch (exception) {
                 res.status(502).json({
                     msg: 'Request to edit job in job routes rejected!',
-                    err: exception,
+                    exception,
                 });
             }
         });
