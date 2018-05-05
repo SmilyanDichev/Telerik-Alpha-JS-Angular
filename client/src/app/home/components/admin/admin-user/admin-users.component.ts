@@ -3,13 +3,14 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-admin.user',
   templateUrl: './admin-users.component.html',
-  styleUrls: ['./admin-users.component.css']
+  styleUrls: ['./admin-users.component.css'],
 })
 export class AdminUsersComponent implements OnInit {
 
-  constructor() { }
+  // constructor() { }
 
-  ngOnInit() {
+  public ngOnInit(): void {
+    console.log('Admin Users Page Opened!');
   }
 
 }

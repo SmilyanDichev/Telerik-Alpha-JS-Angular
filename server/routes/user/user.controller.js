@@ -3,7 +3,23 @@ const init = (app, data) => {
     const jwt = require('jwt-simple');
     const moment = require('moment');
     const config = require('../../config/config');
+    const getAllUsers = async (req, res) => {
+        try {
+            const usersArr = await data.user.getUsersWithUserJobs();
+            return usersArr;
+        } catch (exception) {
+            console.log(`-------------->
+                Request to get all users
+                with application number
+                rejected in user controller! `,
+                exception);
 
+            res.status(502).json({
+                msg: 'Request to create job rejected in user controller!',
+                err: exception,
+        });
+    }
+};
     const login = async (req, res) => {
         const userFound = await data.user.getByEmail(req.email);
         let isPassword;
@@ -113,9 +129,11 @@ const init = (app, data) => {
         login,
         register,
         applyJob,
+        getAllUsers,
     };
 };
 
 module.exports = {
     init,
 };
+

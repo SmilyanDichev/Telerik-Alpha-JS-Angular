@@ -20,6 +20,27 @@ const init = (app, data) => {
         .get('/', (req, res)=>{
              res.send('NodeJS SERVER');
         })
+        // , passport.authenticate('jwt-admin', {
+        //     session: false,
+        // })
+        .get('/get-all',
+        passport.authenticate('jwt-admin', {
+            session: false,
+        }),
+        async (req, res) => {
+            try {
+                const allUsers = await controller.getAllUsers();
+                res.status(200).json(allUsers);
+            } catch (exception) {
+                console.log(`----------> Request to get all users in
+                user routes rejected!`,
+                exception);
+                res.status(502).json({
+                    msg: 'Request to get all users in user routes rejected!',
+                    err: exception,
+                });
+            }
+       })
         .post('/register', async (req, res) => {
             // console.log('! ! ! register ! ! !');
             // console.log(req.body);

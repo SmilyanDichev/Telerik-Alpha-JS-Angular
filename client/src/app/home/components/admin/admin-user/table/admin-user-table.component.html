@@ -1,0 +1,25 @@
+<mat-table #table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef> E-mail </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="CreatedAt">
+      <mat-header-cell *matHeaderCellDef> CreatedAt </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.createdAt}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="numOfAppl">
+      <mat-header-cell *matHeaderCellDef> Number of job applications </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.num}} </mat-cell>
+    </ng-container>
+    
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
