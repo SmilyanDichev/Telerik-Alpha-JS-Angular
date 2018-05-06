@@ -16,7 +16,6 @@ export class JobDetailsComponent implements OnInit {
   private details: object = [];
   private userEmail: string;
 
-
   private loginOrRegisterComponentRef: MatDialogRef<RegisterOrLoginComponent>;
 
   constructor(
@@ -32,10 +31,10 @@ export class JobDetailsComponent implements OnInit {
   }
   private applyJob (): void {
     if (this.isAuth()) {
-      this.userEmail = this.authService.getCurrentUserEmail();
-      this.jobService.applyJob( this.userEmail, this.details.id).subscribe((res) => {
-      this.toastr.success('Application Success');
-      });
+      // this.userEmail = this.authService.getCurrentUserEmail();
+      // this.jobService.applyJob( this.userEmail, this.details.id).subscribe((res) => {
+      // this.toastr.success('Application Success');
+      // });
     } else {
       this.loginOrRegisterComponentRef = this.dialog.open(RegisterOrLoginComponent);
       // this.loginOrRegisterComponentRef
@@ -47,12 +46,12 @@ export class JobDetailsComponent implements OnInit {
     }
   }
   private getDetails(): void {
-      this.route.params
-      .subscribe((params) => {
-        this.jobService.getJobDetails(params).subscribe((res) => {
-          this.details = res;
-        });
-      });
+      // this.route.params
+      // .subscribe((params) => {
+      //   this.jobService.getJobDetails(params).subscribe((res) => {
+      //     this.details = res;
+      //   });
+      // });
   }
 
   private isAuth(): boolean {

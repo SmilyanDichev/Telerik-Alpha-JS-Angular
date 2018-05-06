@@ -23,7 +23,7 @@ public editJobComponentRef: MatDialogRef<EditJobComponent>;
 public confirmComponentRef: MatDialogRef<ConfirmComponent>;
 
 private jobsData: object[];
-private displayedColumns = ['id', 'title', 'status', 'createdAt', 'view', 'edit', 'delete'];
+private displayedColumns = ['id', 'title', 'status', 'createdAt', 'actions'];
 private dataSource;
 private currentUserEmail: string;
 

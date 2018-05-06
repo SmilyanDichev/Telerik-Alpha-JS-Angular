@@ -10,8 +10,8 @@ export class ContactService {
   constructor(private appConfig: AppConfig, private http: HttpClient) { }
 
   // contacts
-  public getContacts(): Observable<object> {
-      return  this.http.get(`${this.appConfig.apiUrl}contacts`);
+  public getContacts(): any {
+      return this.http.get(`${this.appConfig.apiUrl}contacts`);
     }
   public  contactObjectConverter(contact: Contact[]): Contact[] {
     contact.map((el) => {
@@ -44,24 +44,18 @@ export class ContactService {
     return contact;
   }
 
-<<<<<<< HEAD
   public createContact(contact: Contact): Observable<object> {
       return this.http.post(`${this.appConfig.apiUrl}contacts/add`, contact);
     }
 
-  public editContact(id: number, newContact: Contact): Observable<object> {
-      const newContactObj = {
-        id,
-        newContact,
-      };
-      return this.http.post(`${this.appConfig.apiUrl}contacts/edit`, newContactObj);
-=======
-  public createContact(contact): any {
-      return this.http.post(`${this.appConfig.apiUrl}contacts/add`, contact);
-    }
-
-  public editContact(contact): any {
+  public editContact(contact: Contact): Observable<object> {
       return this.http.post(`${this.appConfig.apiUrl}contacts/edit`, contact);
->>>>>>> a8ce8a6d29fae14fe196cb47052bf2348695aa19
     }
+  // public createContact(contact): any {
+  //     return this.http.post(`${this.appConfig.apiUrl}contacts/add`, contact);
+  //   }
+
+  // public editContact(contact): any {
+  //     return this.http.post(`${this.appConfig.apiUrl}contacts/edit`, contact);
+  //   }
 }

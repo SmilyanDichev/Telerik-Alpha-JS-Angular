@@ -35,15 +35,14 @@
     <ng-container matColumnDef="edit">
       <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
       <mat-cell *matCellDef="let element">
-          <button mat-button (click)="editJobModal(element.id)">Edit</button>
+          <button mat-button mat-raised-button color="primary" (click)="editJobModal(element.id)">Edit</button>
         </mat-cell>
     </ng-container>
     
     <ng-container matColumnDef="delete">
       <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
       <mat-cell *matCellDef="let element"> 
-          <button mat-button (click)="confirm(element.id)">Delete</button>
-          <!-- (clickYesEvent)="confirm()" -->
+          <button mat-button mat-raised-button color="warn" (click)="confirm(element.id)">Delete</button>
         </mat-cell>
     </ng-container>
 
