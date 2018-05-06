@@ -6,7 +6,6 @@ import { Component, OnInit , Output, EventEmitter, Input } from '@angular/core';
   styleUrls: ['./toolbar.component.css']
 })
 
-
 export class ToolbarComponent implements OnInit {
 
   @Input()
@@ -16,7 +15,7 @@ export class ToolbarComponent implements OnInit {
   private isAdmin: boolean;
 
   @Input()
-  private  currentUserEmail: string;
+  private currentUserEmail: string;
 
   @Output()
   private clickMenuEvent = new EventEmitter();

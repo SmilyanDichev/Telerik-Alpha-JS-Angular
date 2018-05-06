@@ -19,9 +19,11 @@ export class NavigationComponent  implements  DoCheck {
   private currentUserEmail: string;
   // private isAdmin: boolean;
 
-  constructor(private dialog: MatDialog,
-              private authService: AuthService,
-              private toastr: ToastrService) { }
+  constructor(
+    private dialog: MatDialog,
+    private authService: AuthService,
+    private toastr: ToastrService) {
+    }
 
   // public ngOnInit(): void {
   // }

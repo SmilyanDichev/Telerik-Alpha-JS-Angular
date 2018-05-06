@@ -6,7 +6,8 @@ import { AuthService } from '../auth/auth.service';
 @Injectable()
 export class AdminGuard implements CanActivate {
 
-    constructor(private authService: AuthService){}
+    constructor(private authService: AuthService) {
+    }
 
     public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):
      boolean | Observable<boolean> | Promise<boolean> {

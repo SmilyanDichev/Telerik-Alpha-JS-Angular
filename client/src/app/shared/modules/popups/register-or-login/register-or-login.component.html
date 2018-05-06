@@ -1,8 +1,8 @@
 <form>
   <h1 mat-dialog-title> Not a user? </h1>
   <mat-dialog-actions>
-    <button mat-button type="button" mat-dialog-close (click)="openLoginModal()" mat-dialog-close> Login</button>
-    <button mat-button type="button" mat-dialog-close (click)="openRegModal()" mat-dialog-close> Register</button>
+    <button mat-button type="button" mat-dialog-close (click)="submit('login')" mat-dialog-close> Login</button>
+    <button mat-button type="button" mat-dialog-close (click)="submit('register')" mat-dialog-close> Register</button>
     <button mat-button type="button" mat-dialog-close >Cancel</button>
   </mat-dialog-actions>
 </form>

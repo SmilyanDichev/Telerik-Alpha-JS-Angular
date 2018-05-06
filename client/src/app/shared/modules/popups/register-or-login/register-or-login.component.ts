@@ -9,18 +9,14 @@ import { MatDialog, MatDialogRef } from '@angular/material';
 })
 export class RegisterOrLoginComponent implements OnInit {
 
-  constructor(private dialog: MatDialog) { }
+  constructor(
+    private dialogRef: MatDialogRef<RegisterOrLoginComponent>) { }
 
   public ngOnInit(): void {
-    console.log('RegOrLogin Modal opened!');
+    this.dialogRef.disableClose = true;
   }
 
-  private openLoginModal(): void {
-    console.log('Login Modal opened!');
-
-  }
-  private openRegModal(): void {
-    console.log('Register Modal opened!');
-
+  public submit(action: string): void {
+    this.dialogRef.close(action);
   }
 }

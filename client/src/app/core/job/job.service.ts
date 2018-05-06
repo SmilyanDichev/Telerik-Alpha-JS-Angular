@@ -6,6 +6,7 @@ import { JobObj } from '../../shared/models/job/jobObj';
 
 @Injectable()
 export class JobService {
+  // private stringEmail: string = "admin@foodstore.com";
 
   constructor(private appConfig: AppConfig, private http: HttpClient) {
 
@@ -14,14 +15,19 @@ export class JobService {
   // public getUserJobHistory(): Observable<object> {
   //   // return  this.http
   //   // TO DO
-  // }
-  // public applyJob(): Observable<object> {
-  //   // return  this.http
-  //   // TO DO
-  // }
   public deleteJob(jobId: number): Observable<object> {
     console.log('Response acquired! sending request! ', jobId);
     return this.http.post(`${this.appConfig.apiUrl}jobs/delete`, { jobId });
+  }
+  
+  public applyJob(userEmail: any, id: string, data: any): Observable<object> {
+    let files = new FormData();
+    console.log('data', data.CV);
+    files.append('cv', data.CV);
+    files.append('letter', 'cris');
+    console.log(files);
+    // return this.http.post(`${this.appConfig.apiUrl}jobs/apply/${id}`, userEmail);
+    return this.http.post(`${this.appConfig.apiUrl}jobs/apply/upload`, files);
   }
 
   public getActiveJobs(): Observable<object> {

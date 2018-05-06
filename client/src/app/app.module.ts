@@ -49,7 +49,7 @@ export function  tokenGetter() {
     NgbModule.forRoot(),
     JwtModule.forRoot({
       config: {
-        tokenGetter: tokenGetter,
+        tokenGetter,
         whitelistedDomains: ['localhost:8000'],
         blacklistedRoutes: [],
       },
