@@ -10,6 +10,7 @@ import { ApplyJobComponent } from './apply-job/apply-job.component';
 import { ConfirmComponent } from './confirm/confirm.component';
 import { EditContactComponent } from './edit-contact/edit-contact.component';
 import { EditJobComponent } from './edit-job/edit-job.component';
+import { EditLinkComponent } from './edit-link/edit-link.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterOrLoginComponent } from './register-or-login/register-or-login.component';
 import { RegisterComponent } from './register/register.component';
@@ -32,6 +33,7 @@ import { RegisterComponent } from './register/register.component';
     EditJobComponent,
     ConfirmComponent,
     EditContactComponent,
+    EditLinkComponent,
   ],
   exports: [
     LoginComponent,
@@ -45,6 +47,7 @@ import { RegisterComponent } from './register/register.component';
     EditContactComponent,
     MatRadioModule,
     SharedModule,
+    EditLinkComponent,
   ],
 })
 export class PopupsModule { }

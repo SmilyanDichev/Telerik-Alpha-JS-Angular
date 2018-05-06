@@ -13,10 +13,7 @@ const init = (app, data) => {
             session: false,
         }), async (req, res) => {
             const allLinks = await controller.getAllLinks(req.body);
-            res.status(200).json({
-                msg: 'success',
-                links: allLinks,
-            });
+            res.status(200).json(allLinks);
         })
         .get('/contacts', async (req, res) => {
             console.log('! ! ! contacts ! ! !');
@@ -33,25 +30,32 @@ const init = (app, data) => {
                 categories: allCategories,
             });
         })
-        .post('/contacts/add', passport.authenticate('jwt', {
+        .post('/contacts/add', passport.authenticate('jwt-admin', {
             session: false,
         }, async (req, res) => {
             await controller.createContact(req.body);
         }))
-        .post('/contacts/edit', passport.authenticate('jwt', {
+        .post('/contacts/edit', passport.authenticate('jwt-admin', {
             session: false,
         }, async (req, res) => {
             await controller.editContact(req.body);
         }))
-        .post('/links/add', passport.authenticate('jwt', {
+        .post('/links/add', passport.authenticate('jwt-admin', {
             session: false,
         }, async (req, res) => {
             await controller.createLink(req.body);
         }))
-        .post('/links/edit', passport.authenticate('jwt', {
+        .post('/links/edit', passport.authenticate('jwt-admin', {
             session: false,
         }, async (req, res) => {
             await controller.editLink(req.body);
+        }))
+        .post('/links/delete', passport.authenticate('jwt-admin', {
+            session: false,
+        }, async (req, res) => {
+            console.log('------------->Delete link request id ',
+            req.body, ' to server confirmed! Passing to controller!');
+            await controller.deleteLink(req.body);
         }))
         ;
     app.use('/', router);

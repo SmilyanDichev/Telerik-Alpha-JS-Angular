@@ -14,14 +14,16 @@ import { AddJobComponent } from './../../../shared/modules/popups/add-job/add-jo
 import { ConfirmComponent } from './../../../shared/modules/popups/confirm/confirm.component';
 import { EditContactComponent } from './../../../shared/modules/popups/edit-contact/edit-contact.component';
 import { EditJobComponent } from './../../../shared/modules/popups/edit-job/edit-job.component';
+import { EditLinkComponent } from './../../../shared/modules/popups/edit-link/edit-link.component';
 import { PopupsModule } from './../../../shared/modules/popups/popups.module';
-import { SharedModule } from './../../../shared/modules/shared/shared.module'
+import { SharedModule } from './../../../shared/modules/shared/shared.module';
 import { AdminAplicationsComponent } from './admin-aplications/admin-aplications.component';
 import { AdminContactsComponent } from './admin-contacts/admin-contacts.component';
 import { AdminContactsTableComponent } from './admin-contacts/table/admin-contacts-table.component';
 import { AdminJobsComponent } from './admin-jobs/admin-jobs.component';
 import { AdminJobsTableComponent } from './admin-jobs/table/admin-jobs-table.component';
 import { AdminLinksComponent } from './admin-links/admin-links.component';
+import { AdminLinksTableComponent } from './admin-links/table/admin-links-table.component';
 import { AdminUsersComponent } from './admin-user/admin-users.component';
 import { AdminUserTableComponent } from './admin-user/table/admin-user-table.component';
 
@@ -35,6 +37,7 @@ import { AdminUserTableComponent } from './admin-user/table/admin-user-table.com
         AdminJobsTableComponent,
         AdminUserTableComponent,
         AdminContactsTableComponent,
+        AdminLinksTableComponent,
     ],
     imports: [
         CommonModule,
@@ -66,6 +69,7 @@ import { AdminUserTableComponent } from './admin-user/table/admin-user-table.com
         EditJobComponent,
         ConfirmComponent,
         EditContactComponent,
+        EditLinkComponent,
     ],
 })
 

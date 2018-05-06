@@ -35,7 +35,7 @@ const init = (app, data) => {
     // Links
     const getAllLinks = async () => {
         try {
-            return await data.link.getAllLink();
+            return await data.link.getAllLinks();
         } catch (exception) {
             console.log(
                 `-----------> Request to get all links
@@ -54,8 +54,28 @@ const init = (app, data) => {
         }
     };
 
-    const editLink = (link) => {
-        // TO DO
+    const editLink = async (link) => {
+        try {
+            // console.log('------------>Passing delete link request id ',
+            // linkId, ' from other controller to link.data');
+            return await data.link.editLink(link);
+        } catch (exception) {
+            // console.log(
+                // '-----------> Request to delete link rejected ' +
+                // exception);
+        }
+    };
+
+    const deleteLink = async (linkId) => {
+        try {
+            console.log('------------>Passing delete link request id ',
+            linkId, ' from other controller to link.data');
+            return await data.link.deleteLink(linkId);
+        } catch (exception) {
+            console.log(
+                '-----------> Request to delete link rejected ' +
+                exception);
+        }
     };
 
     return {
@@ -64,6 +84,7 @@ const init = (app, data) => {
         createLink,
         createContact,
         editLink,
+        deleteLink,
         editContact,
         getAllCategories,
     };
