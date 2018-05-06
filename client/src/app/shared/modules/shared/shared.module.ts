@@ -8,8 +8,9 @@ import { MatButtonModule, MatCardModule, MatDatepickerModule,
   MatSidenavModule, MatToolbarModule } from '@angular/material';
 import { MatTableModule } from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AdminGuard, AuthService, ContactService, JobService, LinkService, FilterService } from '../../../core';
+import { AdminGuard, AuthService, ContactService, FilterService, JobService, LinkService, UserService } from '../../../core';
 import { CategoryService } from '../../../core/category/category.service';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -61,6 +62,7 @@ import { CategoryService } from '../../../core/category/category.service';
     ContactService,
     CategoryService,
     AdminGuard,
+    UserService,
   ],
 })
 export class SharedModule { }

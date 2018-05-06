@@ -5,6 +5,8 @@ const {
 } = require('../db/models/');
 
 class ContactsData extends Data {
+    // constructor(contacts) {
+    //     super(contacts, []);
     constructor() {
         super(Contact, []);
     }

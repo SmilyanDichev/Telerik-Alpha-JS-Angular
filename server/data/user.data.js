@@ -6,12 +6,23 @@ const {
 const {
     User,
     Job,
+    UserJob,
 } = require('../db/models');
 
 class UserData extends Data {
     constructor() {
         super(User, [Job]);
     }
+
+    getUsersWithUserJobs() {
+        return this.Model.findAll({
+            // include: [{
+            //     model: UserJob,
+            // }],
+        });
+    }
+
+
     getByEmail(email) {
         return this.Model.findOne({
             where: {

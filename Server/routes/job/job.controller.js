@@ -4,6 +4,20 @@ const init = (app, data) => {
     // const moment = require('moment');
     // const config = require('../../config/config');
 
+    const deleteJob = async (id)  => {
+        try {
+            const sameJob = await data.job.getById(id);
+            sameJob.isDeleted = 1;
+            console.log('-----------> Very complex query in progress!');
+            return await data.job.editJobData(sameJob);
+            // return await data.job.deleteJobData(id);
+        } catch (exception) {
+            console.log(`-----------> Request to delete job
+             rejected in job controller `, exception);
+        }
+    };
+
+
     const getPublicJobs = async () => {
         try {
             return await data.job.getAllActiveJobs();
@@ -39,7 +53,8 @@ const init = (app, data) => {
                 title: newJob.title,
                 description: newJob.description,
                 isActive: newJob.isActive,
-                isDeleted: newJob.isDeleted,
+                JobCategoryId: newJob.JobCategoryId,
+                isDeleted: 0,
             });
         } catch (exception) {
             throw new Error(
@@ -68,6 +83,7 @@ const init = (app, data) => {
         getAllJobs,
         createNewJob,
         editJob,
+        deleteJob,
     };
 };
 module.exports = {

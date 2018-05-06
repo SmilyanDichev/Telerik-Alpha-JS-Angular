@@ -13,6 +13,7 @@ const init = (app, data) => {
         getAllJobs,
         createNewJob,
         editJob,
+        deleteJob,
     } = jobController.init(app, data);
     const {
         applyJob,
@@ -34,7 +35,7 @@ const init = (app, data) => {
             } catch (exception) {
                 res.status(502).json({
                     msg: 'Request to get public jobs in job routes rejected!',
-                    err: exception,
+                    exception,
                 });
             }
         })
@@ -48,7 +49,7 @@ const init = (app, data) => {
             } catch (exception) {
                 res.status(401).json({
                     msg: 'Request to get all jobs in job routes rejected!',
-                    err: exception,
+                    exception,
                 });
             }
         })
@@ -62,7 +63,7 @@ const init = (app, data) => {
             } catch (exception) {
                 res.status(502).json({
                     msg: 'Job application in job routes rejected!',
-                    err: exception,
+                    exception,
                 });
             }
         })
@@ -75,30 +76,46 @@ const init = (app, data) => {
             } catch (exception) {
                 res.status(502).json({
                     msg: 'Job application in job routes rejected!',
-                    err: exception,
+                    exception,
                 });
             }
         })
-        .post('/create', passport.authenticate('jwt', {
-            session: true,
+        .post('/create', passport.authenticate('jwt-admin', {
+            session: false,
         }), async (req, res) => {
             try {
-                console.log('-------------> CREATING NEW JOB BEEP BOOP',
-                req.body);
                 await createNewJob(req.body);
-                console.log('-------------> JOB IS DONE!');
                 res.redirect('/jobs');
             } catch (exception) {
-                console.log('-------------> JOB FAILED!', exception);
+                console.log('-------------> JOB FAILED in job routes! '
+                , exception);
 
                 res.status(502).json({
                     msg: 'Request to create job rejected in job routes!',
-                    err: exception,
+                    exception,
                 });
             }
         })
+        .post('/delete', passport.authenticate('jwt-admin', {
+            session: false,
+        }), async (req, res) => {
+            try {
+                await deleteJob(req.body.jobId);
+                res.status(200);
+            } catch (exception) {
+                console.log('-------------> JOB DELETION FAILED in job routes! '
+                , exception);
+
+                res.status(502).json({
+                    msg: 'Request to delete job rejected in job routes! ',
+                    exception,
+                });
+            }
+        })
+
+
         .post('/edit', passport.authenticate('jwt', {
-            session: true,
+            session: false,
         }), async (req, res) => {
             try {
                 await editJob(res.body);
@@ -106,7 +123,7 @@ const init = (app, data) => {
             } catch (exception) {
                 res.status(502).json({
                     msg: 'Request to edit job in job routes rejected!',
-                    err: exception,
+                    exception,
                 });
             }
         });

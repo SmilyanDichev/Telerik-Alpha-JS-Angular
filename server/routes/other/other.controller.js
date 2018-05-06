@@ -1,33 +1,28 @@
 const init = (app, data) => {
-    //Categories
-
+    // Categories
     const getAllCategories = async () => {
         console.log('! ! !other controller categories ! ! !');
-        // console.log(data.categories);
-        // console.log(data.userJob);
         return await data.categories.getAll();
     };
 
-    // Contacts
-    const getAllContacts = async () => {
-        console.log(' ! ! ! get get all contact controller');
+    const getAllContacts = () => {
         try {
-            const allContacts = await data.contacts.getAll();
-            console.log(allContacts);
-            return allContacts;
+            return data.contact.getAll();
         } catch (exception) {
-            throw new Error(
-                'Request to get all contacts rejected in other controller!\n' +
+            console.log(
+                `-----------> Request to get all
+                contacts rejected in other controller ` +
                 exception);
-        }
-    };
+            }
+        };
 
+    // Contacts
     const createContact = async (contact) => {
         try {
             return await data.contacts.create(contact);
         } catch (exception) {
-            throw new Error(
-                'Request to create new contact rejected \n' +
+            console.log(
+                '-----------> Request to create new contact rejected ' +
                 exception);
         }
     };
@@ -40,10 +35,11 @@ const init = (app, data) => {
     // Links
     const getAllLinks = async () => {
         try {
-            return await data.link.getAllLink();
+            return await data.link.getAllLinks();
         } catch (exception) {
-            throw new Error(
-                'Request to get all links rejected in other controller!\n' +
+            console.log(
+                `-----------> Request to get all links
+                 rejected in other controller! ` +
                 exception);
         }
     };
@@ -52,14 +48,34 @@ const init = (app, data) => {
         try {
             return await data.link.create(link);
         } catch (exception) {
-            throw new Error(
-                'Request to create new link rejected \n' +
+            console.log(
+                '-----------> Request to create new link rejected ' +
                 exception);
         }
     };
 
-    const editLink = (link) => {
-        // TO DO
+    const editLink = async (link) => {
+        try {
+            // console.log('------------>Passing delete link request id ',
+            // linkId, ' from other controller to link.data');
+            return await data.link.editLink(link);
+        } catch (exception) {
+            // console.log(
+                // '-----------> Request to delete link rejected ' +
+                // exception);
+        }
+    };
+
+    const deleteLink = async (linkId) => {
+        try {
+            console.log('------------>Passing delete link request id ',
+            linkId, ' from other controller to link.data');
+            return await data.link.deleteLink(linkId);
+        } catch (exception) {
+            console.log(
+                '-----------> Request to delete link rejected ' +
+                exception);
+        }
     };
 
     return {
@@ -68,6 +84,7 @@ const init = (app, data) => {
         createLink,
         createContact,
         editLink,
+        deleteLink,
         editContact,
         getAllCategories,
     };

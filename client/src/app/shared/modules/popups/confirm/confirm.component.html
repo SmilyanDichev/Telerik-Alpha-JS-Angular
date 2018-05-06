@@ -1,7 +1,9 @@
-<form [formGroup]="rForm" (ngSubmit)="submit(rForm)">
+<form>
     <h1 mat-dialog-title> Are you sure?</h1>
     <mat-dialog-content>
-      <button mat-button mat-dialog-close type="submit" cdkFocusInitial>Yes</button>
-      <button mat-button mat-dialog-close >Cancel</button>
+      <button  mat-button (click)="submit()">Yes</button>
+      <button  mat-button mat-dialog-close >Cancel</button>
     </mat-dialog-content>
-    </form>
+</form>
+  
+    

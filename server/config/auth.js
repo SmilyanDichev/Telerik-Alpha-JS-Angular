@@ -36,9 +36,6 @@ const init = (app, data) => {
             secretOrKey: opts.secretOrKey,
         },
         async (jwtPayload, done) => {
-            console.log('-----------> server/config/auth ', jwtPayload);
-            // jwtPayload has no id property
-            // data has no use nor getById method
             const userFound = await data.user.getById(jwtPayload.sub);
             try {
                 if (userFound) {
@@ -56,9 +53,6 @@ const init = (app, data) => {
             secretOrKey: opts.secretOrKey,
         },
         async (jwtPayload, done) => {
-            console.log('-----------> server/config/auth ', jwtPayload);
-            // jwtPayload has no id property
-            // data has no use nor getById method
             const userFound = await data.user.getById(jwtPayload.sub);
 
             try {

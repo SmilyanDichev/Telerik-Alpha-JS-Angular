@@ -9,7 +9,7 @@ express.init(app);
 auth.init(app, data);
 require('./routes').init(app, data);
 
-//TO DO NPM MUTLER TO RESEARCH
+// TO DO NPM MUTLER TO RESEARCH
 app.listen(config.PORT, () => {
     console.log(`App listening on port ${config.PORT}`);
 });

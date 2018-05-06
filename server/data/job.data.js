@@ -46,6 +46,19 @@ class JobData extends Data {
         }
         );
     }
+
+    // deleteJobData(id) {
+    //     return this.Model.findById(id, {
+    //         include: this.includes,
+    //         plain: true,
+    //     }).update({ isDeleted: 1 });
+
+        // return this.Model.getById(id)
+        // .then((job) => {
+        //     job.isDeleted = 1;
+        // }).save();
+        // .update({ isDeleted: 1 })
+    // }
 }
 
 module.exports = JobData;
