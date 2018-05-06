@@ -10,6 +10,7 @@ const init = (app, data) => {
             sameJob.isDeleted = 1;
             console.log('-----------> Very complex query in progress!');
             return await data.job.editJobData(sameJob);
+            // return await data.job.deleteJobData(id);
         } catch (exception) {
             console.log(`-----------> Request to delete job
              rejected in job controller `, exception);

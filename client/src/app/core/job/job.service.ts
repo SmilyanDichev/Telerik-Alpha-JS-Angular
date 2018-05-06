@@ -21,7 +21,7 @@ export class JobService {
   // }
   public deleteJob(jobId: number): Observable<object> {
     console.log('Response acquired! sending request! ', jobId);
-    return this.http.post(`${this.appConfig.apiUrl}jobs/delete`, jobId);
+    return this.http.post(`${this.appConfig.apiUrl}jobs/delete`, { jobId });
   }
 
   public getActiveJobs(): Observable<object> {

@@ -100,8 +100,8 @@ const init = (app, data) => {
             session: false,
         }), async (req, res) => {
             try {
-                await deleteJob(req.body);
-                res.redirect('/jobs');
+                await deleteJob(req.body.jobId);
+                res.status(200);
             } catch (exception) {
                 console.log('-------------> JOB DELETION FAILED in job routes! '
                 , exception);

@@ -9,9 +9,9 @@ class Data {
     getById(id) {
         return this.Model.findById(id, {
             include: this.includes,
+            plain: true,
         });
     }
-
     create(obj) {
     if (this._isObjectValid && !this._isObjectValid(obj)) {
         throw new Error('Invalid object');

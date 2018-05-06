@@ -8,11 +8,12 @@ const {
     Contact,
     link,
     JobCategory,
+    Job,
 } = require('../db/models');
 
 module.exports = {
     user: new UserData(),
-    job: new JobData(),
+    job: new JobData(Job),
     link: new LinkData(link),
     contact: new ContactData(Contact),
     categories: new Data( JobCategory, []),
