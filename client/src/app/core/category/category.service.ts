@@ -5,7 +5,7 @@ import { AppConfig } from '../../config/app-config';
 import { HttpResponse } from '../../shared/models/http-response/http-response';
 
 @Injectable()
-export class CategorieService {
+export class CategoryService {
 
   constructor(private appConfig: AppConfig, private http: HttpClient) {
 

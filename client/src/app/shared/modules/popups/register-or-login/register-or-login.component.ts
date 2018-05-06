@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material';
-import { LoginComponent } from './../login/login.component';
-import { RegisterComponent } from './../register/register.component';
+// import { LoginComponent } from './../login/login.component';
+// import { RegisterComponent } from './../register/register.component';
 
 @Component({
   selector: 'app-register-or-login',
@@ -19,12 +19,12 @@ export class RegisterOrLoginComponent implements OnInit {
     console.log('RegOrLogin Modal opened!');
   }
 
-  public openLoginModal(): void {
+  private openLoginModal(): void {
     console.log('Login Modal opened!');
-    this.dialog.open(LoginComponent);
+    // this.dialog.open(LoginComponent);
   }
-  public openRegModal(): void {
+  private openRegModal(): void {
     console.log('Register Modal opened!');
-    this.dialog.open(RegisterComponent);
+    // this.dialog.open(RegisterComponent);
   }
 }

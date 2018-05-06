@@ -49,13 +49,13 @@ export class MapService {
       return fromPromise(this.mapLoader.load())
       .pipe(
         tap(() => this.initGeocoder()),
-        map(() => true)
+        map(() => true),
       );
     }
     return of(true);
   }
 
-  geocodeAddress(location: string): Observable<any> {
+  public geocodeAddress(location: string): Observable<any> {
     console.log('Start geocoding!');
     return this.waitForMapsToLoad().pipe(
       // filter(loaded => loaded),
@@ -78,41 +78,4 @@ export class MapService {
       })
     );
   }
-
-  // getGeoLocation(address: string): Observable<any> {
-  //   const geocoder = new google.maps.Geocoder();
-  //   return Observable.create(observer => {
-  //     geocoder.geocode({
-  //       'address': address,
-  //     }, (results, status) => {
-  //       if (status === google.maps.GeocoderStatus.OK) {
-  //         observer.next(results[0].geometry.location);
-  //         observer.complete();
-  //       } else {
-  //         observer.error();
-  //       }
-  //     });
-  //   });
-  // }
-
-  // getRevGeoLocation(lat: number, lng: number): Observable<google.maps.GeocoderResult> {
-  //   if (navigator.geolocation) {
-  //     const geocoder = new google.maps.Geocoder();
-  //     const latlng = new google.maps.LatLng(lat, lng);
-  //     const request = {
-  //       latLng: latlng,
-  //     };
-  //     return Observable.create(observer => {
-  //         geocoder.geocode(request, (results, status) => {
-  //           if (status === google.maps.GeocoderStatus.OK) {
-  //             observer.next(results[0]);
-  //             observer.complete();
-  //           } else {
-  //             observer.error();
-  //           }
-  //         });
-  //     });
-  //   }
-  // }
-
 }

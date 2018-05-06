@@ -4,12 +4,12 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule, MatCardModule, MatDatepickerModule,
   MatDialogModule, MatIconModule, MatInputModule, MatListModule,
-   MatNativeDateModule, MatPaginatorModule, MatSelectModule,
-   MatSidenavModule, MatToolbarModule } from '@angular/material';
+  MatNativeDateModule, MatPaginatorModule, MatSelectModule,
+  MatSidenavModule, MatToolbarModule } from '@angular/material';
 import { MatTableModule } from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminGuard, AuthService, ContactService, FilterService, JobService, LinkService, UserService } from '../../../core';
-import { CategorieService } from '../../../core/categorie/categorie.service';
+import { CategoryService } from '../../../core/category/category.service';
 
 @NgModule({
   imports: [
@@ -60,7 +60,7 @@ import { CategorieService } from '../../../core/categorie/categorie.service';
     LinkService,
     FilterService,
     ContactService,
-    CategorieService,
+    CategoryService,
     AdminGuard,
     UserService,
   ],

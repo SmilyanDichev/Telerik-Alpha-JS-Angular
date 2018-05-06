@@ -19,6 +19,11 @@
     background-size: cover;
 }
 
+span{
+    padding: 10px;
+    text-align: center;
+}
+
 agm-map {
     height: 100%
   }
