@@ -19,12 +19,14 @@ export class JobService {
     console.log('Response acquired! sending request! ', jobId);
     return this.http.post(`${this.appConfig.apiUrl}jobs/delete`, { jobId });
   }
-  
+
   public applyJob(userEmail: any, id: string, data: any): Observable<object> {
-    let files = new FormData();
-    console.log('data', data.CV);
-    files.append('cv', data.CV);
-    files.append('letter', 'cris');
+    console.log(data);
+    const files = new FormData();
+    files.append('cv', data.CV, `${id}_jobID_${userEmail}_CV`);
+    files.append('letter', data.Letter, `${id}_jobID_${userEmail}_letter`);
+    files.append('userEmail', userEmail);
+    files.append('jobId', id);
     console.log(files);
     // return this.http.post(`${this.appConfig.apiUrl}jobs/apply/${id}`, userEmail);
     return this.http.post(`${this.appConfig.apiUrl}jobs/apply/upload`, files);

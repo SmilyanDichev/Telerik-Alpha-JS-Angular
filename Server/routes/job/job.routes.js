@@ -82,14 +82,14 @@ const init = (app, data) => {
                     console.log("! ! !files ! ! !");
                     console.log(req.files);
                     // console.log(req.files);
-                    // console.log(req.body);
+                    console.log(req.body);
                     if (err) {
                         return res.status(501).json({
                             error: err,
                         });
                     }
-                    return res.json({
-                        req,
+                    return res.status(200).json({
+                        msg: 'success',
                     });
                 });
             } catch (exception) {
