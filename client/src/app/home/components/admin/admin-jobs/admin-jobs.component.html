@@ -1,16 +1,14 @@
 <p>
   admin.job works!
 </p>
-<p>
-  admin.job works!
-</p>
-<h2>Job Ads Administraction</h2>
+<div>admin.job works!</div>
+
+<section class="mat-typography">
+  <h1>Job Ads Administraction</h1>
+</section>
 <div>  
-  <button mat-button (click)="addJobModal()">Create</button>
+  <button mat-button mat-raised-button color="accent" (click)="addJobModal()">Create</button>
 </div>
 <div>
-  <!-- Job Title Description Category Status -->
-  <!-- <button mat-button (click)="editJobModal()">Edit</button> -->
-  <!-- <button mat-button (click)="confirm()">Delete</button> -->
 </div>
 <admin-jobs-table></admin-jobs-table>

@@ -52,7 +52,7 @@ private editContactModal(contactId: number): void {
     .afterClosed()
     .subscribe((newContact) => {
       console.log('Sending new contact edit to contactService!', newContact);
-      this.contactService.editContact(contactId, newContact)
+      this.contactService.editContact(newContact)
         .subscribe(
              (reply) => {
             console.log('Contact Edit request succesful! ', reply);
