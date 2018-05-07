@@ -103,23 +103,21 @@ const init = (app, data) => {
         }
     };
 
-    const applyJob = async (application) => {
+    const applyJob = async (application, res) => {
             // TO DO responses
         try {
-            await data.create({
+            await data.userJob.create({
                 comment: application.comment,
                 cvUrl: application.cvUrl,
                 letterUrl: application.letterUrl,
                 JobId: application.jobId,
                 UserId: application.userId,
             });
-            // res.status(200).send({
-            //     msg: 'Job application Success',
-            // });
+
         } catch (exception) {
-            // res.status(400).send({
-            //     msg: 'Job application Failure'
-            // })
+            res.status(400).send({
+                msg: 'Job application Failure',
+            });
             throw new Error(`Request to create job application rejected! `
              + exception);
         }

@@ -1,9 +1,10 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../../../../core/auth/auth.service';
 import { JobService } from '../../../../../core/job/job.service';
+import { SharedStatusService } from '../../../../../core/shared-status/shared-status.service';
 import { ApplyJobComponent } from '../../../../../shared/modules/popups/apply-job/apply-job.component';
 import { RegisterOrLoginComponent } from '../../../../../shared/modules/popups/register-or-login/register-or-login.component';
 
@@ -15,22 +16,18 @@ import { RegisterOrLoginComponent } from '../../../../../shared/modules/popups/r
 export class JobDetailsComponent implements OnInit {
   private details: any = {};
   private userEmail: string;
+  private userId: string;
 
   private loginOrRegisterComponentRef: MatDialogRef<RegisterOrLoginComponent>;
   private applyJobComponentRef: MatDialogRef<ApplyJobComponent>;
-
-  // @Output()
-  // private clickRegisterEvent = new EventEmitter();
-
-  // @Output()
-  // private clickLoginEvent = new EventEmitter();
 
   constructor(
     private route: ActivatedRoute,
     private dialog: MatDialog,
     private authService: AuthService,
     private jobService: JobService,
-    private toastr: ToastrService) {
+    private toastr: ToastrService,
+    private sharedStatusService: SharedStatusService) {
    }
 
   public ngOnInit(): void {
@@ -38,30 +35,53 @@ export class JobDetailsComponent implements OnInit {
   }
   private applyJob (): void {
     if (this.isAuth()) {
+<<<<<<< HEAD
       // this.userEmail = this.authService.getCurrentUserEmail();
       // this.jobService.applyJob( this.userEmail, this.details.id).subscribe((res) => {
       // this.toastr.success('Application Success');
       // });
+=======
+      this.applyJobComponentRef = this.dialog.open(ApplyJobComponent);
+      this.applyJobComponentRef
+      .afterClosed()
+      .subscribe( (res) => {
+      this.userEmail = this.authService.getCurrentUserEmail();
+      this.userId = this.authService.getCurrentUserId();
+      this.jobService.applyJob( this.userEmail, this.userId, this.route.snapshot.paramMap.get('id'), res).subscribe((status) => {
+      this.toastr.success('Application Success');
+      });
+      });
+>>>>>>> c10704957d56e0d71833fdadfaaf4a55b3f923b9
     } else {
       this.loginOrRegisterComponentRef = this.dialog.open(RegisterOrLoginComponent);
-      // this.loginOrRegisterComponentRef
-      // .afterClosed()
-      // .subscribe((res) => {
-      //   if (res === 'login') {
-      //     this.clickLoginEvent.emit(null);
-      //   } else {
-      //     this.clickRegisterEvent.emit(null);
-      //   }
-      // });
+      this.loginOrRegisterComponentRef
+      .afterClosed()
+      .subscribe((res) => {
+        if (res === 'login') {
+          this.sharedStatusService.openLogin();
+        }
+        if (res === 'register') {
+          this.sharedStatusService.openRegister();
+        }
+      });
     }
   }
   private getDetails(): void {
+<<<<<<< HEAD
       // this.route.params
       // .subscribe((params) => {
       //   this.jobService.getJobDetails(params).subscribe((res) => {
       //     this.details = res;
       //   });
       // });
+=======
+      this.route.params
+      .subscribe((params) => {
+        this.jobService.getJobDetails(params.id).subscribe((res) => {
+          this.details = res;
+        });
+      });
+>>>>>>> c10704957d56e0d71833fdadfaaf4a55b3f923b9
   }
 
   private isAuth(): boolean {

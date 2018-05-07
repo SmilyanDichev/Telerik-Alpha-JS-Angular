@@ -1,26 +1,3 @@
-// import { Injectable, NgZone } from '@angular/core';
-// import { GoogleMapsAPIWrapper, MapsAPILoader} from '@agm/core';
-// import { Observable, Observer } from 'rxjs/';
-// // import {  } from '@types/googlemaps';
-//  import { google } from '@agm/core/services/google-maps-types';
- 
-// // import {  } from 'googlemaps';
-// // declare var google: any;
-
-
-
-
-
-// @Injectable()
-// export class MapService extends GoogleMapsAPIWrapper {
-
-//   constructor ( private loader: MapsAPILoader, private zone: NgZone) {
-//     super(loader, zone);
-//   }
-
-
-
-// }
 
 import { Injectable } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
@@ -39,7 +16,30 @@ export class MapService {
 
   constructor(private mapLoader: MapsAPILoader) {}
 
-  private initGeocoder() {
+  public geocodeAddress(location: string): Observable<any> {
+    return this.waitForMapsToLoad().pipe(
+      // filter(loaded => loaded),
+      switchMap(() => {
+        return new Observable((observer) => {
+          this.geocoder.geocode({ 'address': location }, (results, status) => {
+            if (status === google.maps.GeocoderStatus.OK) {
+              console.log('Geocoding complete!');
+              observer.next({
+                lat: results[0].geometry.location.lat(),
+                lng: results[0].geometry.location.lng(),
+              });
+            } else {
+              console.log('Error - ', results, ' & Status - ', status);
+              observer.next({});
+            }
+            observer.complete();
+          });
+        });
+      }),
+    );
+  }
+
+  private initGeocoder(): void {
     console.log('Init geocoder!');
     this.geocoder = new google.maps.Geocoder();
   }
@@ -55,27 +55,4 @@ export class MapService {
     return of(true);
   }
 
-  public geocodeAddress(location: string): Observable<any> {
-    console.log('Start geocoding!');
-    return this.waitForMapsToLoad().pipe(
-      // filter(loaded => loaded),
-      switchMap(() => {
-        return new Observable(observer => {
-          this.geocoder.geocode({'address': location}, (results, status) => {
-            if (status === google.maps.GeocoderStatus.OK) {
-              console.log('Geocoding complete!');
-              observer.next({
-                lat: results[0].geometry.location.lat(), 
-                lng: results[0].geometry.location.lng()
-              });
-            } else {
-                console.log('Error - ', results, ' & Status - ', status);
-                observer.next({});
-            }
-            observer.complete();
-          });
-        });
-      })
-    );
-  }
 }

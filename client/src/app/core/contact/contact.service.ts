@@ -11,6 +11,7 @@ export class ContactService {
 
   // contacts
   public getContacts(): any {
+    console.log('get Contacts');
       return this.http.get(`${this.appConfig.apiUrl}contacts`);
     }
   public  contactObjectConverter(contact: Contact[]): Contact[] {

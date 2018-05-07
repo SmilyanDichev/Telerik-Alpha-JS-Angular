@@ -22,6 +22,17 @@ class ContactsData extends Data {
             },
         });
     }
+    editContact(contactId, newInfo) {
+        return this.Model.update({
+            name: newInfo.name,
+            value: newInfo.value,
+            isMapAddress: newInfo.isMapAddress,
+        }, {
+            where: {
+                id: contactId,
+            },
+        });
+    }
     deleteContact(contactId) {
         return this.Model.destroy({
             where: {

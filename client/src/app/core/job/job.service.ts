@@ -6,26 +6,28 @@ import { JobObj } from '../../shared/models/job/jobObj';
 
 @Injectable()
 export class JobService {
-  // private stringEmail: string = "admin@foodstore.com";
 
   constructor(private appConfig: AppConfig, private http: HttpClient) {
 
   }
 
-  // public getUserJobHistory(): Observable<object> {
-  //   // return  this.http
-  //   // TO DO
   public deleteJob(jobId: number): Observable<object> {
     console.log('Response acquired! sending request! ', jobId);
     return this.http.post(`${this.appConfig.apiUrl}jobs/delete`, { jobId });
   }
 
-  public applyJob(userEmail: any, id: string, data: any): Observable<object> {
+  public applyJob(userEmail: any, userId: string, jobId: string, data: any): Observable<object> {
+    console.log('apply job data:', data);
+    console.log('apply job userID:', userId);
     const files = new FormData();
-    console.log('data', data.CV);
-    files.append('cv', data.CV);
-    files.append('letter', 'cris');
-    console.log(files);
+    files.append('cv', data.CV, `${jobId}_jobID_${userEmail}_CV`);
+    files.append('letter', data.Letter, `${jobId}_jobID_${userEmail}_letter`);
+    files.append('comment', data.comment);
+    files.append('cvUrl', `${jobId}_jobID_${userEmail}_CV`);
+    files.append('letterUrl', `${jobId}_jobID_${userEmail}_letter`);
+    files.append('jobId', jobId);
+    files.append('userId', userId);
+
     // return this.http.post(`${this.appConfig.apiUrl}jobs/apply/${id}`, userEmail);
     return this.http.post(`${this.appConfig.apiUrl}jobs/apply/upload`, files);
   }
