@@ -47,6 +47,40 @@ const init = (app, data) => {
                 exception);
         }
     };
+
+const getJobAppFromServer = async (jobId) => {
+    try {
+        const input = await data.job.getJobAppFromData(jobId);
+        let arr;
+            input.map((el) => {
+                arr = Array.from( { length: el.Users.length } );
+                el.Users.map((row) => {
+                const obj = {
+                title: el.title,
+                firstName: row.firstName,
+                lastName: row.lastName,
+                email: row.email,
+                comment: row.UserJob.comment,
+                cvUrl: row.UserJob.cvUrl,
+                letterUrl: row.UserJob.letterUrl,
+                createdAt: row.UserJob.createdAt,
+            };
+            arr.push(obj);
+            arr = arr.filter((item) => typeof item !== 'undefined');
+            // console.log('><><><><<><>the array is ', arr);
+        });
+    });
+    // console.log('000000000000000000000000000000  ', arr);
+    return arr;
+    } catch (exception) {
+        console.log(
+            `------->
+            Request to get all job specific applications
+            rejected in job controller! `,
+            exception);
+    }
+};
+
     const createNewJob = async (newJob) => {
         try {
             return await data.job.create({
@@ -84,6 +118,7 @@ const init = (app, data) => {
         createNewJob,
         editJob,
         deleteJob,
+        getJobAppFromServer,
     };
 };
 module.exports = {

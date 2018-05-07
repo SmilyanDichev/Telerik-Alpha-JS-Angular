@@ -18,7 +18,13 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {});
   UserJob.associate = function(models) {
-    // associations can be defined here
+    const {
+      Job,
+      User,
+    }= models;
+    Job.belongsToMany(User, {
+      through: UserJob,
+     });
   };
   return UserJob;
 };

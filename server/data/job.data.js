@@ -4,11 +4,12 @@ const {
     User,
     Job,
     JobCategory,
+    UserJob,
 } = require('../db/models');
 
 class JobData extends Data {
     constructor() {
-        super(Job, [User]);
+        super(Job, [User, UserJob]);
     }
 
     getAllActiveJobs() {
@@ -47,6 +48,23 @@ class JobData extends Data {
         );
     }
 
+    getJobAppFromData(jobId) {
+        
+
+        return this.Model.findAll({
+            where: { id: jobId },
+            attributes: ['title'],
+            // raw: true,
+            // plain: true,
+            include: [
+                // { model: UserJob,
+                // where: { jobId: jobId } },
+                { model: User,
+                    attributes: ['firstName', 'lastName', 'email'] },
+            ],
+        });
+    }
+
     // deleteJobData(id) {
     //     return this.Model.findById(id, {
     //         include: this.includes,
@@ -59,6 +77,6 @@ class JobData extends Data {
         // }).save();
         // .update({ isDeleted: 1 })
     // }
-}
+    }
 
 module.exports = JobData;

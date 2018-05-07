@@ -30,6 +30,7 @@ const init = (app, data) => {
         createNewJob,
         editJob,
         deleteJob,
+        getJobAppFromServer,
     } = jobController.init(app, data);
     const {
         applyJob,
@@ -76,10 +77,29 @@ const init = (app, data) => {
                 });
             }
         })
+        // GET ALL JOB APPLICATIONS FOR SPECIFIC JOB
+        .get('/applications/:id', 
+        // passport.authenticate('jwt-admin', {
+        //     session: false,
+        // }), 
+        async (req, res) => {
+            const jobId = req.params.id;
+            try {
+                const jobApplications = await getJobAppFromServer(jobId);
+                // console.log(jobApplications);
+                res.status(200).json(jobApplications);
+            } catch (exception) {
+                res.status(502).json({
+                    msg: 'Job application in job routes rejected!',
+                    exception,
+                });
+            }
+        })
+
         .post('/apply/upload', async (req, res) => {
             try {
                 upload(req, res, (err) => {
-                    console.log("! ! !files ! ! !");
+                    console.log('! ! !files ! ! !');
                     console.log(req.files);
                     // console.log(req.files);
                     // console.log(req.body);

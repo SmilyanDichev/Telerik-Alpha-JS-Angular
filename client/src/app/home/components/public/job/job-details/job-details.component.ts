@@ -4,8 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../../../../core/auth/auth.service';
 import { JobService } from '../../../../../core/job/job.service';
-import { RegisterOrLoginComponent } from '../../../../../shared/modules/popups/register-or-login/register-or-login.component';
 import { ApplyJobComponent } from '../../../../../shared/modules/popups/apply-job/apply-job.component';
+import { RegisterOrLoginComponent } from '../../../../../shared/modules/popups/register-or-login/register-or-login.component';
 
 @Component({
   selector: 'app-job-details',
@@ -38,26 +38,10 @@ export class JobDetailsComponent implements OnInit {
   }
   private applyJob (): void {
     if (this.isAuth()) {
-<<<<<<< HEAD
-      this.applyJobComponentRef = this.dialog.open(ApplyJobComponent);
-      this.applyJobComponentRef
-      .afterClosed()
-      .subscribe( (res) => {
-        //get data
-      this.userEmail = this.authService.getCurrentUserEmail();
-      this.jobService.applyJob( this.userEmail, this.route.snapshot.paramMap.get('id'), res).subscribe((res) => {
-      this.toastr.success('Application Success');
-      });
-
-
-      });
-     
-=======
       // this.userEmail = this.authService.getCurrentUserEmail();
       // this.jobService.applyJob( this.userEmail, this.details.id).subscribe((res) => {
       // this.toastr.success('Application Success');
       // });
->>>>>>> 189bc1f24a66899195a960a5631489f2996632bd
     } else {
       this.loginOrRegisterComponentRef = this.dialog.open(RegisterOrLoginComponent);
       // this.loginOrRegisterComponentRef
@@ -72,21 +56,12 @@ export class JobDetailsComponent implements OnInit {
     }
   }
   private getDetails(): void {
-<<<<<<< HEAD
-      this.route.params
-      .subscribe((params) => {
-        this.jobService.getJobDetails(params.id).subscribe((res) => {
-          this.details = res;
-        });
-      });
-=======
       // this.route.params
       // .subscribe((params) => {
       //   this.jobService.getJobDetails(params).subscribe((res) => {
       //     this.details = res;
       //   });
       // });
->>>>>>> 189bc1f24a66899195a960a5631489f2996632bd
   }
 
   private isAuth(): boolean {

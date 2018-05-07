@@ -27,7 +27,16 @@ module.exports = (sequelize, DataTypes) => {
   Job.associate = function(models) {
     const {
       JobCategory,
+      User,
+      UserJob,
     }= models;
+    Job.belongsToMany(User, {
+      through: UserJob,
+     });
+     User.belongsToMany(Job, {
+      through: UserJob,
+     });
+
     Job.belongsTo( JobCategory, {
       foreignKey: {
         allowNull: false,
