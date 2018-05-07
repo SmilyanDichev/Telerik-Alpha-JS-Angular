@@ -23,8 +23,8 @@ export class AuthService {
         const token = this.jwtService.tokenGetter();
         const decoded = this.jwtService.decodeToken(token);
         // console.log(token);
-        // return !!token && !this.jwtService.isTokenExpired(token) && decoded.iss === this.appConfig.jwt_issuer;
-        return !!token;
+        return !!token && !this.jwtService.isTokenExpired(token) && decoded.iss === this.appConfig.jwt_issuer;
+        // return !!token;
     }
 
     public logout(): void {
@@ -36,7 +36,12 @@ export class AuthService {
         const decoded = this.jwtService.decodeToken(token);
         // console.log(decoded);
         return decoded !== null ? decoded.email : 'empty';
-        // return 'abv.bg';
+    }
+
+    public getCurrentUserId(): string {
+        const token = this.jwtService.tokenGetter();
+        const decoded = this.jwtService.decodeToken(token);
+        return decoded !== null ? decoded.id : 'empty';
     }
 
     public getAdminStatus(): boolean {
