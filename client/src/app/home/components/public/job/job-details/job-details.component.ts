@@ -16,15 +16,10 @@ import { RegisterOrLoginComponent } from '../../../../../shared/modules/popups/r
 export class JobDetailsComponent implements OnInit {
   private details: any = {};
   private userEmail: string;
+  private userId: string;
 
   private loginOrRegisterComponentRef: MatDialogRef<RegisterOrLoginComponent>;
   private applyJobComponentRef: MatDialogRef<ApplyJobComponent>;
-
-  // @Output()
-  // private clickRegisterEvent = new EventEmitter();
-
-  // @Output()
-  // private clickLoginEvent = new EventEmitter();
 
   constructor(
     private route: ActivatedRoute,
@@ -45,7 +40,8 @@ export class JobDetailsComponent implements OnInit {
       .afterClosed()
       .subscribe( (res) => {
       this.userEmail = this.authService.getCurrentUserEmail();
-      this.jobService.applyJob( this.userEmail, this.route.snapshot.paramMap.get('id'), res).subscribe((status) => {
+      this.userId = this.authService.getCurrentUserId();
+      this.jobService.applyJob( this.userEmail, this.userId, this.route.snapshot.paramMap.get('id'), res).subscribe((status) => {
       this.toastr.success('Application Success');
       });
       });

@@ -19,7 +19,6 @@ export class ApplyJobComponent implements OnInit {
   private selectedCV;
   private selectedLetter;
 
-
   constructor(private formBuilder: FormBuilder,
               private dialogRef: MatDialogRef <ApplyJobComponent>) {
   }

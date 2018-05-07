@@ -4,6 +4,8 @@ const {
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const jobController = require('./job.controller');
+const userController = require('../user/user.controller');
+
 const multer = require('multer');
 const store = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -13,7 +15,7 @@ const store = multer.diskStorage({
         cb(null, file.originalname);
     },
 });
-// const upload = multer({ dest: '../../uploads/' });
+
 const upload = multer({
     storage: store,
 }).fields([
@@ -33,7 +35,7 @@ const init = (app, data) => {
     } = jobController.init(app, data);
     const {
         applyJob,
-    } = require('../user/user.controller');
+    } = userController.init(app, data);
 
     app.use(bodyParser.urlencoded({
         extended: true,
@@ -78,11 +80,9 @@ const init = (app, data) => {
         })
         .post('/apply/upload', async (req, res) => {
             try {
-                upload(req, res, (err) => {
-                    console.log("! ! !files ! ! !");
-                    console.log(req.files);
-                    // console.log(req.files);
-                    console.log(req.body);
+                upload(req, res, async (err) => {
+
+                    await applyJob(req.body, res);
                     if (err) {
                         return res.status(501).json({
                             error: err,
@@ -93,10 +93,11 @@ const init = (app, data) => {
                     });
                 });
             } catch (exception) {
-                res.status(502).json({
-                    msg: 'Job application in job routes rejected!',
-                    exception,
-                });
+                console.log(exception);
+                // res.status(502).json({
+                //     msg: 'Job application in job routes rejected!',
+                //     exception,
+                // });
             }
         })
         .post('/apply/:id', passport.authenticate('jwt', {

@@ -22,9 +22,11 @@ export class JobService {
     const files = new FormData();
     files.append('cv', data.CV, `${jobId}_jobID_${userEmail}_CV`);
     files.append('letter', data.Letter, `${jobId}_jobID_${userEmail}_letter`);
-    files.append('userEmail', userEmail);
-    files.append('userId', userId);
+    files.append('comment', data.comment);
+    files.append('cvUrl', `${jobId}_jobID_${userEmail}_CV`);
+    files.append('letterUrl', `${jobId}_jobID_${userEmail}_letter`);
     files.append('jobId', jobId);
+    files.append('userId', userId);
 
     // return this.http.post(`${this.appConfig.apiUrl}jobs/apply/${id}`, userEmail);
     return this.http.post(`${this.appConfig.apiUrl}jobs/apply/upload`, files);

@@ -1,9 +1,4 @@
 const init = (app, data) => {
-    // const bcrypt = require('bcrypt-nodejs');
-    // const jwt = require('jwt-simple');
-    // const moment = require('moment');
-    // const config = require('../../config/config');
-
     const deleteJob = async (id)  => {
         try {
             const sameJob = await data.job.getById(id);
