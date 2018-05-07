@@ -1,14 +1,13 @@
-<p>
-  admin.job works!
-</p>
-<div>admin.job works!</div>
-
-<section class="mat-typography">
-  <h1>Job Ads Administraction</h1>
-</section>
-<div>  
-  <button mat-button mat-raised-button color="accent" (click)="addJobModal()">Create</button>
+<div fxFill fxLayout="column">
+  <div fxFlex='10'>
+  </div>
+  <section class="mat-typography" fxLayout fxLayoutAlign="center">
+    <h1>Job Ads Administraction</h1>
+  </section>
+  <div class="mat-typography" fxLayout fxLayoutAlign="center">
+    <button mat-button mat-raised-button color="accent" (click)="addJobModal()">Create</button>
+  </div>
+  <div>
+  </div>
+  <admin-jobs-table></admin-jobs-table>
 </div>
-<div>
-</div>
-<admin-jobs-table></admin-jobs-table>
