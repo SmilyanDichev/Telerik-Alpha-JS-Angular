@@ -61,20 +61,6 @@ export class JobDetailsComponent implements OnInit {
       });
     }
   }
-  // private getDetails(): void {
-  //     // this.route.params
-  //     // .subscribe((params) => {
-  //     //   this.jobService.getJobDetails(params).subscribe((res) => {
-  //     //     this.details = res;
-  //     //   });
-  //     // });
-  //     this.route.params
-  //     .subscribe((params) => {
-  //       this.jobService.getJobDetails(params.id).subscribe((res) => {
-  //         this.details = res;
-  //       });
-  //     });
-  // }
 
   private isAuth(): boolean {
     return this.authService.isAuthenticated();
