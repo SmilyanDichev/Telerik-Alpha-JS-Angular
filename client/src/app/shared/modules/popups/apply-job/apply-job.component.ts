@@ -27,19 +27,17 @@ export class ApplyJobComponent implements OnInit {
   public ngOnInit(): void {
     this.dialogRef.disableClose = true;
     this.rForm = this.formBuilder.group({
-      comment: [null, Validators.compose([Validators.required, Validators.email])],
-      cv : [null, Validators.compose([Validators.required])],
-      letter : [null],
+      comment: [null, Validators.compose([Validators.required])],
     });
   }
 
   private submit(rForm: FormGroup): void {
     const formData = {
-        rForm: rForm.value,
+        comment: rForm.value.comment,
         CV: this.selectedCV,
         Letter: this.selectedLetter,
       };
-    console.log(formData);
+    console.log('apply component form data', formData);
     this.dialogRef.close(formData);
   }
 
