@@ -41,7 +41,7 @@ export class AuthService {
     public getCurrentUserId(): string {
         const token = this.jwtService.tokenGetter();
         const decoded = this.jwtService.decodeToken(token);
-        return decoded !== null ? decoded.id : 'empty';
+        return decoded !== null ? decoded.sub : 'empty';
     }
 
     public getAdminStatus(): boolean {
