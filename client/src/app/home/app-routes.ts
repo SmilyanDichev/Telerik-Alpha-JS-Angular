@@ -20,8 +20,8 @@ export const ROUTES: Routes = [
     {
         path: 'admin', canActivate: [AdminGuard], children: [
             { path: '', redirectTo: 'home', pathMatch: 'full' },
-            { path: 'applications', component: AdminAplicationsComponent },
             { path: 'applications/:id', component: AdminAplicationsComponent },
+            { path: 'applications', component: AdminAplicationsComponent },
             { path: 'jobs', component: AdminJobsComponent },
             { path: 'users', component: AdminUsersComponent },
             { path: 'links', component: AdminLinksComponent },

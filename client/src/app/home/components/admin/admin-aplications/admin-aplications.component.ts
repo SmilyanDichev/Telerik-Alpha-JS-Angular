@@ -9,10 +9,10 @@ import { AuthService, JobService } from '../../../../core';
   styleUrls: ['./admin-aplications.component.css'],
 })
 export class AdminAplicationsComponent implements OnInit {
-  private details: object = [];
   private userEmail: string;
-  private displayedColumns = ['id', 'name', 'comment', 'email', 'createdAt', 'actions'];
-  private dataSource = new MatTableDataSource(DATA);
+  private displayedColumns = ['name', 'comment', 'email', 'createdAt', 'actions'];
+  private dataSource;
+  private sub: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,20 +24,28 @@ export class AdminAplicationsComponent implements OnInit {
 
   public ngOnInit(): void {
     console.log('Applications for Job');
-    this.getDetails();
+    this.getApps();
   }
   // private downloadCV (): void {
   // }
   // private downloadLetter (): void {
   // }
 
-  private getDetails(): void {
-      // this.route.params
-      // .subscribe((params) => {
-      //   this.jobService.getJobDetails(params).subscribe((res) => {
-      //     this.details = res;
-      //   });
-      // });
+  private getApps(): void {
+
+  //   this.sub = this.route.params.subscribe((params) => {
+  //   this.id = +params['id']; // (+) converts string 'id' to a number
+  //   console.log('this is the sub ', this.sub);
+  //  });
+      console.log('getting response!');
+      this.route.params
+      .subscribe((id: any) => {
+        this.jobService.getJobApplications(id.id).subscribe((res: any) => {
+          console.log('<><><<><<>><><Response acquired ', res);
+          const fixedDateApps = this.jobService.fixDateApp(res);
+          this.dataSource  = new MatTableDataSource(fixedDateApps);
+        });
+      });
   }
 
   private isAuth(): boolean {

@@ -21,7 +21,7 @@ const init = (app, data) => {
             res.status(200).json(allContacts);
         })
         .get('/categories', async (req, res) => {
-            let allCategories = await controller.getAllCategories();
+            const allCategories = await controller.getAllCategories();
             // allCategories.map((x)=> {
             //     return x.name;
             // });

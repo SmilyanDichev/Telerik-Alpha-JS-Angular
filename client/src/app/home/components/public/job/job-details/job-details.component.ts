@@ -35,6 +35,12 @@ export class JobDetailsComponent implements OnInit {
   }
   private applyJob (): void {
     if (this.isAuth()) {
+<<<<<<< HEAD
+      // this.userEmail = this.authService.getCurrentUserEmail();
+      // this.jobService.applyJob( this.userEmail, this.details.id).subscribe((res) => {
+      // this.toastr.success('Application Success');
+      // });
+=======
       this.applyJobComponentRef = this.dialog.open(ApplyJobComponent);
       this.applyJobComponentRef
       .afterClosed()
@@ -47,6 +53,7 @@ export class JobDetailsComponent implements OnInit {
           });
       }
       });
+>>>>>>> c10704957d56e0d71833fdadfaaf4a55b3f923b9
     } else {
       this.loginOrRegisterComponentRef = this.dialog.open(RegisterOrLoginComponent);
       this.loginOrRegisterComponentRef
@@ -62,12 +69,21 @@ export class JobDetailsComponent implements OnInit {
     }
   }
   private getDetails(): void {
+<<<<<<< HEAD
+      // this.route.params
+      // .subscribe((params) => {
+      //   this.jobService.getJobDetails(params).subscribe((res) => {
+      //     this.details = res;
+      //   });
+      // });
+=======
       this.route.params
       .subscribe((params) => {
         this.jobService.getJobDetails(params.id).subscribe((res) => {
           this.details = res;
         });
       });
+>>>>>>> c10704957d56e0d71833fdadfaaf4a55b3f923b9
   }
 
   private isAuth(): boolean {

@@ -43,6 +43,11 @@ export class JobService {
   public getJobDetails(jobID: number): Observable<object> {
     return this.http.get(`${this.appConfig.apiUrl}jobs/${jobID}`);
   }
+  public getJobApplications(jobID: number): Observable<object> { //  Observable<object>
+  const res =  this.http.get(`${this.appConfig.apiUrl}jobs/applications/${jobID}`);
+  console.log(jobID, res, `${this.appConfig.apiUrl}jobs/applications/${jobID}`);
+  return res;
+  }
 
   public editJob(jobId: number, jobObj: Job): Observable<object> {
     return this.http.post(`${this.appConfig.apiUrl}jobs/edit`, jobObj);
@@ -81,4 +86,28 @@ export class JobService {
 
     return job;
 }
+
+  public  fixDateApp(job: JobObj[]): JobObj[] {
+
+  job.map((el) => {
+    const i = el.createdAt;
+    const yearIndex0: number = 0;
+    const yearIndex1: number = 1;
+    const yearIndex2: number = 2;
+    const yearIndex3: number = 3;
+
+    const monthIndex0: number = 5;
+    const monthIndex1: number = 6;
+
+    const dayIndex0: number = 8;
+    const dayIndex1: number = 9;
+
+    const date =
+    `${i[dayIndex0]}${i[dayIndex1]}/${i[monthIndex0]}${i[monthIndex1]}/${i[yearIndex0]}${i[yearIndex1]}${i[yearIndex2]}${i[yearIndex3]}`;
+    el.createdAt = date;
+
+    });
+  return job;
+}
+
 }

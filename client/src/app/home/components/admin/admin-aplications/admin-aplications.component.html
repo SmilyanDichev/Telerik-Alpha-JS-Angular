@@ -1,17 +1,22 @@
+<<<<<<< HEAD
 <div   fxFill fxLayout="column"  >
   <div fxFlex='10'>
 
   </div>
   <section class="mat-typography" fxLayout fxLayoutAlign="center">
     <h1>Application Administraction For insert job here</h1>
+=======
+  <p>
+    admin.job works!
+  </p>
+  <div>admin.job works!</div>
+  
+  <section class="mat-typography">
+    <h1>Application Administraction For </h1>
+>>>>>>> f91fc9407845cf8af7334632e384bb133671a81c
   </section>
 
   <mat-table #table [dataSource]="dataSource">
-      <ng-container matColumnDef="id">
-        <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
-      </ng-container>
-  
       <ng-container matColumnDef="name">
         <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.firstName}} {{element.lastName}} </mat-cell>
@@ -34,8 +39,8 @@
       <ng-container matColumnDef="actions">
         <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
         <mat-cell *matCellDef="let element"> 
-              <button mat-button mat-raised-button color="primary" (click)="editJobModal(element.id)">Download CV</button>
-                <button mat-button mat-raised-button color="warn" (click)="confirm(element.id)">Download Letter</button>
+              <button mat-button mat-raised-button color="primary" >Download CV</button>
+                <button mat-button mat-raised-button color="primary" >Download Letter</button>
               </mat-cell>
       </ng-container>
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
