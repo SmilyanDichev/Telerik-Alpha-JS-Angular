@@ -1,7 +1,6 @@
 const init = (app, data) => {
     // Categories
     const getAllCategories = async () => {
-        console.log('! ! !other controller categories ! ! !');
         return await data.categories.getAll();
     };
 
