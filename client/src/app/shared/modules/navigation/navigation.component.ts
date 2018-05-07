@@ -6,13 +6,14 @@ import { AuthService } from '../../../core/auth/auth.service';
 import { User } from '../../models/user/user';
 import { LoginComponent } from '../popups/login/login.component';
 import { RegisterComponent } from '../popups/register/register.component';
+import { SharedStatusService } from '../../../core/shared-status/shared-status.service';
 
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.css'],
 })
-export class NavigationComponent  implements  DoCheck {
+export class NavigationComponent  implements  OnInit, DoCheck {
 
   private loginComponentRef: MatDialogRef<LoginComponent>;
   private registerComponentRef: MatDialogRef<RegisterComponent>;
@@ -22,11 +23,25 @@ export class NavigationComponent  implements  DoCheck {
   constructor(
     private dialog: MatDialog,
     private authService: AuthService,
-    private toastr: ToastrService) {
+    private toastr: ToastrService,
+    private sharedStatusService: SharedStatusService) {
     }
 
-  // public ngOnInit(): void {
-  // }
+  // @HostListener('click')
+  // public click() {
+  //   this.sharedStatusService.toggleRegister();
+  // };
+
+  public ngOnInit(): void {
+
+    this.sharedStatusService.loginChange.subscribe(() => {
+      this.loginModal();
+    });
+
+    this.sharedStatusService.registerChange.subscribe(() => {
+      this.registerModal();
+    });
+  }
 
   public ngDoCheck(): void {
     this.currentUserEmail = this.authService.getCurrentUserEmail();

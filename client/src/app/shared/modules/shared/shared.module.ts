@@ -2,14 +2,17 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule, MatCardModule, MatDatepickerModule,
+import {
+  MatButtonModule, MatCardModule, MatDatepickerModule,
   MatDialogModule, MatIconModule, MatInputModule, MatListModule,
   MatNativeDateModule, MatPaginatorModule, MatSelectModule,
-  MatSidenavModule, MatToolbarModule } from '@angular/material';
+  MatSidenavModule, MatToolbarModule,
+} from '@angular/material';
 import { MatTableModule } from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminGuard, AuthService, ContactService, FilterService, JobService, LinkService, UserService } from '../../../core';
 import { CategoryService } from '../../../core/category/category.service';
+import { SharedStatusService } from '../../../core/shared-status/shared-status.service';
 
 @NgModule({
   imports: [
@@ -63,6 +66,7 @@ import { CategoryService } from '../../../core/category/category.service';
     CategoryService,
     AdminGuard,
     UserService,
+    SharedStatusService,
   ],
 })
 export class SharedModule { }

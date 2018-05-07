@@ -1,11 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../../../../core/auth/auth.service';
 import { JobService } from '../../../../../core/job/job.service';
-import { RegisterOrLoginComponent } from '../../../../../shared/modules/popups/register-or-login/register-or-login.component';
+import { SharedStatusService } from '../../../../../core/shared-status/shared-status.service';
 import { ApplyJobComponent } from '../../../../../shared/modules/popups/apply-job/apply-job.component';
+import { RegisterOrLoginComponent } from '../../../../../shared/modules/popups/register-or-login/register-or-login.component';
 
 @Component({
   selector: 'app-job-details',
@@ -30,7 +31,8 @@ export class JobDetailsComponent implements OnInit {
     private dialog: MatDialog,
     private authService: AuthService,
     private jobService: JobService,
-    private toastr: ToastrService) {
+    private toastr: ToastrService,
+    private sharedStatusService: SharedStatusService) {
    }
 
   public ngOnInit(): void {
@@ -42,26 +44,23 @@ export class JobDetailsComponent implements OnInit {
       this.applyJobComponentRef
       .afterClosed()
       .subscribe( (res) => {
-        //get data
       this.userEmail = this.authService.getCurrentUserEmail();
-      this.jobService.applyJob( this.userEmail, this.route.snapshot.paramMap.get('id'), res).subscribe((res) => {
+      this.jobService.applyJob( this.userEmail, this.route.snapshot.paramMap.get('id'), res).subscribe((status) => {
       this.toastr.success('Application Success');
       });
-
-
       });
-     
     } else {
       this.loginOrRegisterComponentRef = this.dialog.open(RegisterOrLoginComponent);
-      // this.loginOrRegisterComponentRef
-      // .afterClosed()
-      // .subscribe((res) => {
-      //   if (res === 'login') {
-      //     this.clickLoginEvent.emit(null);
-      //   } else {
-      //     this.clickRegisterEvent.emit(null);
-      //   }
-      // });
+      this.loginOrRegisterComponentRef
+      .afterClosed()
+      .subscribe((res) => {
+        if (res === 'login') {
+          this.sharedStatusService.openLogin();
+        }
+        if (res === 'register') {
+          this.sharedStatusService.openRegister();
+        }
+      });
     }
   }
   private getDetails(): void {
