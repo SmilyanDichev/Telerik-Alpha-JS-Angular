@@ -3,18 +3,16 @@ import { Component, OnInit } from '@angular/core';
 import { ContactService } from '../../../../core/contact/contact.service';
 import { MapService } from '../../../../shared/services/map/map.service';
 
-
 @Component({
   selector: 'app-contacts',
   templateUrl: './contacts.component.html',
-  styleUrls: ['./contacts.component.css']
+  styleUrls: ['./contacts.component.css'],
 })
 export class ContactsComponent implements OnInit {
-  private title: string = 'My first AGM project';
   private lat: number ;
   private lng: number ;
   private zoom: number = 18;
-  private address: string  = 'bul. "Aleksandar Malinov" 31, 1729 g.k. Mladost 1A, Sofia';
+  private address: string  = 'Sofia';
   private contacts: any[];
 
   constructor(
@@ -23,8 +21,8 @@ export class ContactsComponent implements OnInit {
     private contactService: ContactService) { }
 
   public ngOnInit(): void {
-    this.getMainAdress(this.address);
     this.getAllContacts();
+   
   }
 
   private getMainAdress(address: string): void {
@@ -35,8 +33,16 @@ export class ContactsComponent implements OnInit {
   }
 
   private getAllContacts(): void {
-    console.log('getAllContacts');
     this.contactService.getContacts().subscribe((res) => {
+      this.address = res.find((el) => {
+        if (el.isMapAddress === true) {
+          
+          return el.value;
+        }
+      }).value;
+      console.log('this.address',this.address);
+      
+      this.getMainAdress(this.address);
       this.contacts = res;
     });
   }
