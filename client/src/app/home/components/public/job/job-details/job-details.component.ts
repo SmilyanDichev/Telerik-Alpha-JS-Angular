@@ -39,11 +39,13 @@ export class JobDetailsComponent implements OnInit {
       this.applyJobComponentRef
       .afterClosed()
       .subscribe( (res) => {
-      this.userEmail = this.authService.getCurrentUserEmail();
-      this.userId = this.authService.getCurrentUserId();
-      this.jobService.applyJob( this.userEmail, this.userId, this.route.snapshot.paramMap.get('id'), res).subscribe((status) => {
-      this.toastr.success('Application Success');
-      });
+      if (res) {
+        this.userEmail = this.authService.getCurrentUserEmail();
+        this.userId = this.authService.getCurrentUserId();
+        this.jobService.applyJob( this.userEmail, this.userId, this.route.snapshot.paramMap.get('id'), res).subscribe((status) => {
+          this.toastr.success('Application Success');
+          });
+      }
       });
     } else {
       this.loginOrRegisterComponentRef = this.dialog.open(RegisterOrLoginComponent);
