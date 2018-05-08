@@ -17,9 +17,26 @@ const init = (app, data) => {
         passwordField: 'password',
     };
 
-    passport.use(new LocalStrategy(localOpts,
-        async (email, password, done) => {
-            const userFound = await data.use.getByEmail(email);
+    // passport.use(new LocalStrategy(localOpts,
+    //     async (email, password, done) => {
+    //         const userFound = await data.user.getByEmail(email);
+    //         try {
+    //             if (userFound) {
+    //                 return done(null, userFound);
+    //             }
+    //             return done('Not authenticated', false);
+    //         } catch (err) {
+    //             return done(err);
+    //         }
+    //     }
+    // ));
+
+    passport.use('jwt', new Strategy({
+            jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+            secretOrKey: opts.secretOrKey,
+        },
+        async (jwtPayload, done) => {
+            const userFound = await data.user.getById(jwtPayload.sub);
             try {
                 if (userFound) {
                     return done(null, userFound);
@@ -31,17 +48,39 @@ const init = (app, data) => {
         }
     ));
 
-    passport.use(new Strategy({
+    passport.use('jwt-more-data', new Strategy({
+        jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+        secretOrKey: opts.secretOrKey,
+    },
+    async (jwtPayload, done) => {
+        console.log('-----------> server/config/auth', jwtPayload);
+        // jwtPayload has no id property
+        // data has no use nor getById method
+        // const userFound = await data.user.getById(jwtPayload.sub);
+        // console.log(userFound);
+        // try {
+        //     if (userFound) {
+        //         return done(null, userFound);
+        //     }
+        //     return done('Not authenticated', false);
+        // } catch (err) {
+        //     return done(err);
+        // }
+    }
+));
+
+    passport.use('jwt-admin', new Strategy({
             jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
             secretOrKey: opts.secretOrKey,
         },
         async (jwtPayload, done) => {
-            const userFound = await data.use.getById(jwtPayload.id);
+            const userFound = await data.user.getById(jwtPayload.sub);
+
             try {
-                if (userFound) {
+                if (userFound && userFound.isAdmin === true) {
                     return done(null, userFound);
                 }
-                return done('Not authenticated', false);
+                return done('You don\'t have permissions to access this resource', false);
             } catch (err) {
                 return done(err);
             }

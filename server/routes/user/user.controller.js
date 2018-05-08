@@ -3,13 +3,31 @@ const init = (app, data) => {
     const jwt = require('jwt-simple');
     const moment = require('moment');
     const config = require('../../config/config');
-    const login = () => {
-        return async (req, res) => {
-            const userFound = await data.user.getUserByEmail(req.body.email);
-            if (userFound) {
-                const isPassword =
-                    bcrypt.compare(req.body.password, userFound.password);
+    const getAllUsers = async (req, res) => {
+        try {
+            const usersArr = await data.user.getUsersWithUserJobs();
+            return usersArr;
+        } catch (exception) {
+            console.log(`-------------->
+                Request to get all users
+                with application number
+                rejected in user controller! `,
+                exception);
 
+            res.status(502).json({
+                msg: 'Request to create job rejected in user controller!',
+                err: exception,
+        });
+    }
+};
+    const login = async (req, res) => {
+        const userFound = await data.user.getByEmail(req.email);
+        let isPassword;
+        let token;
+        try {
+            if (userFound) {
+                isPassword =
+                    await bcrypt.compareSync(req.password, userFound.password);
                 if (isPassword) {
                     const expire =
                         moment(new Date())
@@ -19,52 +37,101 @@ const init = (app, data) => {
                     const payload = {
                         sub: userFound.id,
                         email: userFound.email,
-                        password: userFound.password,
+                        isAdmin: userFound.isAdmin,
                         exp: expire,
                         iss: config.JWT_ISS,
                     };
-
                     const secret = config.JWT_SECRET;
-                    const token = jwt.encode(payload, secret);
-
-                    res.status(200).send({
-                        token: token,
-                    });
+                    token = jwt.encode(payload, secret);
                 }
             }
-        };
+            if (!userFound) {
+                res.send(404).send({
+                    msg: 'Email not found',
+                });
+            }
+            if (userFound && !isPassword) {
+                res.send(404).send({
+                    msg: 'Wrong password',
+                });
+            }
+            if (userFound && isPassword) {
+                res.status(200).send({
+                    msg: 'Login Success',
+                    token: token,
+                });
+            }
+        } catch (exception) {
+            if (userFound && !isPassword) {
+                res.send(400).send({
+                    msg: 'Login Failure',
+                });
+            }
+            throw new Error(`Request to create job application rejected! `
+             + exception);
+        }
     };
-    const register = () => {
-        return async (req, res) => {
-            const authUserData=(userReq) => {
-                    // TO DO user data aunt
-                    return true;
-            };
+
+    const register = async (req, res) => {
+        const authUserData = (userReq) => {
+            // TO DO user data aunt
+            return true;
+        };
+        try {
             const isValidUserData = authUserData(req);
-            const userFound = await data.user.getUserByEmail(req.body.email);
+            const userFound = await data.user.getByEmail(req.email);
             if (!userFound && isValidUserData) {
-                const saltRounds = 10;
-                const passwordHashed =
-                bcrypt.hash(req.body.password, saltRounds);
-                const user= {
-                    email: req.body.email,
+                const passwordHashed = await bcrypt.hashSync(req.password);
+                const user = {
+                    email: req.email,
                     password: passwordHashed,
-                    firstName: req.body.firstName,
-                    lastName: req.body.lastName,
+                    firstName: req.firstName,
+                    lastName: req.lastName,
                     isAdmin: false,
                 };
                 data.user.create(user);
+                res.status(200).send({
+                    msg: 'Register Success',
+                });
             }
-        };
+        } catch (exception) {
+            res.status(400).send({
+                msg: 'Register Failure',
+            });
+            throw new Error(`Request to register a user rejected! `
+             + exception);
+        }
     };
+
+    const applyJob = async (application, res) => {
+            // TO DO responses
+        try {
+            await data.userJob.create({
+                comment: application.comment,
+                cvUrl: application.cvUrl,
+                letterUrl: application.letterUrl,
+                JobId: application.jobId,
+                UserId: application.userId,
+            });
+
+        } catch (exception) {
+            res.status(400).send({
+                msg: 'Job application Failure',
+            });
+            throw new Error(`Request to create job application rejected! `
+             + exception);
+        }
+    };
+
     return {
         login,
         register,
+        applyJob,
+        getAllUsers,
     };
 };
 
 module.exports = {
     init,
 };
-
 

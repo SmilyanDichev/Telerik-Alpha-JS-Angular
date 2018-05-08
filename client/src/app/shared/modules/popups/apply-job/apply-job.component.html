@@ -1,0 +1,32 @@
+<div fxFill fxLayout="column">
+  <div fxFlex='10'>
+
+  </div>
+  <form [formGroup]="rForm" (ngSubmit)="submit(rForm)">
+    <div fxLayoutAlign="center center" fxLayout="column">
+      <h1 fxFlex="2" mat-dialog-title> Apply for the job </h1>
+      <h5 fxFlex="2" [hidden]="!showErrorLetter" class="caption" [ngStyle]="{'color': 'red'}">{{errorLetter}} </h5>
+      <h5 fxFlex="2" [hidden]="!showErrorCV" class="caption" [ngStyle]="{'color': 'red'}">{{errorCV}} </h5>
+      <mat-dialog-content fxFlex="94" fxLayoutAlign="center center" fxLayout="column">
+        <div>
+          <mat-form-field>
+            <textarea matInput formControlName="comment" placeholder="Comment" rows="10"></textarea>
+          </mat-form-field>
+        </div>
+        <div>
+          <div>CV</div>
+          <input type="file" #cv (change)="onCVSelected($event)">
+        </div>
+        <div>
+          <div>Letter</div>
+          <input type="file" #letter (change)="onLeterSelected($event)">
+        </div>
+      </mat-dialog-content>
+      <mat-dialog-actions>
+        <button [disabled]="showErrorCV || showErrorLetter ||  !letter.ng-dirty ||  !cv.ng-dirty" mat-raised-button color="primary"
+          type="submit">Apply</button>
+        <button mat-raised-button color="primary" type="button" (click)="cancel()">Cancel</button>
+      </mat-dialog-actions>
+    </div>
+  </form>
+</div>

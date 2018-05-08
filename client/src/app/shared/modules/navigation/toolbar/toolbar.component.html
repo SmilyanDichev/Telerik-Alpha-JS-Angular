@@ -1,0 +1,28 @@
+<mat-toolbar class="mat-elevation-z4" color="primary" >
+  <nav   fxFill fxLayout="row" fxLayoutAlign="stretch">
+    <div  fxFlex.gt-md="30" fxLayoutAlign="start center" fxHide fxShow.gt-md id="routes-user">
+      <a mat-button class="nav-link" [routerLink]="['/home']">Home</a>
+      <a mat-button class="nav-link" [routerLink]="['/jobs']">Jobs</a>
+      <a mat-button class="nav-link" [routerLink]="['/contacts']">Contacts</a>
+    </div>
+    <div *ngIf="!isAdmin" fxFlex.gt-md="40"  fxLayoutAlign="center center" fxHide fxShow.gt-md  id="not-admin-placeholder"> </div>
+    <div *ngIf="isAdmin" fxFlex.gt-md="40" class="mat-elevation-z2"  color="accent" fxLayoutAlign="center center" fxHide fxShow.gt-md id="routes-admin">
+      <a mat-button class="nav-link" [routerLink]="['/admin/users']">Users</a>
+      <a mat-button class="nav-link" [routerLink]="['/admin/jobs']">Jobs</a>
+      <a mat-button class="nav-link" [routerLink]="['/admin/contacts']">Contacts</a>
+      <a mat-button class="nav-link" [routerLink]="['/admin/links']">Links</a>
+      <a mat-button class="nav-link" [routerLink]="['/admin/applications']">Applications</a>
+    </div>
+    <div fxFlex="65" fxLayoutAlign="start center" fxHide.gt-md fxShow>
+      <button mat-icon-button (click)="menuClick()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+    <div  fxFlex.gt-md="30" fxLayoutAlign="end center">
+      <a  *ngIf="isAuth" mat-button (click)="logoutClick()">Log Out</a>
+      <a  *ngIf="isAuth" mat-button>Hello {{currentUserEmail}}</a>
+      <a  *ngIf="!isAuth"  mat-button (click)="loginClick()">Log In</a>
+      <a  *ngIf="!isAuth"  mat-button (click)="registerClick()">Register</a>
+    </div>
+  </nav>
+</mat-toolbar>

@@ -7,19 +7,25 @@ class LinkData extends Data {
     constructor() {
         super(Link, []);
     }
-    editLink(linkId, newInfo) {
+    getAllLinks() {
+        return this.Model.findAll();
+    }
+
+    editLink(link) {
         return this.Model.update({
-            name: newInfo.name,
-            target: newInfo.target,
-            iconLink: newInfo.iconLink,
-            isHidden: newInfo.isHidden,
+            name: link.name,
+            target: link.target,
+            iconLink: link.iconLink,
+            isHidden: link.isHidden,
         }, {
             where: {
-                id: linkId,
+                id: link.id,
             },
         });
     }
     deleteLink(linkId) {
+        console.log('------------->Delete link request id ',
+            linkId, ' in link.data acquired! Goodbye link!');
         return this.Model.destroy({
             where: {
                 id: linkId,

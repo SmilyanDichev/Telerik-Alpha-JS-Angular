@@ -1,0 +1,43 @@
+<div fxFill fxFlex="100" fxLayout="column">
+  <div fxFlex="10"></div>
+  <div fxFlex="70" fxFill fxLayout="row" fxLayoutAlign="start start">
+    <div fxFlex="5"> </div>
+    <div fxFlex="65" fxLayout="column" fxLayoutAlign="center space-around">
+      <div fxFill>
+        <mat-table #jobtable [dataSource]="dataSource">
+          <ng-container matColumnDef="title">
+            <mat-header-cell fxFlex="70" *matHeaderCellDef> <h1>JobPosition</h1> </mat-header-cell>
+            <mat-cell fxFlex="85" *matCellDef="let element">
+              <div fxFlex="85"><h2>{{element.title}}</h2></div>
+              <div>
+                  <h5>category: {{element.JobCategory.name}}</h5>
+              </div>
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <mat-header-cell fxFlex="30" *matHeaderCellDef></mat-header-cell>>
+            <mat-cell fxFill fxFlex="15" *matCellDef="let element">
+              <a [routerLink]="['./', element.id]" color="primary" mat-raised-button>More</a>
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+        <mat-paginator
+          #paginator
+          [pageSize]="5"
+          [pageSizeOptions] = "[5, 10, 20]"
+          [showFirstLastButtons] = "true" >
+        </mat-paginator>
+      </div>
+    </div>
+    <div fxFlex="5"> </div>
+    <div fxFill fxFlex="15" color="primary" fxLayout="row" fxLayoutAlign="center space-around">
+      <app-control-panel (clickFilterEvent)="applyFilter($event.value)" (clickResetEvent)="resetFilter()">
+      </app-control-panel>
+    </div>
+    <div fxFlex="5"> </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Courgette');
+
+.item {
+    border-style: solid;
+    border-width: medium;
+    background-color: rgb(219, 219, 219);
+    border: rgb(160, 136, 136)
+};
+
+.text span{
+    font-size: auto;
+}
+#text {
+    font-size: 500%;
+    font-family: "Courgette", Times, serif;
+    color: whitesmoke;
+    text-align: center;
+}
+#small-text{
+    font-family: "Courgette", Times, serif;
+    text-align: center;
+    /* font-size: 75%; */
+}
+
+.picture{
+    background-repeat: no-repeat;
+    background-size: cover;
+}

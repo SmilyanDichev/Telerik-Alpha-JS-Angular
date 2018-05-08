@@ -1,0 +1,29 @@
+.item {
+    border-style: solid;
+    border-width: medium;
+    /* height: 200px; */
+    /* width: 50%; */
+    /* height: 200px; */
+    background-color: rgb(219, 219, 219);
+    border: rgb(160, 136, 136)
+};
+
+.home-text {
+    color: "red";
+    font-size: 550px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+.picture{
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+span{
+    padding: 10px;
+    text-align: center;
+}
+
+agm-map {
+    height: 100%
+  }

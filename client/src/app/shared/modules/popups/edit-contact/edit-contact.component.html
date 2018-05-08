@@ -1,0 +1,37 @@
+<form class="modal" [formGroup]="rForm" (ngSubmit)="submit(rForm)">
+  <h1 mat-dialog-title> Edit Contact </h1>
+  <mat-dialog-content>
+      <div>
+    <mat-form-field>
+      <input matInput formControlName="name" placeholder="Name">
+    </mat-form-field>
+    </div>
+    <div>
+    <mat-form-field>
+      <input matInput formControlName="value" placeholder="Value">
+    </mat-form-field>
+  </div>
+  <div>
+  </div>
+
+
+  <div>
+      Show Map
+        <mat-radio-group formControlName="isAddress">
+          <div>
+            <mat-radio-button  value="1">
+              Yes
+            </mat-radio-button>
+            <mat-radio-button  value="2">
+              No
+            </mat-radio-button>
+          </div>
+        </mat-radio-group>
+  </div>
+
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button type="submit"> Edit</button>
+    <button mat-button type="button" mat-dialog-close>Cancel</button>
+  </mat-dialog-actions>
+</form>

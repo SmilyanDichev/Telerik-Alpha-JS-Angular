@@ -1,0 +1,22 @@
+<div fxFill fxLayout="row" fxLayoutAlign="center">
+  <div fxFlex="10"> </div>
+  <div fxFill fxFlex="20" fxLayout="column" fxLayoutAlign="center">
+    <div  class="mat-elevation-z4" fxLayoutGap="20px" fxfill fxFlex="50" fxLayout="column" fxLayoutAlign="center center">
+      <h3><span headline >CONTACTS</span></h3>
+      <div   *ngFor="let c of contacts" fxLayout="column"  fxLayoutAlign="center center">
+        <span fxLayoutGap="10px" subheading-2>{{c.name}}</span>
+        <span  fxLayoutGap="10px" body-1 >{{c.value}}</span>
+      </div>
+    </div>
+  </div>
+  <div fxFlex="10"> </div>
+  <div fxFill fxFlex="50" fxLayout="column" fxLayoutAlign="center">
+    <div fxFill fxFlex="80" class="item">
+      <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+      </agm-map>
+    </div>
+  </div>
+  <div fxFlex="10"> </div>
+</div>
+

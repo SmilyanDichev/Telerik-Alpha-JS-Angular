@@ -1,14 +1,27 @@
 const Data = require('./generic.data');
 
 const {
-    Contacts,
+    Contact,
 } = require('../db/models/');
 
 class ContactsData extends Data {
+    // constructor(contacts) {
+    //     super(contacts, []);
     constructor() {
-        super(Contacts, []);
+        super(Contact, []);
     }
 
+    editContact(contactId, newInfo) {
+        return this.Model.update({
+            name: newInfo.name,
+            value: newInfo.value,
+            isMapAddress: newInfo.isMapAddress,
+        }, {
+            where: {
+                id: contactId,
+            },
+        });
+    }
     editContact(contactId, newInfo) {
         return this.Model.update({
             name: newInfo.name,

@@ -1,0 +1,17 @@
+<form [formGroup]="rForm" (ngSubmit)="submit(rForm)">
+  <h1 mat-dialog-title> Login </h1>
+  <mat-dialog-content>
+    <div>
+    <mat-form-field>
+      <input matInput formControlName="email" placeholder="your email">
+    </mat-form-field>
+  </div>
+    <mat-form-field>
+      <input matInput formControlName="password" placeholder="your password">
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+      <button mat-button type="submit"> Log in</button>
+      <button mat-button type="button" mat-dialog-close >Cancel</button>
+  </mat-dialog-actions>
+</form>
