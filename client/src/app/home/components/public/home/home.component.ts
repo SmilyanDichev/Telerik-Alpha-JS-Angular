@@ -10,7 +10,11 @@ declare function require(url: string);
 export class HomeComponent implements OnInit {
   private background = (<any>config).background;
   private text = (<any>config).text;
-
+  private textLarge = (<any>config).textlarge;
+  private twitter = (<any>config).twitter;
+  private data = {
+    sourceType: 'url',
+    url: this.twitter};
   constructor() {}
 
   ngOnInit() {

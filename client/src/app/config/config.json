@@ -1,4 +1,6 @@
 {
   "background": "http://heyhuman.com/dev/wp-content/uploads/revslider/people2/header-people-pink.jpg",
-  "text":"Wellcome to our site!"
+  "text":"Wellcome to our site!",
+  "textlarge":"Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical.Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical.Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical",
+  "twitter": "https://twitter.com/TelerikAcademy"
 }
