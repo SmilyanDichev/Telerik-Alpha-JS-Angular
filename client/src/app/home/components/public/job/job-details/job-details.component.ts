@@ -31,7 +31,7 @@ export class JobDetailsComponent implements OnInit {
    }
 
   public ngOnInit(): void {
-    // this.getDetails();
+    this.getDetails();
   }
   private applyJob (): void {
     if (this.isAuth()) {
@@ -60,6 +60,15 @@ export class JobDetailsComponent implements OnInit {
         }
       });
     }
+  }
+
+  private getDetails(): void {
+    this.route.params
+      .subscribe((params) => {
+        this.jobService.getJobDetails(params.id).subscribe((res) => {
+          this.details = res;
+        });
+      });
   }
 
   private isAuth(): boolean {
